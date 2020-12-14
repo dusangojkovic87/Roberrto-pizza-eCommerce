@@ -1,0 +1,122 @@
+.login-container{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("/assets/img/login/loginBg.jpg");
+  background-size: cover;
+  background-position: cover center;
+  top:0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.login-form-wrraper{
+  position: relative;
+  width:450px;
+  height: 350px;
+  background-color:rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 12px;
+  top:7rem;
+
+}
+
+form input{
+  position: relative;
+  width: 20rem;
+  display: block;
+  margin: 1rem;
+  height: 2rem;
+  border: none;
+  outline: none;
+}
+
+.login__heading{
+  font-family: "Monserrat";
+  font-size: 2rem;
+  text-align: center;
+  color: white;
+  margin: 0;
+}
+
+.login__btn{
+  width: 12rem;
+  background-color: #ffcc00;
+  color: black;
+  height: 2rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 12px;
+  font-family: "Monserrat";
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.login-errors-container{
+  position: relative;
+  width:20rem;
+  background-color:transparent;
+  height:70px;
+}
+
+::placeholder{
+  font-size: 1rem;
+  font-family: "Monserrat";
+  padding-left: 1rem;
+  font-style: italic;
+}
+
+.login__error__message{
+  color: white;
+  font-family: "Monserrat";
+  font-size: 0.7rem;
+  font-weight: bold;
+  background-color: #e74141;
+  text-align: center;
+  padding: 0.2rem;
+
+}
+
+@media only screen and (max-width:498px){
+  .login-form-wrraper{
+    width:25rem;
+  }
+}
+
+@media only screen and (max-width:440px){
+  .login-form-wrraper{
+    width:22rem;
+  }
+
+  form input{
+    width: 18rem;
+  }
+}
+
+@media only screen and (max-width:348px){
+  .login-form-wrraper{
+    width:20rem;
+  }
+}
+
+@media only screen and (max-width:329px){
+  .login-form-wrraper{
+    width:17rem;
+  }
+
+  form input{
+    width: 15rem;
+  }
+
+  .login-errors-container{
+    width: 15rem;
+  }
+
+}
+

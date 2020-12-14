@@ -1,0 +1,29 @@
+<div class="register-container">
+  <div class="register-form-wrraper">
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+       <h1 class="register__heading">Register</h1>
+       <div class="register-errors-container">
+           <p class="register__error__message"
+               *ngIf="registerForm.get('fullname')?.touched  &&
+                  registerForm.get('fullname')?.hasError('required') ||  registerForm.get('username')?.touched && registerForm.get('username')?.hasError('required')   ||
+                  registerForm.get('email')?.touched && registerForm.get('email')?.hasError('required') ||
+                  registerForm.get('password')?.touched && registerForm.get('password')?.hasError('required')" >*Fields cannot  be empty!
+           </p>
+           <p class="register__error__message" *ngIf="registerForm.get('email')?.touched &&
+               registerForm.get('email')?.hasError('email')">
+               *Email is not valid!
+           </p>
+       </div>
+          <div class="form-input-group">
+               <input type="text" formControlName="fullname" placeholder="full Name"/>
+               <input type="text" formControlName="username" placeholder="UserName"/>
+          </div>
+          <div class="form-input-group">
+               <input type="email" formControlName="email" placeholder="Email"/>
+               <input type="password" formControlName="password" placeholder="Password" autocomplete="on"/>
+          </div>
+              <button class="register__btn">send</button>
+      </form>
+  </div>
+</div>
+

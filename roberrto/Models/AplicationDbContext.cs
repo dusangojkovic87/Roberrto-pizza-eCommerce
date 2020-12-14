@@ -10,6 +10,18 @@ namespace roberrto.Models
         {
             
         }
+
+         /* protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<OrderItems>()
+            .HasKey(o => new {o.Orders,o.Product});
+    } */
+
+        public DbSet<StoreUser> User {get;set;}
+         public DbSet<Orders> Orders {get;set;}
+         public DbSet<OrderItems> OrderItems {get;set;}
+         public DbSet<Product> Product {get;set;}
+
         
     }
 }

@@ -1,0 +1,14 @@
+<div class="login-container">
+  <div class="login-form-wrraper">
+     <h1 class="login__heading">Login</h1>
+       <div class="login-errors-container">
+           <p class="login__error__message" *ngIf="loginForm.get('email').touched && loginForm.get('email').hasError('required')|| loginForm.get('password').touched && loginForm.get('password').hasError('required')">*Field cannot be empty!</p>
+           <p class="login__error__message" *ngIf="loginForm.get('email').touched && loginForm.get('email').hasError('email')">*Email is not valid!</p>
+       </div>
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+             <input type="email" formControlName="email" placeholder="Email" required/>
+             <input type="password" formControlName="password" placeholder="Password" autocomplete="on" required/>
+             <button class="login__btn" type="submit">send</button>
+        </form>
+   </div>
+</div>

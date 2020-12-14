@@ -1,5 +1,6 @@
 using System.Text;
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -33,7 +34,10 @@ namespace roberrto
             })
                .AddEntityFrameworkStores<AplicationDbContext>();
 
-            services.AddAuthentication()
+            services.AddAuthentication(opt=>{
+                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
               .AddCookie()
               .AddJwtBearer(cfg =>{
                    cfg.TokenValidationParameters = new TokenValidationParameters()
@@ -43,6 +47,12 @@ namespace roberrto
                       IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Tokens:key"]))   
                    };
               });
+
+               services.AddAuthorization(config =>    
+              {    
+                config.AddPolicy(Policies.Admin, Policies.AdminPolicy());    
+                config.AddPolicy(Policies.User, Policies.UserPolicy());    
+              });    
              
 
             services.AddDbContext<AplicationDbContext>(opt =>{
@@ -89,7 +99,7 @@ namespace roberrto
                     pattern: "{controller}/{action=Index}/{id?}");
             });
 
-            /* app.UseSpa(spa =>
+            app.UseSpa(spa =>
             {
                 // To learn more about options for serving an Angular SPA from ASP.NET Core,
                 // see https://go.microsoft.com/fwlink/?linkid=864501
@@ -100,7 +110,7 @@ namespace roberrto
                 {
                     spa.UseAngularCliServer(npmScript: "start");
                 }
-            }); */
+            });
         }
     }
 }

@@ -1,0 +1,14 @@
+<header>
+  <a class="cart"><span class="cart__item__counter">0</span><img class="cart__icon" src="assets/icons/cart.svg"></a>
+  <a class="navbar__brand">Robberto Pizza</a>
+  <a (click)="toggleNavbar()" class="navbar__toggle"><img src="assets/icons/bars.svg" alt="bars.svg"></a>
+  <nav (window:resize) = setVisibilityonDesktop() [ngClass] = "navbarState ? 'navbar--open' : 'navbar--closed'">
+    <ul>
+          <li class="nav__link"><a routerLink="">Home</a></li>
+          <li class="nav__link"><a routerLink="/about">About</a></li>
+          <li class="nav__link"><a routerLink="/orders">Orders</a></li>
+          <li class="nav__link"><a routerLink="/login">Login</a></li>
+          <li class="nav__link"><a routerLink="/register">Register</a></li>
+    </ul>
+ </nav>
+</header>

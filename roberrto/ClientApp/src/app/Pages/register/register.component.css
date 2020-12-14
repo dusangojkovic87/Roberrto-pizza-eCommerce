@@ -1,0 +1,176 @@
+.register-container{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-image: url("/assets/img/login/loginBg.jpg");
+  background-size: cover;
+  background-position: top center;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  left: 0;
+}
+
+.register-form-wrraper{
+  position: relative;
+  width:800px;
+  height: 400px;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top:7rem;
+}
+
+form input{
+  display: block;
+  width: 20rem;
+  height: 2rem;
+  margin: 1rem;
+  outline: none;
+}
+
+.form-input-group{
+  position: relative;
+  display: flex;
+}
+
+.register__btn{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+  width: 12rem;
+  height: 2rem;
+  cursor: pointer;
+  background-color: #ffcc00;
+  color: black;
+  font-family: "Monserrat";
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 12px;
+  outline: none;
+}
+
+.register__heading{
+  color: white;
+  font-family: "Monserrat";
+  font-size: 2rem;
+  text-align: center;
+  top: -2rem;
+}
+
+::placeholder{
+  font-family: "Monserrat";
+  font-style: italic;
+  font-size: 1rem;
+  padding-left: 1rem;
+}
+
+.register-errors-container{
+  position: relative;
+  width: 20rem;
+  height: 70px;
+}
+
+.register__error__message{
+  position: relative;
+  color: white;
+  font-family: "Monserrat";
+  font-size: 0.7rem;
+  font-weight: bold;
+  background-color: #e74141;
+  text-align: center;
+  padding: 0.2rem;
+  left: 1rem;
+}
+
+
+
+@media only screen and (max-width:828px){
+  .register-form-wrraper{
+    height: 520px;
+    width: 600px;
+  }
+
+ .form-input-group{
+   flex-direction: column;
+ }
+
+}
+
+
+@media only screen and (max-width:641px){
+  .register-form-wrraper{
+    width: 500px;
+  }
+
+}
+
+@media only screen and (max-width:530px){
+  .register-form-wrraper{
+    width:400px;
+  }
+
+}
+
+@media only screen and (max-width:420px){
+  .register-form-wrraper{
+    width:350px;
+  }
+
+  form input{
+    width:17rem;
+  }
+
+  .register-errors-container{
+    width: 17rem;
+  }
+
+}
+
+@media only screen and (max-width:379px){
+  .register-form-wrraper{
+    width:320px;
+  }
+}
+
+@media only screen and (max-width:346px){
+  .register-form-wrraper{
+    width:300px;
+  }
+
+  form input{
+    width: 16rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .register-errors-container{
+    width: 16rem;
+    left: -1rem;
+  }
+}
+
+@media only screen and (max-width:324px){
+  .register-form-wrraper{
+    width:280px;
+  }
+
+  form input{
+    width: 15rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .register-errors-container{
+    width: 15rem;
+    left:-1rem;
+  }
+
+}
+
+
+
+
+

@@ -40,12 +40,13 @@ namespace roberrto.Controllers
     public async Task<IActionResult> Register([FromBody] RegisterModel model){
 
         if(!ModelState.IsValid){
-           return BadRequest(ModelState);
+           return BadRequest(model);
         }
 
         var userExist = await _userManager.FindByEmailAsync(model.Email);
         if(userExist == null){
             var user = _mapper.Map<StoreUser>(model);
+            user.UserRole = "Customer";
             var result = await _userManager.CreateAsync(user,model.Password);
            if(result.Succeeded){
                return Ok(result);
@@ -78,11 +79,11 @@ namespace roberrto.Controllers
             if (result.Succeeded)
             {
                 //create token
-                var claims = new[]{
+             var claims = new[]{
                       new Claim(JwtRegisteredClaimNames.Sub,user.Email),
                       new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString()),
-                  };
-            
+                      new Claim("role",user.UserRole)     
+            };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Tokens:key"]));
             var creds = new SigningCredentials(key,SecurityAlgorithms.HmacSha256);
@@ -103,10 +104,6 @@ namespace roberrto.Controllers
 
             }
         }
-
-
-
-
         return BadRequest();
     }
 
