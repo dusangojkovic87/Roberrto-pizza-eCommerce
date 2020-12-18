@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
    navbarState:boolean = false;
 
-  constructor() { }
+  constructor(public auth:AuthService) { }
 
   ngOnInit(): void {
+
     if(window.innerWidth >= 768){
       this.navbarState = true;
     }else{
@@ -29,5 +31,7 @@ export class NavbarComponent implements OnInit {
       this.navbarState = false;
     }
   }
+
+
 
 }

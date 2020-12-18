@@ -3,26 +3,29 @@
       <form [formGroup]="registerForm" (ngSubmit)="register()">
        <h1 class="register__heading">Register</h1>
        <div class="register-errors-container">
+        <div *ngIf="userRegistrationFailed">
+              <p class="register__error__message">{{registerError}}</p>
+        </div>
            <p class="register__error__message"
-               *ngIf="registerForm.get('fullname')?.touched  &&
-                  registerForm.get('fullname')?.hasError('required') ||  registerForm.get('username')?.touched && registerForm.get('username')?.hasError('required')   ||
-                  registerForm.get('email')?.touched && registerForm.get('email')?.hasError('required') ||
-                  registerForm.get('password')?.touched && registerForm.get('password')?.hasError('required')" >*Fields cannot  be empty!
+               *ngIf="registerForm.get('FullName')?.touched  &&
+                  registerForm.get('FullName')?.hasError('required') ||  registerForm.get('UserName')?.touched && registerForm.get('UserName')?.hasError('required')   ||
+                  registerForm.get('Email')?.touched && registerForm.get('Email')?.hasError('required') ||
+                  registerForm.get('Password')?.touched && registerForm.get('Password')?.hasError('required')" >*Fields cannot  be empty!
            </p>
-           <p class="register__error__message" *ngIf="registerForm.get('email')?.touched &&
-               registerForm.get('email')?.hasError('email')">
+           <p class="register__error__message" *ngIf="registerForm.get('Email')?.touched &&
+               registerForm.get('Email')?.hasError('email')">
                *Email is not valid!
            </p>
        </div>
           <div class="form-input-group">
-               <input type="text" formControlName="fullname" placeholder="full Name"/>
-               <input type="text" formControlName="username" placeholder="UserName"/>
+               <input type="text" formControlName="FullName" placeholder="full Name"/>
+               <input type="text" formControlName="UserName" placeholder="UserName"/>
           </div>
           <div class="form-input-group">
-               <input type="email" formControlName="email" placeholder="Email"/>
-               <input type="password" formControlName="password" placeholder="Password" autocomplete="on"/>
+               <input type="email" formControlName="Email" placeholder="Email"/>
+               <input type="password" formControlName="Password" placeholder="Password" autocomplete="on"/>
           </div>
-              <button class="register__btn">send</button>
+              <button [disabled]="!registerForm.valid" class="register__btn">send</button>
       </form>
   </div>
 </div>

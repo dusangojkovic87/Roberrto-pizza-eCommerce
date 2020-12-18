@@ -11,6 +11,16 @@ import { RegisterComponent } from './Pages/register/register.component';
 import { LoginComponent } from './Pages/login/login.component';
 import { ReactiveFormsModule} from "@angular/forms";
 import { CommonModule } from '@angular/common';
+import {HttpClientModule} from "@angular/common/http";
+import { AuthService } from './Services/auth.service';
+import { JwtModule } from "@auth0/angular-jwt";
+import { LogoutComponent } from './Pages/logout/logout.component';
+
+
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
+
 
 
 @NgModule({
@@ -21,17 +31,27 @@ import { CommonModule } from '@angular/common';
     AboutComponent,
     OrdersComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    LogoutComponent
+
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter:tokenGetter,
+        allowedDomains: ["localhost:5000"]
+      },
+    }),
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

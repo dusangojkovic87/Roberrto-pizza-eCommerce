@@ -28,6 +28,14 @@ namespace roberrto
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(opt=>{
+              opt.AddPolicy("AllowEverything",builder =>{
+                  builder.AllowAnyOrigin();
+                  builder.AllowAnyMethod();
+                  builder.AllowAnyHeader();
+                 
+              });
+            });
             services.AddAutoMapper(typeof(Startup));
             services.AddIdentity<StoreUser,IdentityRole>(opt =>{
                 opt.User.RequireUniqueEmail = true;
@@ -86,8 +94,8 @@ namespace roberrto
             {
                 app.UseSpaStaticFiles();
             }
-
-    
+            
+            app.UseCors("AllowEverything");
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();

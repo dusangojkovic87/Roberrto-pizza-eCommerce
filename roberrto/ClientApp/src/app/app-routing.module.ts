@@ -5,13 +5,16 @@ import { HomeComponent } from './Pages/home/home.component';
 import { LoginComponent } from './Pages/login/login.component';
 import { OrdersComponent } from './Pages/orders/orders.component';
 import { RegisterComponent } from './Pages/register/register.component';
+import {AuthGuard} from "../app/Guards/auth.guard";
+import { LogoutComponent } from './Pages/logout/logout.component';
 
 const routes: Routes = [
   {path:"",component:HomeComponent},
   {path:"about",component:AboutComponent},
-  {path:"orders",component:OrdersComponent},
+  {path:"orders",component:OrdersComponent,canActivate:[AuthGuard]},
   {path:"login",component:LoginComponent},
-  {path:"register",component:RegisterComponent}
+  {path:"register",component:RegisterComponent},
+  {path:"logout",component:LogoutComponent}
 ];
 
 @NgModule({

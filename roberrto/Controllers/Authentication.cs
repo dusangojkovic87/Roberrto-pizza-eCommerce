@@ -4,6 +4,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -40,7 +41,7 @@ namespace roberrto.Controllers
     public async Task<IActionResult> Register([FromBody] RegisterModel model){
 
         if(!ModelState.IsValid){
-           return BadRequest(model);
+           return BadRequest(ModelState);
         }
 
         var userExist = await _userManager.FindByEmailAsync(model.Email);
@@ -51,7 +52,7 @@ namespace roberrto.Controllers
            if(result.Succeeded){
                return Ok(result);
            }else{
-            return BadRequest("Error while saving user!");
+            return StatusCode(StatusCodes.Status500InternalServerError,new {error = "Failed,error on server"});
            }  
             
         }else{
@@ -92,12 +93,14 @@ namespace roberrto.Controllers
                 _configuration["Tokens:Audience"],
                 claims,
                 expires:DateTime.UtcNow.AddMinutes(60),
-                signingCredentials:creds
+                signingCredentials:creds     
             );
 
             var results = new {
                 token = new JwtSecurityTokenHandler().WriteToken(token),
-                expiration = token.ValidTo
+                expiration = token.ValidTo,
+                authenticated = true
+               
             };
 
             return Created("",results);

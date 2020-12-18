@@ -7,8 +7,9 @@
           <li class="nav__link"><a routerLink="">Home</a></li>
           <li class="nav__link"><a routerLink="/about">About</a></li>
           <li class="nav__link"><a routerLink="/orders">Orders</a></li>
-          <li class="nav__link"><a routerLink="/login">Login</a></li>
-          <li class="nav__link"><a routerLink="/register">Register</a></li>
+          <li *ngIf="!auth.isAuthenticated()" class="nav__link"><a routerLink="/login">Login</a></li>
+          <li *ngIf="auth.isAuthenticated()" class="nav__link"><a routerLink="/logout">Logout</a></li>
+          <li *ngIf="!auth.isAuthenticated()" class="nav__link"><a routerLink="/register">Register</a></li>
     </ul>
  </nav>
 </header>

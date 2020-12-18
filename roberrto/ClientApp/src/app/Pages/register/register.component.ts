@@ -1,5 +1,8 @@
+import { error } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
-import {FormGroup,Validators,FormBuilder} from "@angular/forms";
+import {Validators,FormBuilder} from "@angular/forms";
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -7,25 +10,53 @@ import {FormGroup,Validators,FormBuilder} from "@angular/forms";
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  userRegistrationFailed:boolean = false;
    registerForm:any;
+   registerError:string ="";
 
 
-  constructor(private fb:FormBuilder) {
+
+
+  constructor(private fb:FormBuilder,private http:AuthService,private router:Router) {
 
    }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
-       fullname:["",Validators.required],
-       username:["",Validators.required],
-       email:["",[Validators.required,Validators.email]],
-       password:["",Validators.required]
+       FullName:["",Validators.required],
+       UserName:["",Validators.required],
+       Email:["",[Validators.required,Validators.email]],
+       Password:["",Validators.required]
     })
   }
 
   register(){
-    console.log(this.registerForm.value);
+    if(this.registerForm.valid){
+    this.http.register(this.registerForm.value)
+        .subscribe((data:any)=>{
+           if(data.succeeded  === true){
+               this.router.navigate(["/login"]);
+           }
+
+        },error =>{
+          this.userRegistrationFailed = true;
+          console.log(error);
+          if(error.status === 400 || error.status === 500){
+            this.registerError = error.error;
+          }
+
+      }
+
+    )}
 
   }
 
-}
+  }
+
+
+
+
+
+
+
+
