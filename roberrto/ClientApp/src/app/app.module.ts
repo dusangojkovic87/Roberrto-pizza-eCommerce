@@ -15,6 +15,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { AuthService } from './Services/auth.service';
 import { JwtModule } from "@auth0/angular-jwt";
 import { LogoutComponent } from './Pages/logout/logout.component';
+import { MenuNavigationComponent } from './Shared/menu-navigation/menu-navigation.component';
 
 
 export function tokenGetter() {
@@ -32,7 +33,8 @@ export function tokenGetter() {
     OrdersComponent,
     RegisterComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    MenuNavigationComponent
 
 
   ],

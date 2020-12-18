@@ -21,7 +21,7 @@ namespace roberrto.Entities
         public decimal Price { get; set; }
         [Required]
         public bool TopOffer { get; set; }
-        public int OrderItemsId { get; set; }
-        public OrderItems OrderItems { get; set; }
+      
+        
     }
 }

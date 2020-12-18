@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using roberrto.Models;
 
 namespace roberrto.Controllers
 {
@@ -6,6 +7,13 @@ namespace roberrto.Controllers
     [Route("[controller]")]
     public class Products:ControllerBase
     {
+        private readonly AplicationDbContext _context;
+        
+        public Products(AplicationDbContext context)
+        {
+            _context = context;
+            
+        }
 
     public IActionResult GetProducts(){
         

@@ -241,9 +241,6 @@ namespace roberrto.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("OrderItemsId")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,4)");
 
@@ -255,8 +252,6 @@ namespace roberrto.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("OrderItemsId");
 
                     b.ToTable("Product");
                 });
@@ -403,22 +398,6 @@ namespace roberrto.Migrations
                         .HasForeignKey("StoreUserId1");
 
                     b.Navigation("StoreUser");
-                });
-
-            modelBuilder.Entity("roberrto.Entities.Product", b =>
-                {
-                    b.HasOne("roberrto.Entities.OrderItems", "OrderItems")
-                        .WithMany("Product")
-                        .HasForeignKey("OrderItemsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("OrderItems");
-                });
-
-            modelBuilder.Entity("roberrto.Entities.OrderItems", b =>
-                {
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("roberrto.Entities.Orders", b =>
