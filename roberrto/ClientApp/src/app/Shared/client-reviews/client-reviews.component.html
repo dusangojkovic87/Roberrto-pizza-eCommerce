@@ -1,0 +1,13 @@
+<div class="client-reviews-container">
+  <h1 class="client__reviews__heading">What clients say</h1>
+<div class="client-text-wrraper">
+    <p class="client__text">{{clientReview && clientReview[clientCounter].text}}</p>
+    <p class="client__name">{{clientReview && clientReview[clientCounter].clientFullName}}</p>
+</div>
+<div class="dots-wrrapper">
+  <div *ngFor="let c of clientReview,index as i">
+      <p [ngClass] = "{'active--slider--dot':i === pickedDot}" class="slider__dot" (click)="pickReview(i)"></p>
+  </div>
+</div>
+</div>
+

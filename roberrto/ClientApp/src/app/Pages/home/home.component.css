@@ -35,10 +35,38 @@
   width: 100%;
 }
 
+.delivery-card{
+  position: relative;
+  top:-1rem;
+  width: 100%;
+}
+
+.menu-order-list{
+  position: relative;
+  top: 0;
+}
+
+.client-reviews{
+  position: relative;
+  top: 0;
+}
+
 @media only screen and (max-width:768px){
   .menu-navigation{
     position: relative;
     top:31.2rem;
   }
+
+  .delivery-card{
+    top:-0.1rem;
+  }
+
+  .menu-order-list{
+    top:12rem;
+  }
+
+  .client-reviews{
+    top:12rem;
+   }
 }
 

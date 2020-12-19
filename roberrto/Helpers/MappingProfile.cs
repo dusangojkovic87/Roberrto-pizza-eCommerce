@@ -10,6 +10,9 @@ namespace roberrto.Helpers
         {
            CreateMap<RegisterModel,StoreUser>();
            CreateMap<StoreUser,RegisterModel>();
+           CreateMap<ProductModel,Product>();
+           CreateMap<TeamMember,TeamMemberAddModel>();
+            CreateMap<ClientReviewAddModel,Reviews>();
             
         }
         

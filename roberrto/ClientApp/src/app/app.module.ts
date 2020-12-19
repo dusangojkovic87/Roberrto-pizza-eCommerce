@@ -16,6 +16,10 @@ import { AuthService } from './Services/auth.service';
 import { JwtModule } from "@auth0/angular-jwt";
 import { LogoutComponent } from './Pages/logout/logout.component';
 import { MenuNavigationComponent } from './Shared/menu-navigation/menu-navigation.component';
+import { DeliveryCardComponent } from './Pages/home/delivery-card/delivery-card.component';
+import { OrderMenuListComponent } from './Shared/order-menu-list/order-menu-list.component';
+import { MenuOrderItemComponent } from './Shared/menu-order-item/menu-order-item.component';
+import { ClientReviewsComponent } from './Shared/client-reviews/client-reviews.component';
 
 
 export function tokenGetter() {
@@ -34,7 +38,11 @@ export function tokenGetter() {
     RegisterComponent,
     LoginComponent,
     LogoutComponent,
-    MenuNavigationComponent
+    MenuNavigationComponent,
+    DeliveryCardComponent,
+    OrderMenuListComponent,
+    MenuOrderItemComponent,
+    ClientReviewsComponent
 
 
   ],

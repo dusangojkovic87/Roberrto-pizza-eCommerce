@@ -1,0 +1,57 @@
+.delivery-card-container{
+  position: relative;
+  background-image:linear-gradient(to right,#F8D90F,#FE7A15);
+  width: 100%;
+  height:15rem;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  align-items: center;
+}
+.delivery-card-item{
+  position: relative;
+  width:25%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.delivery__icon{
+  width: 4rem;
+  height: 4rem;
+}
+
+.delivery__text{
+  text-align: center;
+  color:white;
+  font-family: "Monserrat";
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 100%;
+  text-shadow: 1px 1px black;
+}
+
+@media only screen and (max-width:887px){
+  .delivery-card-container{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 28rem;
+  }
+
+  .delivery-card-item{
+    padding:0.5rem;
+    width: 100%;
+  }
+
+}
+
+
+@media only screen and (max-width:768px){
+  .delivery-card-container{
+    top: 12rem;
+    height: 33rem;
+  }
+
+
+}

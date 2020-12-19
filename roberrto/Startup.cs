@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using roberrto.Entities;
 using roberrto.Models;
+using roberrto.Services;
 
 namespace roberrto
 {
@@ -28,6 +29,11 @@ namespace roberrto
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IAdminRepository,AdminRepository>();
+            services.AddScoped<IProductRepository,ProductRepository>();
+            services.AddScoped<ITeamMembersRepository,TeamMembersRepository>();
+            services.AddScoped<IReviewRepository,ReviewRepository>();
+            
             services.AddCors(opt=>{
               opt.AddPolicy("AllowEverything",builder =>{
                   builder.AllowAnyOrigin();

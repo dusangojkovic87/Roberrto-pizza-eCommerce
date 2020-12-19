@@ -1,26 +1,54 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
-using roberrto.Models;
+using roberrto.Services;
 
 namespace roberrto.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class Products:ControllerBase
+    public class Products : ControllerBase
     {
-        private readonly AplicationDbContext _context;
-        
-        public Products(AplicationDbContext context)
+
+        public IProductRepository _product; 
+
+        public Products(IProductRepository product)
         {
-            _context = context;
-            
+            _product = product;
+
         }
 
-    public IActionResult GetProducts(){
-        
-    return Ok();
-    }
 
+       [HttpGet]
+       [Route("top-offers")]
+        public IActionResult TopOffers()
+        {
+            try
+            {
+                var TopOfferProducts = _product.TopOfferProducts();
+                return Ok(TopOfferProducts);
+            }
+            catch (Exception e)
+            {
+               Console.WriteLine(e);
+               return BadRequest("Error,cannot get products!");
+            }
+                     
+        }
 
-        
+        [HttpGet]
+        [Route("orders")]
+        public IActionResult GetProducts(){
+            try
+            {
+                var Products = _product.GetAllProducts();
+                return Ok(Products);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return BadRequest("Cannot get products!");
+               
+            }
+        }
     }
 }

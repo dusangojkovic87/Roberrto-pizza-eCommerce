@@ -14,3 +14,18 @@ html,body{
   src:url("assets/fonts/Montserrat-Regular.ttf");
   font-family: "Monserrat";
 }
+
+.slider__dot{
+  background-color:white;
+  border-radius: 20px;
+  width:10px;
+  height:10px;
+  margin:7px;
+  cursor: pointer;
+}
+
+.active--slider--dot{
+  background-color: red;
+  transform: scale(1.5);
+  transition: transform 250ms ease-in;
+}

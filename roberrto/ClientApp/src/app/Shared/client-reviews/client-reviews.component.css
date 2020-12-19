@@ -1,0 +1,87 @@
+.client-reviews-container{
+  position: relative;
+  width: 100%;
+  height:400px;
+  margin-top: 2rem;
+  background-image: url("/assets/img/clients-review/clients-review-bg.jpg");
+  background-size: cover;
+}
+
+.client-reviews-container::after{
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+}
+
+.client__reviews__heading{
+  position: relative;
+  text-align: center;
+  font-family: "Dancing Script";
+  padding-top: 2rem;
+  color: white;
+  z-index: 2;
+
+}
+
+.client__reviews__heading::first-letter{
+  color: #f1c40f;
+}
+
+.client-review-arrows-wrraper{
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 300px;
+  justify-content: space-between;
+  z-index: 4;
+  top:-3rem;
+}
+
+.client-review-arrows-wrraper img{
+  cursor: pointer;
+}
+
+.client-text-wrraper{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 400px;
+  top:1rem;
+  z-index:3;
+}
+.client__text{
+  color: white;
+  text-align: center;
+  width: 50%;
+  font-family: "Monserrat";
+  font-size: 0.8rem;
+}
+
+.client__name{
+  position: absolute;
+  text-align: center;
+  top:7rem;
+  width: 100%;
+  color: #f1c40f;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.dots-wrrapper{
+  position: relative;
+  top:-9rem;
+  width: 100%;
+  height: 1rem;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  z-index:5;
+
+}
+
