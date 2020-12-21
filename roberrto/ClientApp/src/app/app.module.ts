@@ -20,6 +20,9 @@ import { DeliveryCardComponent } from './Pages/home/delivery-card/delivery-card.
 import { OrderMenuListComponent } from './Shared/order-menu-list/order-menu-list.component';
 import { MenuOrderItemComponent } from './Shared/menu-order-item/menu-order-item.component';
 import { ClientReviewsComponent } from './Shared/client-reviews/client-reviews.component';
+import { MapLocationComponent } from './Shared/map-location/map-location.component';
+import { FooterComponent } from './Shared/footer/footer.component';
+import { AboutUsDescComponent } from './Pages/about/about-us-desc/about-us-desc.component';
 
 
 export function tokenGetter() {
@@ -42,7 +45,10 @@ export function tokenGetter() {
     DeliveryCardComponent,
     OrderMenuListComponent,
     MenuOrderItemComponent,
-    ClientReviewsComponent
+    ClientReviewsComponent,
+    MapLocationComponent,
+    FooterComponent,
+    AboutUsDescComponent
 
 
   ],

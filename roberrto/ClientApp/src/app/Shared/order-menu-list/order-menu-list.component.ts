@@ -16,8 +16,6 @@ export class OrderMenuListComponent implements OnInit {
   ngOnInit(): void {
     this.orders.getTopOffers()
            .subscribe(data =>{
-             console.log(data);
-
              this.topOrders = data;
            })
 

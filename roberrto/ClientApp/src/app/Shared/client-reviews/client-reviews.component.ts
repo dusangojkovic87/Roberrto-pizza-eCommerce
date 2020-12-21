@@ -11,29 +11,22 @@ import { ReviewsService } from 'src/app/Services/reviews.service';
 })
 export class ClientReviewsComponent implements OnInit {
   clientReview?:any;
-  clientCounter?:number;
-  pickedDot?:number;
+  pickedDot?:number = 0;
 
   constructor(private reviews:ReviewsService) { }
-
-
 
 
   ngOnInit(): void {
     this.reviews.getReviews()
     .subscribe(data =>{
-      console.log(data);
-
       this.clientReview = data;
-      this.clientCounter = this.clientReview.length -1;
-      this.pickedDot = this.clientCounter;
-
     })
+
   }
 
- pickReview(index:number){
-  this.clientCounter = index;
+ pickReview(index:any){
   this.pickedDot = index;
  }
+
 }
 

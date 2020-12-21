@@ -138,10 +138,51 @@ namespace roberrto.Controllers
         [Route("add-review")]
         public IActionResult addReview([FromBody] ClientReviewAddModel model){
             if(_admin.addClientReview(model)){
-                return Ok("Review added");
+                return Ok("Review added!");
             }else{
                 return BadRequest("Error,review not added!");
             }
         }
+
+
+        [HttpPost]
+        [Route("add-gallery-img")]
+        public IActionResult addGalleryImg([FromForm] GalleryImgAddModel model){
+            string uniqeImgName = UploadGalleryImg(model,_contentRoot);
+
+            var galleryImg = new Gallery{
+              Img = uniqeImgName
+            };
+
+           if(_admin.addImgToGallery(galleryImg)){
+               return Ok("Image uploaded!");
+           }else{
+               return BadRequest("Error,img not uploaded!");
+           }
+
+        }
+
+        private string UploadGalleryImg(GalleryImgAddModel model,string root){
+            string uniquegalleryImgName = null;
+
+            if(model.Img != null){
+                string uploadFolder = Path.Combine(root + "/wwwroot" + "/images" + "/gallery");
+                uniquegalleryImgName = Guid.NewGuid().ToString() + model.Img.FileName;
+                string filePath = Path.Combine(uploadFolder, uniquegalleryImgName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    model.Img.CopyTo(fileStream);
+                }
+
+            }
+
+            return uniquegalleryImgName;
+
+         }
+
+
+
     }
+
+    
 }

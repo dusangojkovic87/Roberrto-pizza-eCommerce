@@ -1,8 +1,9 @@
 <div class="client-reviews-container">
   <h1 class="client__reviews__heading">What clients say</h1>
-<div class="client-text-wrraper">
-    <p class="client__text">{{clientReview && clientReview[clientCounter].text}}</p>
-    <p class="client__name">{{clientReview && clientReview[clientCounter].clientFullName}}</p>
+<div class="client-text-wrraper" *ngFor="let r of clientReview,index as i">
+    <p [ngClass]="{'show--review':pickedDot === i, 'hide-review': pickedDot !== i}"  class="client__text">{{r.text}}</p>
+    <p [ngClass]="{'show--review':pickedDot === i, 'hide-review': pickedDot !== i}"  class="client__name">{{r.clientFullName}}</p>
+
 </div>
 <div class="dots-wrrapper">
   <div *ngFor="let c of clientReview,index as i">

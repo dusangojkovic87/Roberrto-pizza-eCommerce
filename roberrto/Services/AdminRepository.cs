@@ -12,6 +12,7 @@ namespace roberrto.Services
         bool deleteProduct(ProductModel model);
         bool addTeamMember(TeamMember model);
         bool addClientReview(ClientReviewAddModel model);
+        bool addImgToGallery(Gallery model);
        
 
     }
@@ -35,6 +36,16 @@ namespace roberrto.Services
             }else{
                 return false;
             }
+        }
+
+        public bool addImgToGallery(Gallery model)
+        {
+            _context.Gallery.Add(model);
+            if(_context.SaveChanges() > 0){
+                return true;
+            }else{
+                return false;
+            }    
         }
 
         public bool addProduct(Product model)

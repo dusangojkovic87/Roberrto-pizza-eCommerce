@@ -17,6 +17,7 @@ namespace roberrto.Models
          public DbSet<Product> Product {get;set;}
          public DbSet<TeamMember> TeamMember {get;set;}
          public DbSet<Reviews> Reviews { get; set; }
+         public DbSet<Gallery> Gallery { get; set; }
   
     }
 }

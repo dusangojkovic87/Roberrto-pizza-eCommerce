@@ -51,6 +51,16 @@
   top: 0;
 }
 
+.map-location{
+  position: relative;
+  top: 0;
+}
+
+.footer{
+ position: relative;
+ top: 0;
+}
+
 @media only screen and (max-width:768px){
   .menu-navigation{
     position: relative;
@@ -68,5 +78,29 @@
   .client-reviews{
     top:12rem;
    }
+
+   .map-location{
+     top:12rem;
+   }
+
+   .footer{
+    top: 12rem;
+  }
 }
+
+@media only screen and (max-width:440px){
+  .home__heading{
+    font-size: 4rem;
+  }
+}
+
+@media only screen and (max-width:349px){
+  .home__heading{
+    font-size: 3rem;
+    top:9rem;
+  }
+
+
+}
+
 

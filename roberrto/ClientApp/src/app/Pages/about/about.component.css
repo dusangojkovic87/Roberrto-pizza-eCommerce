@@ -1,0 +1,67 @@
+.about-img-container{
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background-color: salmon;
+  top: 0;
+  left: 0;
+  background-image: url("/assets/img/about/about.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+}
+
+.about-img-container::after{
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.about__heading{
+  position: absolute;
+  font-size:6rem;
+  top: 6rem;
+  font-family: "Dancing Script";
+  color: white;
+  z-index: 5;
+  text-shadow: 2px 2px black;
+  transform: rotate(-4deg);
+  border-bottom: 2px solid yellow;
+}
+
+.red-heading-wrraper{
+  position: relative;
+  width: 100%;
+  height:50px;
+  background-color:red;
+  top:-25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.red__wrraper__heading{
+  color: white;
+  font-family: "Dancing Script";
+  font-size:2rem;
+}
+
+.red-bottom-wrraper{
+  position: relative;
+  width: 100%;
+  height: 50px;
+  background-color: red;
+}
+
+.footer{
+  position: relative;
+  top: -2rem;
+}
+
+
+
