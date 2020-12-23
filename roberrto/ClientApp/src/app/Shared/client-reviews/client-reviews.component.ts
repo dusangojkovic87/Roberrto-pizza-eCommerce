@@ -1,4 +1,5 @@
 import {  Component, OnInit } from '@angular/core';
+import { ClientReview } from 'src/app/Models/ClientReview';
 import { ReviewsService } from 'src/app/Services/reviews.service';
 
 
@@ -10,7 +11,7 @@ import { ReviewsService } from 'src/app/Services/reviews.service';
   styleUrls: ['./client-reviews.component.css']
 })
 export class ClientReviewsComponent implements OnInit {
-  clientReview?:any;
+  clientReview:ClientReview[] = [];
   pickedDot?:number = 0;
 
   constructor(private reviews:ReviewsService) { }
@@ -24,7 +25,7 @@ export class ClientReviewsComponent implements OnInit {
 
   }
 
- pickReview(index:any){
+ pickReview(index:number){
   this.pickedDot = index;
  }
 
