@@ -14,7 +14,6 @@ export class GalleryImgComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.imageUrl);
   }
 
 }

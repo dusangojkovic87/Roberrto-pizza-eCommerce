@@ -1,0 +1,10 @@
+<div class="team-members-list-container">
+  <div *ngFor="let t of teamMembers;index as i">
+         <app-team-member [hidden]="teamMemberIndex !== i" [member]="t"></app-team-member>
+  </div>
+  <div class="dots-container">
+     <div *ngFor="let t of teamMembers;index as i">
+             <p [ngClass] = "{'active--slider--dot':i === teamMemberIndex}" class="slider__dot" (click)="pickMember(i)"></p>
+     </div>
+</div>
+</div>

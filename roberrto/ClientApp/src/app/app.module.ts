@@ -26,6 +26,8 @@ import { AboutUsDescComponent } from './Pages/about/about-us-desc/about-us-desc.
 import { GalleryComponent } from './Pages/about/gallery/gallery.component';
 import { GalleryImgComponent } from './Pages/about/gallery/gallery-img/gallery-img.component';
 import { FullSizeImgComponent } from './Pages/about/gallery/full-size-img/full-size-img.component';
+import { TeamMembersListComponent } from './Pages/team-members-list/team-members-list.component';
+import { TeamMemberComponent } from './Pages/team-members-list/team-member/team-member.component';
 
 
 
@@ -55,7 +57,10 @@ export function tokenGetter() {
     AboutUsDescComponent,
     GalleryComponent,
     GalleryImgComponent,
-    FullSizeImgComponent
+    FullSizeImgComponent,
+    TeamMembersListComponent,
+    TeamMemberComponent
+
 
 
   ],
