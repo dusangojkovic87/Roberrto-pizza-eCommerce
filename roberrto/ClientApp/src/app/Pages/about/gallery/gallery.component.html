@@ -1,0 +1,8 @@
+<div class="gallery-container">
+  <div class="gallery-img-wrraper" *ngFor="let g of galleryImages;index as index">
+      <app-gallery-img (click)="openFullImg(index)" [imageUrl]="g.img"></app-gallery-img>
+  </div>
+  <app-full-size-img *ngIf="galleryOpen" [clickedImg] = "clickedImg" (closeFullImg)="closeFullImg($event)"></app-full-size-img>
+</div>
+
+

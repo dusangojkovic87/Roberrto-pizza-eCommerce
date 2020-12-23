@@ -23,6 +23,10 @@ import { ClientReviewsComponent } from './Shared/client-reviews/client-reviews.c
 import { MapLocationComponent } from './Shared/map-location/map-location.component';
 import { FooterComponent } from './Shared/footer/footer.component';
 import { AboutUsDescComponent } from './Pages/about/about-us-desc/about-us-desc.component';
+import { GalleryComponent } from './Pages/about/gallery/gallery.component';
+import { GalleryImgComponent } from './Pages/about/gallery/gallery-img/gallery-img.component';
+import { FullSizeImgComponent } from './Pages/about/gallery/full-size-img/full-size-img.component';
+
 
 
 export function tokenGetter() {
@@ -48,7 +52,10 @@ export function tokenGetter() {
     ClientReviewsComponent,
     MapLocationComponent,
     FooterComponent,
-    AboutUsDescComponent
+    AboutUsDescComponent,
+    GalleryComponent,
+    GalleryImgComponent,
+    FullSizeImgComponent
 
 
   ],

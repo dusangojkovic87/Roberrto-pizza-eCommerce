@@ -34,6 +34,8 @@ namespace roberrto
             services.AddScoped<IProductRepository,ProductRepository>();
             services.AddScoped<ITeamMembersRepository,TeamMembersRepository>();
             services.AddScoped<IReviewRepository,ReviewRepository>();
+            services.AddScoped<IGalleryRepository,GalleryRepository>();
+
             
             services.AddCors(opt=>{
               opt.AddPolicy("AllowEverything",builder =>{
