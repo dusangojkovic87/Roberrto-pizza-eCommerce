@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { User } from '../Models/User';
 
 
 @Injectable({
@@ -17,7 +18,7 @@ export class AuthService {
   }
 
   login(formData:any){
-    return this.http.post("http://localhost:5000/authentication/login/",formData);
+    return this.http.post<User>("http://localhost:5000/authentication/login/",formData);
   }
 
   isAuthenticated():boolean{

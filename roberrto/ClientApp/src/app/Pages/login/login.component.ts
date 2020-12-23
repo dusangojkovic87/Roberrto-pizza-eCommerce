@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder,Validators} from "@angular/forms";
 import { Router } from '@angular/router';
+import { User } from 'src/app/Models/User';
 import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
@@ -28,7 +29,8 @@ export class LoginComponent implements OnInit {
 
   login(){
     this.http.login(this.loginForm.value)
-        .subscribe((userData:any) =>{
+        .subscribe((userData:User) =>{
+          console.log(userData);
            localStorage.setItem("token",userData.token);
            this.router.navigate(["/orders"]);
 
