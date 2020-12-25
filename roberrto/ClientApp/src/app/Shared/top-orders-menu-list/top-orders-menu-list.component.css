@@ -1,0 +1,13 @@
+.order-menu-list{
+  display: flex;
+  max-width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.top__orders__heading{
+  text-align: center;
+  font-family: "Dancing Script";
+  font-size: 3rem;
+  color: #aaa69d;
+}

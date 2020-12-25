@@ -8,7 +8,7 @@ import {Product} from "../../Models/Product";
 })
 export class MenuOrderItemComponent implements OnInit {
   serverImgUrl:string = "/images/";
-  @Input() topOrder?:Product;
+  @Input() Order?:Product;
 
 
   constructor() { }

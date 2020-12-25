@@ -1,0 +1,19 @@
+.pizza-heading-wrraper{
+  position: relative;
+  width:100%;
+  top: 6rem;
+}
+
+.orders__heading{
+  font-family: "Dancing Script";
+  width: 100%;
+  text-align: center;
+  font-size: 3rem;
+  color: #aaa69d;
+}
+
+.pizza-orders-container{
+  position: relative;
+  top: 5rem;
+  width:100%;
+}

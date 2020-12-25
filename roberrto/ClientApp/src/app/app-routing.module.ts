@@ -11,7 +11,7 @@ import { LogoutComponent } from './Pages/logout/logout.component';
 const routes: Routes = [
   {path:"",component:HomeComponent},
   {path:"about",component:AboutComponent},
-  {path:"orders",component:OrdersComponent,canActivate:[AuthGuard]},
+  {path:"orders",component:OrdersComponent},
   {path:"login",component:LoginComponent},
   {path:"register",component:RegisterComponent},
   {path:"logout",component:LogoutComponent}

@@ -17,7 +17,6 @@ import { JwtModule } from "@auth0/angular-jwt";
 import { LogoutComponent } from './Pages/logout/logout.component';
 import { MenuNavigationComponent } from './Shared/menu-navigation/menu-navigation.component';
 import { DeliveryCardComponent } from './Pages/home/delivery-card/delivery-card.component';
-import { OrderMenuListComponent } from './Shared/order-menu-list/order-menu-list.component';
 import { MenuOrderItemComponent } from './Shared/menu-order-item/menu-order-item.component';
 import { ClientReviewsComponent } from './Shared/client-reviews/client-reviews.component';
 import { MapLocationComponent } from './Shared/map-location/map-location.component';
@@ -28,6 +27,8 @@ import { GalleryImgComponent } from './Pages/about/gallery/gallery-img/gallery-i
 import { FullSizeImgComponent } from './Pages/about/gallery/full-size-img/full-size-img.component';
 import { TeamMembersListComponent } from './Pages/team-members-list/team-members-list.component';
 import { TeamMemberComponent } from './Pages/team-members-list/team-member/team-member.component';
+import { TopOrdersMenuListComponent } from './Shared/top-orders-menu-list/top-orders-menu-list.component';
+import { PizzaOrdersListComponent } from './Shared/pizza-orders-list/pizza-orders-list.component';
 
 
 
@@ -49,7 +50,6 @@ export function tokenGetter() {
     LogoutComponent,
     MenuNavigationComponent,
     DeliveryCardComponent,
-    OrderMenuListComponent,
     MenuOrderItemComponent,
     ClientReviewsComponent,
     MapLocationComponent,
@@ -59,7 +59,9 @@ export function tokenGetter() {
     GalleryImgComponent,
     FullSizeImgComponent,
     TeamMembersListComponent,
-    TeamMemberComponent
+    TeamMemberComponent,
+    TopOrdersMenuListComponent,
+    PizzaOrdersListComponent
 
 
 
