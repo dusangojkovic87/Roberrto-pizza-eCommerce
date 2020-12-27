@@ -4,12 +4,12 @@
   <a (click)="toggleNavbar()" class="navbar__toggle"><img src="assets/icons/bars.svg" alt="bars.svg"></a>
   <nav (window:resize) = setVisibilityonDesktop() [ngClass] = "navbarState ? 'navbar--open' : 'navbar--closed'">
     <ul>
-          <li class="nav__link"><a routerLink="">Home</a></li>
-          <li class="nav__link"><a routerLink="/about">About</a></li>
-          <li class="nav__link"><a routerLink="/orders">Orders</a></li>
-          <li *ngIf="!auth.isAuthenticated()" class="nav__link"><a routerLink="/login">Login</a></li>
-          <li *ngIf="auth.isAuthenticated()" class="nav__link"><a routerLink="/logout">Logout</a></li>
-          <li *ngIf="!auth.isAuthenticated()" class="nav__link"><a routerLink="/register">Register</a></li>
+          <li class="nav__link"><a routerLink="/home" routerLinkActive="activeNavLink" >Home</a></li>
+          <li class="nav__link"><a routerLink="/about" routerLinkActive="activeNavLink">About</a></li>
+          <li class="nav__link"><a routerLink="/orders" routerLinkActive="activeNavLink">Orders</a></li>
+          <li *ngIf="!auth.isAuthenticated()" class="nav__link"><a routerLink="/login" routerLinkActive="activeNavLink">Login</a></li>
+          <li *ngIf="auth.isAuthenticated()" class="nav__link"><a routerLink="/logout" routerLinkActive="activeNavLink">Logout</a></li>
+          <li *ngIf="!auth.isAuthenticated()" class="nav__link" ><a routerLink="/register" routerLinkActive="activeNavLink">Register</a></li>
     </ul>
  </nav>
 </header>

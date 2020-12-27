@@ -1,0 +1,76 @@
+.menu-order-item-details-container{
+  position: relative;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.menu-item-img-wrraper{
+  position: relative;
+  top: 9rem;
+  width:25rem;
+  height:25rem;
+  left: 2rem;
+  border-radius: 12px;
+  margin-right: 3rem;
+}
+
+.menu-item-img-wrraper img{
+  position: absolute;
+  width:100%;
+  height: 100%;
+}
+
+.menu-item-details-wrraper{
+  position: relative;
+  top: 9rem;
+  width:35rem;
+  margin-left:3rem;
+}
+
+.menu__item__type{
+  font-family: "Monserrat";
+  font-size: 2rem;
+  text-align: center;
+}
+
+.menu__item__name{
+  position: relative;
+  font-family: "Dancing Script";
+  font-size:2rem;
+  top: -22px;
+  text-align: center;
+}
+
+.menu__item__price{
+  position: relative;
+  top: -2rem;
+}
+
+.menu__item__details__text{
+  position: relative;
+  top: -1rem;
+  font-family: "Monserrat";
+  font-size: 1rem;
+}
+
+span{
+  color: brown;
+  font-family: "Monserrat";
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+button{
+  background-color:red;
+  color: white;
+  font-family: "Monserrat";
+  font-size:0.9rem;
+  border-radius: 12px;
+  padding:0.4rem;
+  cursor: pointer;
+  outline: none;
+}

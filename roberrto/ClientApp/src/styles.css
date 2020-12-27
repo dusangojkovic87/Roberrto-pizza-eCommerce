@@ -29,3 +29,12 @@ html,body{
   transform: scale(1.5);
   transition: transform 250ms ease-in;
 }
+
+.activeOrderLink{
+  background-color: red;
+}
+
+.activeNavLink{
+  color: yellow !important;
+
+}

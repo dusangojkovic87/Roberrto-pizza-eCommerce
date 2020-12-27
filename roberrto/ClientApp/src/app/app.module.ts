@@ -29,6 +29,11 @@ import { TeamMembersListComponent } from './Pages/team-members-list/team-members
 import { TeamMemberComponent } from './Pages/team-members-list/team-member/team-member.component';
 import { TopOrdersMenuListComponent } from './Shared/top-orders-menu-list/top-orders-menu-list.component';
 import { PizzaOrdersListComponent } from './Shared/pizza-orders-list/pizza-orders-list.component';
+import { MenuOrdersNavigationComponent } from './Pages/orders/menu-orders-navigation/menu-orders-navigation.component';
+import { SandwichOrdersListComponent } from './Shared/sandwich-orders-list/sandwich-orders-list.component';
+import { DrinksOrdersListComponent } from './Shared/drinks-orders-list/drinks-orders-list.component';
+import { DesertOrdersListComponent } from './Shared/desert-orders-list/desert-orders-list.component';
+import { MenuOrderItemDetailsComponent } from './Shared/menu-order-item-details/menu-order-item-details.component';
 
 
 
@@ -61,7 +66,12 @@ export function tokenGetter() {
     TeamMembersListComponent,
     TeamMemberComponent,
     TopOrdersMenuListComponent,
-    PizzaOrdersListComponent
+    PizzaOrdersListComponent,
+    MenuOrdersNavigationComponent,
+    SandwichOrdersListComponent,
+    DrinksOrdersListComponent,
+    DesertOrdersListComponent,
+    MenuOrderItemDetailsComponent
 
 
 

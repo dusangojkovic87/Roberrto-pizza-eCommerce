@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {Product} from "../../Models/Product";
 
 @Component({
@@ -11,9 +12,18 @@ export class MenuOrderItemComponent implements OnInit {
   @Input() Order?:Product;
 
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
+  }
+
+  orderItemDetails(product:Product){
+    if(product.id != null || undefined){
+      this.router.navigate(["/details",product.id]);
+    }
+
+
+
   }
 
 }

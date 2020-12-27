@@ -1,0 +1,53 @@
+.menu-orders-navigation-wrraper{
+  position: relative;
+  width:100%;
+  display: flex;
+  justify-content: center;
+}
+
+ul{
+  position: relative;
+  background-color:#CCCDCF;
+  width: 35rem;
+  display: flex;
+  justify-content: space-evenly;
+  height: 2rem;
+  align-items: center;
+  padding: 0;
+}
+
+ul li{
+  list-style: none;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+  cursor: pointer;
+  outline: none;
+
+}
+
+ul li a{
+  text-decoration: none;
+  font-family: "Monserrat";
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+}
+
+ul li:hover{
+  background-color: red;
+}
+
+@media only screen and (max-width:630px){
+  ul{
+    flex-direction: column;
+    height:15rem;
+  }
+
+  ul li{
+    width:50%;
+  }
+
+}

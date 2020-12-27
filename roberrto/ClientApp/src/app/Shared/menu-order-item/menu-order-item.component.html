@@ -6,7 +6,7 @@
    <p class="order__name">{{Order?.name}}</p>
    <p class="order__type">{{Order?.type}}</p>
    <p class="order__item__price"><span>$</span>{{Order?.price}}</p>
-   <button class="order__item__details__btn">read more</button>
+   <button class="order__item__details__btn" (click)="orderItemDetails(Order)">read more</button>
    <button class="order__item__cart__btn">add to cart</button>
 </div>
 </div>
