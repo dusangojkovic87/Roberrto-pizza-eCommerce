@@ -12,7 +12,7 @@ import { OrdersService } from 'src/app/Services/orders.service';
 export class MenuOrderItemDetailsComponent implements OnInit {
   orderDetails?:Product;
   id?:number;
-  serverImgPath:string = "/images/"
+  orderImg?:string = "";
 
   constructor(private orders:OrdersService,private route:ActivatedRoute) { }
 
@@ -27,6 +27,7 @@ export class MenuOrderItemDetailsComponent implements OnInit {
       })
     ).subscribe(data =>{
       this.orderDetails = data;
+      this.orderImg = "/images/" + data?.img;
     })
 
   }

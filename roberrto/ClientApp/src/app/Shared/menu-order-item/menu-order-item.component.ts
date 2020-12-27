@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartService } from 'src/app/Services/cart.service';
 import {Product} from "../../Models/Product";
 
 @Component({
@@ -8,22 +9,23 @@ import {Product} from "../../Models/Product";
   styleUrls: ['./menu-order-item.component.css']
 })
 export class MenuOrderItemComponent implements OnInit {
-  serverImgUrl:string = "/images/";
+  serverImgUrl?:string = "/images/";
   @Input() Order?:Product;
 
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,private cart:CartService) { }
 
   ngOnInit(): void {
   }
 
-  orderItemDetails(product:Product){
-    if(product.id != null || undefined){
-      this.router.navigate(["/details",product.id]);
+  orderItemDetails(product?:Product){
+    if(product?.id != null || undefined){
+      this.router.navigate(["/details",product?.id]);
     }
+  }
 
-
-
+  addToCart(product?:Product){
+    this.cart.addToCart(product);
   }
 
 }

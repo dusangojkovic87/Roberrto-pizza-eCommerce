@@ -1,4 +1,4 @@
-export interface Product{
+export interface OrderItem{
   id:number,
   name:string,
   type:string,
@@ -7,9 +7,8 @@ export interface Product{
   img:string,
   price:number,
   topOffer:boolean,
-  quantity:number;
+  quantity:number
 
 }
-
 
 

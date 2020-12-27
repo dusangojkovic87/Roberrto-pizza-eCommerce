@@ -23,7 +23,6 @@ export class TeamMembersListComponent implements OnInit {
 
   pickMember(index:number){
     this.teamMemberIndex = index;
-    console.log(this.teamMemberIndex);
 
   }
 
