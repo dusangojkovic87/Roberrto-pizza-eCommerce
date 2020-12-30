@@ -1,6 +1,7 @@
 import { error } from '@angular/compiler/src/util';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/Services/auth.service';
 import { CartService } from 'src/app/Services/cart.service';
 import {Product} from "../../Models/Product";
 
@@ -14,7 +15,7 @@ export class MenuOrderItemComponent implements OnInit {
   @Input() Order?:Product;
 
 
-  constructor(private router:Router,private cart:CartService) { }
+  constructor(private router:Router,private cart:CartService,private auth:AuthService) { }
 
   ngOnInit(): void {
   }
@@ -26,13 +27,15 @@ export class MenuOrderItemComponent implements OnInit {
   }
 
   addToCart(product?:Product){
-    console.log(product);
-
     if(product != null)
        this.cart.addToCart(product).subscribe(saved =>{
           console.log(saved);
        },err =>{
-         console.log(err);
+           if(err.status === 401){
+             this.router.navigate(["/login"]);
+           }
+           console.log(err);
+
        })
 
   }
