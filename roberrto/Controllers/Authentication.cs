@@ -83,6 +83,7 @@ namespace roberrto.Controllers
              var claims = new[]{
                       new Claim(JwtRegisteredClaimNames.Sub,user.Email),
                       new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString()),
+                      new Claim("UserId",user.Id.ToString()),
                       new Claim("role",user.UserRole)     
             };
 

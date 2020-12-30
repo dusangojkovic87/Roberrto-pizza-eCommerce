@@ -5,6 +5,7 @@ namespace roberrto.Entities
 {
     public class Product
     {
+        [Key]
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
@@ -19,6 +20,8 @@ namespace roberrto.Entities
         [Column(TypeName = "decimal(18,4)")]
         [Required]
         public decimal Price { get; set; }
+        [Required]
+        public int Quantity { get; set; }
         [Required]
         public bool TopOffer { get; set; }
       

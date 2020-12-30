@@ -4,7 +4,7 @@ using roberrto.Entities;
 
 namespace roberrto.Models
 {
-    public class AplicationDbContext:IdentityDbContext<StoreUser>
+    public class AplicationDbContext:IdentityDbContext<StoreUser,AplicationRole,int>
     {
         public AplicationDbContext(DbContextOptions<AplicationDbContext> options):base(options)
         {
@@ -18,6 +18,19 @@ namespace roberrto.Models
          public DbSet<TeamMember> TeamMember {get;set;}
          public DbSet<Reviews> Reviews { get; set; }
          public DbSet<Gallery> Gallery { get; set; }
+         public DbSet<CartItems> CartItems { get; set; }
+
+         protected override void OnModelCreating(ModelBuilder modelBuilder)
+          {
+            base.OnModelCreating(modelBuilder);
+             modelBuilder.Entity<Product>()
+               .Property(p => p.Quantity )
+               .HasDefaultValue(1);
+          }
+
+
+
   
     }
+   
 }

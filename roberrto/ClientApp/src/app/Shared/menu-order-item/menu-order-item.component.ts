@@ -1,3 +1,4 @@
+import { error } from '@angular/compiler/src/util';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/Services/cart.service';
@@ -25,7 +26,15 @@ export class MenuOrderItemComponent implements OnInit {
   }
 
   addToCart(product?:Product){
-    this.cart.addToCart(product);
+    console.log(product);
+
+    if(product != null)
+       this.cart.addToCart(product).subscribe(saved =>{
+          console.log(saved);
+       },err =>{
+         console.log(err);
+       })
+
   }
 
 }

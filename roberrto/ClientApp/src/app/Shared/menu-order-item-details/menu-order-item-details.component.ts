@@ -18,7 +18,7 @@ export class MenuOrderItemDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((p:Params)=>{
-       this.id = +p.params.id;
+       this.id = p.params.id;
     })
     this.orders.getOrders().pipe(
       map(orderArr =>{

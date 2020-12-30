@@ -35,6 +35,7 @@ namespace roberrto
             services.AddScoped<ITeamMembersRepository,TeamMembersRepository>();
             services.AddScoped<IReviewRepository,ReviewRepository>();
             services.AddScoped<IGalleryRepository,GalleryRepository>();
+            services.AddScoped<ICartRepository,CartRepository>();
 
             
             services.AddCors(opt=>{
@@ -46,7 +47,7 @@ namespace roberrto
               });
             });
             services.AddAutoMapper(typeof(Startup));
-            services.AddIdentity<StoreUser,IdentityRole>(opt =>{
+            services.AddIdentity<StoreUser,AplicationRole>(opt =>{
                 opt.User.RequireUniqueEmail = true;
             })
                .AddEntityFrameworkStores<AplicationDbContext>();

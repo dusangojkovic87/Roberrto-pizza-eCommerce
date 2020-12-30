@@ -6,9 +6,12 @@ namespace roberrto.Entities
 {
     public class Orders
     {
+        [Key]
         public int Id { get; set; }
         [Required]
         public DateTime OrderDate { get; set; }
+        public DateTime DateDelivered { get; set; }
+        public DateTime DateShipped { get; set; }
         public int StoreUserId { get; set; }
         public int OrderItemsId { get; set; }
         public StoreUser StoreUser { get; set; }

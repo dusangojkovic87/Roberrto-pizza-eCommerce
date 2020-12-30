@@ -1,0 +1,65 @@
+.checkout-menu-item{
+  position: relative;
+  width:200px;
+  height:360px;
+  border: 2px solid #dfe4ea;
+  margin: 1rem;
+  border-radius: 12px;
+  margin-bottom:3rem;
+}
+
+.checkout-menu-item:hover{
+  filter:drop-shadow(1px 1px 4px black);
+ }
+
+ .checkout-img-wrraper{
+  position: relative;
+  width:200px;
+  margin: 0;
+  top: 0;
+  left: 0;
+  height:200px;
+ }
+
+ .checkout-img-wrraper img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 1rem;
+ }
+
+ .checkout-details-wrraper{
+  position: absolute;
+  background-color:#dfe4ea;
+  width: 200px;
+  margin: 0;
+  bottom: 0;
+  height: 150px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+ }
+
+ .order__name{
+  text-align: center;
+  font-family: "Monserrat";
+  font-size: 0.9rem;
+  color: black;
+  font-weight: bold;
+}
+
+.order__name::first-letter{
+  color: #ac243d;
+  text-transform: uppercase;
+}
+
+.order__type{
+  position: relative;
+  font-family: "Dancing Script";
+  font-size: 1.5rem;
+  text-align: center;
+  top: -15px;
+
+}
+
+

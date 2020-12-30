@@ -6,6 +6,7 @@ namespace roberrto.Entities
 {
     public class OrderItems
     {
+        [Key]
         public int Id { get; set; }
         [Required]
         public int Quantity { get; set; }

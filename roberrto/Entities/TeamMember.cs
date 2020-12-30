@@ -5,7 +5,6 @@ namespace roberrto.Entities
     public class TeamMember
     {
         [Key]
-        [Required]
         public int Id { get; set; }
         [Required]
         public string FullName { get; set; }

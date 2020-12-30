@@ -29,7 +29,15 @@ export class AuthService {
   logout(){
     localStorage.removeItem("token");
     this.router.navigate(["/"]);
+  }
 
+  getToken(){
+    let token = localStorage.getItem("token");
+    if(token != null){
+      return token;
+    }else{
+      return "";
+    }
   }
 
 

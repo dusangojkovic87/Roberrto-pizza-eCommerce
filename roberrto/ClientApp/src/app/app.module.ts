@@ -34,6 +34,9 @@ import { SandwichOrdersListComponent } from './Shared/sandwich-orders-list/sandw
 import { DrinksOrdersListComponent } from './Shared/drinks-orders-list/drinks-orders-list.component';
 import { DesertOrdersListComponent } from './Shared/desert-orders-list/desert-orders-list.component';
 import { MenuOrderItemDetailsComponent } from './Shared/menu-order-item-details/menu-order-item-details.component';
+import { CheckoutComponent } from './Pages/checkout/checkout.component';
+import { MenuCheckoutItemComponent } from './Shared/menu-checkout-item/menu-checkout-item.component';
+import { AuthInterceptor } from './HttpInterceptors/AuthInterceptor';
 
 
 
@@ -71,7 +74,9 @@ export function tokenGetter() {
     SandwichOrdersListComponent,
     DrinksOrdersListComponent,
     DesertOrdersListComponent,
-    MenuOrderItemDetailsComponent
+    MenuOrderItemDetailsComponent,
+    CheckoutComponent,
+    MenuCheckoutItemComponent
 
 
 
@@ -90,7 +95,8 @@ export function tokenGetter() {
     }),
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthInterceptor
   ],
   bootstrap: [AppComponent]
 })
