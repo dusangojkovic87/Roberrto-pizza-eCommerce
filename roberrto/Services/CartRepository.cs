@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using roberrto.Entities;
@@ -8,6 +9,7 @@ namespace roberrto.Services
     public interface ICartRepository
     {
         void addItem(CartItemAddModel model);
+        IEnumerable<CartItemsGetModel> GetCartData(int userId);
     }
     public class CartRepository : ICartRepository
     {
@@ -34,6 +36,12 @@ namespace roberrto.Services
                _context.CartItems.Add(newProduct);
                _context.SaveChanges();
            }                    
-        }     
+        }
+
+        public IEnumerable<CartItemsGetModel> GetCartData(int userId)
+        {
+           var cartData = _context.CartItems.Where(x => x.StoreUserId == userId).ToList();
+           return _mapper.Map<IEnumerable<CartItemsGetModel>>(cartData);
+        }
     }
 }
