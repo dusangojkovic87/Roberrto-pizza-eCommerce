@@ -3,12 +3,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace roberrto.Models
 {
-    public class CartItemAddModel
+    public class NewCartItemAddModel
     {
-        [Required]
         public int Id { get; set; }
-        [Required]
-        public string Name { get; set; }
+         public string Name { get; set; }
         [Required]
         public string Type { get; set; }
         [Required]
@@ -25,5 +23,6 @@ namespace roberrto.Models
         [Required]
         public bool TopOffer { get; set; }
         public int StoreUserId { get; set; }
+        
     }
 }

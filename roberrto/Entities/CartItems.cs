@@ -6,7 +6,7 @@ namespace roberrto.Entities
 {
     public class CartItems
     {
-        [Key]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }

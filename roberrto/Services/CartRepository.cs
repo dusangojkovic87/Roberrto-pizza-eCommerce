@@ -1,3 +1,4 @@
+using System.Linq;
 using AutoMapper;
 using roberrto.Entities;
 using roberrto.Models;
@@ -6,7 +7,7 @@ namespace roberrto.Services
 {
     public interface ICartRepository
     {
-        bool addItem(CartItemAddModel model);
+        void addItem(CartItemAddModel model);
     }
     public class CartRepository : ICartRepository
     {
@@ -19,17 +20,20 @@ namespace roberrto.Services
 
         }
 
-        public bool addItem(CartItemAddModel model){
+        public void addItem(CartItemAddModel model){
            var newItem =  _mapper.Map<CartItems>(model);
-            _context.CartItems.Add(newItem);
-            if(_context.SaveChanges() > 0){
-                return true;
-            }else{
-                return false;
-            }   
-        }
-        
+           var itemExists = _context.CartItems.FirstOrDefault(x => x.Id == newItem.Id);
+           if(itemExists != null){
+                itemExists.Quantity += 1;
+                itemExists.Price *= 2;
+               _context.CartItems.Update(itemExists);
+               _context.SaveChanges();
+               
+           }else{
+               var newProduct = _mapper.Map<CartItems>(model);
+               _context.CartItems.Add(newProduct);
+               _context.SaveChanges();
+           }                    
+        }     
     }
-
-
 }

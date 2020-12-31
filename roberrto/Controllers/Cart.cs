@@ -30,10 +30,8 @@ namespace roberrto.Controllers
              model.StoreUserId = Int32.Parse(userId);
              try
               {
-                var saved = _cart.addItem(model);
-                if(saved){
-                  return Ok(new {saved = true});
-                 }                
+                _cart.addItem(model);
+                return Ok("Product added!");          
               }
               catch (Exception e)
               {

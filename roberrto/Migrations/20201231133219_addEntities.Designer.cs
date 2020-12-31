@@ -10,7 +10,7 @@ using roberrto.Models;
 namespace roberrto.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    [Migration("20201230172535_addEntities")]
+    [Migration("20201231133219_addEntities")]
     partial class addEntities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -154,9 +154,7 @@ namespace roberrto.Migrations
             modelBuilder.Entity("roberrto.Entities.CartItems", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasColumnType("int");
 
                     b.Property<string>("Category")
                         .IsRequired()
@@ -219,9 +217,7 @@ namespace roberrto.Migrations
             modelBuilder.Entity("roberrto.Entities.OrderItems", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasColumnType("int");
 
                     b.Property<string>("Category")
                         .IsRequired()

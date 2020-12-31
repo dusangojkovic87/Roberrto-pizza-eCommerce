@@ -16,6 +16,7 @@ namespace roberrto.Helpers
            CreateMap<GalleryImgGetModel,Gallery>();
            CreateMap<Gallery,GalleryImgGetModel>();
            CreateMap<CartItems,CartItemAddModel>().ReverseMap();
+           CreateMap<NewCartItemAddModel,CartItemAddModel>().ReverseMap();
             
         }
         
