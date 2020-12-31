@@ -10,6 +10,8 @@ namespace roberrto.Services
     {
         void addItem(CartItemAddModel model);
         IEnumerable<CartItemsGetModel> GetCartData(int userId);
+        void RemoveCartItem(CartItemAddModel model,int userId);
+        void DeleteCart(int userId);
     }
     public class CartRepository : ICartRepository
     {
@@ -29,8 +31,7 @@ namespace roberrto.Services
                 itemExists.Quantity += 1;
                 itemExists.Price *= 2;
                _context.CartItems.Update(itemExists);
-               _context.SaveChanges();
-               
+               _context.SaveChanges();     
            }else{
                var newProduct = _mapper.Map<CartItems>(model);
                _context.CartItems.Add(newProduct);
@@ -42,6 +43,21 @@ namespace roberrto.Services
         {
            var cartData = _context.CartItems.Where(x => x.StoreUserId == userId).ToList();
            return _mapper.Map<IEnumerable<CartItemsGetModel>>(cartData);
+        }
+
+        public void RemoveCartItem(CartItemAddModel model,int userId){
+          var itemToRemove = _context.CartItems.SingleOrDefault(x => x.StoreUserId == userId && x.Id == model.Id);
+          if(itemToRemove != null){
+             _context.CartItems.Remove(itemToRemove);
+             _context.SaveChanges();
+          }
+
+        }
+
+        public void DeleteCart(int userId)
+        {
+            _context.CartItems.RemoveRange(_context.CartItems.Where(x=> x.StoreUserId == userId));
+            _context.SaveChanges();
         }
     }
 }

@@ -30,7 +30,7 @@ namespace roberrto.Controllers
              try
               {
                 _cart.addItem(model);
-                return Ok("Product added!");          
+                return Ok(new {message = "Product added!"});          
               }
               catch (Exception e)
               {
@@ -39,7 +39,7 @@ namespace roberrto.Controllers
               }
           }
 
-          return BadRequest(model); 
+          return BadRequest(ModelState); 
          
         }
 
@@ -61,6 +61,53 @@ namespace roberrto.Controllers
             System.Console.WriteLine(e);
             return StatusCode(500,new {error ="Server error,cannot get cart!"});         
           }       
-        }     
-    }
+        }
+
+
+       [HttpDelete]
+       [Route("remove")]
+       [Authorize]
+        public IActionResult RemoveCartItem([FromBody] CartItemAddModel model){
+           var userIdString = HttpContext.User.Claims.SingleOrDefault(u => u.Type == "UserId").Value;
+           var userId = Int32.Parse(userIdString);
+          if(ModelState.IsValid){
+            try
+            {
+              _cart.RemoveCartItem(model,userId);
+                
+            }
+            catch (Exception e)
+            {
+             Console.WriteLine(e);
+              return StatusCode(500,new {error = "Server error,cannot delete item!"});
+                
+                
+            }
+          }
+
+          return BadRequest(ModelState);
+
+        }
+
+        [HttpDelete]
+        [Route("delete")]
+        [Authorize]
+        public IActionResult DeleteCart(){
+           var userIdString = HttpContext.User.Claims.SingleOrDefault(u => u.Type == "UserId").Value;
+           var userId = Int32.Parse(userIdString);
+          try
+          {
+            _cart.DeleteCart(userId);
+            return Ok(new {message = "Cart deleted!"});
+            
+          }
+          catch (Exception e)
+          {
+           Console.WriteLine(e);
+           return StatusCode(500,new {error = "Server error,cannot delete cart!"});
+                     
+          }
+
+        }   
+    }  
 }

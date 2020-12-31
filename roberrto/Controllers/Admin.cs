@@ -48,12 +48,16 @@ namespace roberrto.Controllers
                 TopOffer = model.TopOffer
             };
 
-              var saved =  _admin.addProduct(newProduct);
-              if(saved){
-                  return Ok("Product Added");
-              }else{
-                  return BadRequest("Error,product not saved!");
-              }             
+            try
+            {
+                 _admin.addProduct(newProduct);
+                 return Ok(new {message = "Product added!"});
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(500,new {error = "Server error,product not added!"});                         
+            }                         
         }
 
 
@@ -106,11 +110,17 @@ namespace roberrto.Controllers
 
         public IActionResult removeProduct([FromBody] ProductModel model )
         {
-            if(_admin.deleteProduct(model)){
-                return Ok("Product deleted!");
-            }else{
-                return BadRequest("Error,product not deleted!");
-            }   
+            try
+            {
+                 _admin.deleteProduct(model);   
+                 return Ok(new {message = "Product deleted!"});       
+            }
+            catch (Exception e)
+            {
+               Console.WriteLine(e);
+               return StatusCode(500,new {error = "Server error,product not deleted!"});           
+                
+            }                
         }
 
 
@@ -127,21 +137,33 @@ namespace roberrto.Controllers
                 Email = model.Email
             };
 
-            if(_admin.addTeamMember(tmember)){
-                return Ok("Team Member added!");
-            }else{
-                return BadRequest("Error,team member not added!");
+            try
+            {
+                 _admin.addTeamMember(tmember);  
+                 return Ok(new {message = "Member added!"});      
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(500,new {error = "Server error,member not added!"});                   
+            }           
         }
+
+
 
         [HttpPost]
         [Route("add-review")]
-        public IActionResult addReview([FromBody] ClientReviewAddModel model){
-            if(_admin.addClientReview(model)){
-                return Ok("Review added!");
-            }else{
-                return BadRequest("Error,review not added!");
+        public IActionResult addReview([FromBody] ClientReviewAddModel model){      
+            try
+            {
+                 _admin.addClientReview(model);
+                 return Ok(new {message = "Client added!"});            
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(500,new {error = "Server error,client not added!"});          
+            }         
         }
 
 
@@ -154,13 +176,18 @@ namespace roberrto.Controllers
               Img = uniqeImgName
             };
 
-           if(_admin.addImgToGallery(galleryImg)){
-               return Ok("Image uploaded!");
-           }else{
-               return BadRequest("Error,img not uploaded!");
-           }
-
+            try
+            {
+                 _admin.addImgToGallery(galleryImg);
+                 return Ok("Image added!");     
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(500,new {error = "Server error,img not added!"});                       
+            }
         }
+        
 
         private string UploadGalleryImg(GalleryImgAddModel model,string root){
             string uniquegalleryImgName = null;

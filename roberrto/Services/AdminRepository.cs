@@ -1,5 +1,3 @@
-using System;
-using System.Threading.Tasks;
 using AutoMapper;
 using roberrto.Entities;
 using roberrto.Models;
@@ -8,11 +6,11 @@ namespace roberrto.Services
 {
     public interface IAdminRepository
     {
-        bool addProduct(Product model);
-        bool deleteProduct(ProductModel model);
-        bool addTeamMember(TeamMember model);
-        bool addClientReview(ClientReviewAddModel model);
-        bool addImgToGallery(Gallery model);
+        void addProduct(Product model);
+        void deleteProduct(ProductModel model);
+        void addTeamMember(TeamMember model);
+        void addClientReview(ClientReviewAddModel model);
+        void addImgToGallery(Gallery model);
        
 
     }
@@ -27,66 +25,35 @@ namespace roberrto.Services
 
         }
 
-        public bool addClientReview(ClientReviewAddModel model)
+        public void addClientReview(ClientReviewAddModel model)
         {
             var review = _mapper.Map<Reviews>(model);
             _context.Reviews.Add(review);
-            if(_context.SaveChanges() > 0){
-                return true;
-            }else{
-                return false;
-            }
+            _context.SaveChanges();       
         }
 
-        public bool addImgToGallery(Gallery model)
+        public void addImgToGallery(Gallery model)
         {
             _context.Gallery.Add(model);
-            if(_context.SaveChanges() > 0){
-                return true;
-            }else{
-                return false;
-            }    
+           _context.SaveChanges();
         }
 
-        public bool addProduct(Product model)
+        public void addProduct(Product model)
         {
             _context.Product.Add(model);
-            if (_context.SaveChanges() > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
+            _context.SaveChanges(); 
         }
 
-        public bool addTeamMember(TeamMember model)
+        public void addTeamMember(TeamMember model)
         { 
                 _context.TeamMember.Add(model);
-                if(_context.SaveChanges() > 0){
-                    return true;
-                }else{
-                    return false;
-                }
-            
+                _context.SaveChanges();   
         }
 
-        public bool deleteProduct(ProductModel model)
+        public void deleteProduct(ProductModel model)
         {
             var product = _mapper.Map<Product>(model);
             _context.Product.Remove(product);
-            if (_context.SaveChanges() > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
-
-
     }
 }

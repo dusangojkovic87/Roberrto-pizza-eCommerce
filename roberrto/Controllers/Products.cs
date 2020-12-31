@@ -30,7 +30,7 @@ namespace roberrto.Controllers
             catch (Exception e)
             {
                Console.WriteLine(e);
-               return BadRequest("Error,cannot get products!");
+               return BadRequest(new {error = "Cannot get products!"});
             }
                      
         }
@@ -46,7 +46,7 @@ namespace roberrto.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return BadRequest("Cannot get products!");
+                return BadRequest(new {error = "Cannot get products!"});
                
             }
         }
