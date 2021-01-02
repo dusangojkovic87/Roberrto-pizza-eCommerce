@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using AutoMapper;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using roberrto.Entities;
 using roberrto.Models;
@@ -35,7 +36,9 @@ namespace roberrto.Controllers
                 return BadRequest(model);
             }
 
-            string uniqueFileName = UploadImage(model, _contentRoot);
+            var pathToSave = "/wwwroot/images/";
+
+            string uniqueFileName = UploadImage(model.Img, _contentRoot,pathToSave);
 
             var newProduct = new Product
             {
@@ -60,42 +63,19 @@ namespace roberrto.Controllers
             }                         
         }
 
-
-        private string UploadImage(ProductAddModel model, string root)
+         private string UploadImage(IFormFile img, string root,string pathToSave)
         {
 
             string uniqueImgName = null;
 
-            if (model.Img != null)
+            if (img != null)
             {
-                string uploadFolder = Path.Combine(root + "/wwwroot" + "/images");
-                uniqueImgName = Guid.NewGuid().ToString() + model.Img.FileName;
+                string uploadFolder = Path.Combine(root + pathToSave);
+                uniqueImgName = Guid.NewGuid().ToString() + img.FileName;
                 string filePath = Path.Combine(uploadFolder, uniqueImgName);
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
-                    model.Img.CopyTo(fileStream);
-                }
-            }
-
-
-
-            return uniqueImgName;
-
-        }
-
-        private string UploadTeamMemberImage(TeamMemberAddModel model, string root)
-        {
-
-            string uniqueImgName = null;
-
-            if (model.Img != null)
-            {
-                string uploadFolder = Path.Combine(root + "/wwwroot" + "/images" + "/members");
-                uniqueImgName = Guid.NewGuid().ToString() + model.Img.FileName;
-                string filePath = Path.Combine(uploadFolder, uniqueImgName);
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    model.Img.CopyTo(fileStream);
+                    img.CopyTo(fileStream);
                 }
             }
 
@@ -127,8 +107,9 @@ namespace roberrto.Controllers
         [HttpPost]
         [Route("add-member")]
         public IActionResult addTeamMember([FromForm] TeamMemberAddModel model){
+            var pathToSave = "/wwwroot/images/members";
 
-            string uniqueMemberImgName = UploadTeamMemberImage(model,_contentRoot);
+            string uniqueMemberImgName = UploadImage(model.Img,_contentRoot,pathToSave);
 
             var tmember = new TeamMember{
                 FullName = model.FullName,
@@ -170,7 +151,8 @@ namespace roberrto.Controllers
         [HttpPost]
         [Route("add-gallery-img")]
         public IActionResult addGalleryImg([FromForm] GalleryImgAddModel model){
-            string uniqeImgName = UploadGalleryImg(model,_contentRoot);
+            string pathToSave = "/wwwroot/images/gallery";
+            string uniqeImgName = UploadImage(model.Img,_contentRoot,pathToSave);
 
             var galleryImg = new Gallery{
               Img = uniqeImgName
@@ -187,29 +169,5 @@ namespace roberrto.Controllers
                 return StatusCode(500,new {error = "Server error,img not added!"});                       
             }
         }
-        
-
-        private string UploadGalleryImg(GalleryImgAddModel model,string root){
-            string uniquegalleryImgName = null;
-
-            if(model.Img != null){
-                string uploadFolder = Path.Combine(root + "/wwwroot" + "/images" + "/gallery");
-                uniquegalleryImgName = Guid.NewGuid().ToString() + model.Img.FileName;
-                string filePath = Path.Combine(uploadFolder, uniquegalleryImgName);
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    model.Img.CopyTo(fileStream);
-                }
-
-            }
-
-            return uniquegalleryImgName;
-
-         }
-
-
-
-    }
-
-    
+    }  
 }

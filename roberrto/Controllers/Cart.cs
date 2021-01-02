@@ -25,8 +25,8 @@ namespace roberrto.Controllers
         public IActionResult add([FromBody] CartItemAddModel model)
         {
           if(ModelState.IsValid){
-            var userId = HttpContext.User.Claims.SingleOrDefault(u => u.Type == "UserId").Value;
-             model.StoreUserId = Int32.Parse(userId);
+             var userId = getUserIdFromContext();
+             model.StoreUserId = userId;
              try
               {
                 _cart.addItem(model);
@@ -48,8 +48,7 @@ namespace roberrto.Controllers
         [Route("get-cart-data")]
         [Authorize]
         public IActionResult GetCartData(){
-          var userIdString = HttpContext.User.Claims.SingleOrDefault(u => u.Type == "UserId").Value;
-          var userId = Int32.Parse(userIdString);
+          var userId = getUserIdFromContext();
           try
           {
             var cartData = _cart.GetCartData(userId);
@@ -68,8 +67,7 @@ namespace roberrto.Controllers
        [Route("remove")]
        [Authorize]
         public IActionResult RemoveCartItem([FromBody] CartItemAddModel model){
-           var userIdString = HttpContext.User.Claims.SingleOrDefault(u => u.Type == "UserId").Value;
-           var userId = Int32.Parse(userIdString);
+          var userId = getUserIdFromContext();
           if(ModelState.IsValid){
             try
             {
@@ -93,8 +91,7 @@ namespace roberrto.Controllers
         [Route("delete")]
         [Authorize]
         public IActionResult DeleteCart(){
-           var userIdString = HttpContext.User.Claims.SingleOrDefault(u => u.Type == "UserId").Value;
-           var userId = Int32.Parse(userIdString);
+           var userId = getUserIdFromContext();
           try
           {
             _cart.DeleteCart(userId);
@@ -108,6 +105,13 @@ namespace roberrto.Controllers
                      
           }
 
+        }
+
+
+        private int getUserIdFromContext(){
+          var userIdString = HttpContext.User.Claims.SingleOrDefault(u => u.Type == "UserId").Value;
+           var userId = Int32.Parse(userIdString);
+           return userId;
         }   
     }  
 }
