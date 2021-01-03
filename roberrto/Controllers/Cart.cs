@@ -64,14 +64,16 @@ namespace roberrto.Controllers
 
 
        [HttpDelete]
-       [Route("remove")]
+       [Route("remove/{id:int}")]
        [Authorize]
-        public IActionResult RemoveCartItem([FromBody] CartItemAddModel model){
+        public IActionResult RemoveCartItem([FromRoute] int id){
           var userId = getUserIdFromContext();
+          var productId = id;
           if(ModelState.IsValid){
             try
             {
-              _cart.RemoveCartItem(model,userId);
+              _cart.RemoveCartItem(productId,userId);
+              return Ok(new {message = "Product removed!"});
                 
             }
             catch (Exception e)
@@ -81,9 +83,11 @@ namespace roberrto.Controllers
                 
                 
             }
+            
           }
-
           return BadRequest(ModelState);
+
+         
 
         }
 

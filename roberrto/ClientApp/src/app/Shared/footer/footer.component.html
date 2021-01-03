@@ -1,30 +1,51 @@
 <div class="footer-container">
   <div class="footer-inner-card">
-       <h6 class="footer__heading">Qiuck links</h6>
-       <ul>
-            <li><a class="footer__link" href="#">About us</a></li>
-            <li><a class="footer__link" href="#">Contact us</a></li>
-            <li><a class="footer__link" href="#">Login</a></li>
-            <li><a class="footer__link" href="#">Register</a></li>
-       </ul>
+    <h6 class="footer__heading">Qiuck links</h6>
+    <ul>
+      <li><a class="footer__link" href="#">About us</a></li>
+      <li><a class="footer__link" href="#">Contact us</a></li>
+      <li><a class="footer__link" href="#">Login</a></li>
+      <li><a class="footer__link" href="#">Register</a></li>
+    </ul>
   </div>
   <div class="footer-inner-card">
-       <h6 class="footer__heading">Our location</h6>
-       <ul>
-            <li>28 Highclere LnValhalla, NY 10595,New York</li>
-            <li>Mon - Fri: 08:00 am - 10:00 pm</li>
-            <li>Sat - Sun: 10:00 am - 11:00 pm</li>
-       </ul>
+    <h6 class="footer__heading">Our location</h6>
+    <ul>
+      <li>28 Highclere LnValhalla, NY 10595,New York</li>
+      <li>Mon - Fri: 08:00 am - 10:00 pm</li>
+      <li>Sat - Sun: 10:00 am - 11:00 pm</li>
+    </ul>
   </div>
   <div class="footer-inner-card">
-       <h6 class="footer__heading">Subscribe us</h6>
-      <p>Subscribe to the newsletter to get regular update about offers</p>
-      <form [formGroup] = "subscribedEmail" (ngSubmit)="sendEmail($event)">
-           <input type="email" name="email" placeholder="email" required formControlName="email">
-           <button [disabled] ="!subscribedEmail?.valid" type="submit">send</button>
-           <p *ngIf="subscribedEmail?.get('email')?.touched && subscribedEmail?.get('email')?.hasError('required')" class="email__footer__error">*Field cannot be empty!</p>
-           <p *ngIf="subscribedEmail?.get('email')?.touched && subscribedEmail?.get('email')?.hasError('email')" class="email__footer__error">*Email is not valid!</p>
-      </form>
+    <h6 class="footer__heading">Subscribe us</h6>
+    <p>Subscribe to the newsletter to get regular update about offers</p>
+    <form [formGroup]="subscribedEmail" (ngSubmit)="sendEmail($event)">
+      <input
+        type="email"
+        name="email"
+        placeholder="email"
+        required
+        formControlName="email"
+      />
+      <button [disabled]="!subscribedEmail?.valid" type="submit">send</button>
+      <p
+        *ngIf="
+          subscribedEmail?.get('email')?.touched &&
+          subscribedEmail?.get('email')?.hasError('required')
+        "
+        class="email__footer__error"
+      >
+        *Field cannot be empty!
+      </p>
+      <p
+        *ngIf="
+          subscribedEmail?.get('email')?.touched &&
+          subscribedEmail?.get('email')?.hasError('email')
+        "
+        class="email__footer__error"
+      >
+        *Email is not valid!
+      </p>
+    </form>
   </div>
 </div>
-

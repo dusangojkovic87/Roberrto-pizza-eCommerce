@@ -37,6 +37,8 @@ import { MenuOrderItemDetailsComponent } from './Shared/menu-order-item-details/
 import { CheckoutComponent } from './Pages/checkout/checkout.component';
 import { MenuCheckoutItemComponent } from './Shared/menu-checkout-item/menu-checkout-item.component';
 import { AuthInterceptor } from './HttpInterceptors/AuthInterceptor';
+import { CartItemComponent } from './Pages/checkout/cart-item/cart-item.component';
+import { CartItemListComponent } from './Pages/checkout/cart-item-list/cart-item-list.component';
 
 
 
@@ -76,7 +78,9 @@ export function tokenGetter() {
     DesertOrdersListComponent,
     MenuOrderItemDetailsComponent,
     CheckoutComponent,
-    MenuCheckoutItemComponent
+    MenuCheckoutItemComponent,
+    CartItemComponent,
+    CartItemListComponent
 
 
 

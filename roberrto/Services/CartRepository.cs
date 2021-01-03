@@ -10,7 +10,7 @@ namespace roberrto.Services
     {
         void addItem(CartItemAddModel model);
         IEnumerable<CartItemsGetModel> GetCartData(int userId);
-        void RemoveCartItem(CartItemAddModel model,int userId);
+        void RemoveCartItem(int productId,int userId);
         void DeleteCart(int userId);
     }
     public class CartRepository : ICartRepository
@@ -45,8 +45,8 @@ namespace roberrto.Services
            return _mapper.Map<IEnumerable<CartItemsGetModel>>(cartData);
         }
 
-        public void RemoveCartItem(CartItemAddModel model,int userId){
-          var itemToRemove = _context.CartItems.SingleOrDefault(x => x.StoreUserId == userId && x.Id == model.Id);
+        public void RemoveCartItem(int productId,int userId){
+          var itemToRemove = _context.CartItems.SingleOrDefault(x => x.StoreUserId == userId && x.Id == productId);
           if(itemToRemove != null){
              _context.CartItems.Remove(itemToRemove);
              _context.SaveChanges();

@@ -1,14 +1,32 @@
 <div class="client-reviews-container">
   <h1 class="client__reviews__heading">What clients say</h1>
-<div class="client-text-wrraper" *ngFor="let r of clientReview,index as i">
-    <p [ngClass]="{'show--review':pickedDot === i, 'hide-review': pickedDot !== i}"  class="client__text">{{r.text}}</p>
-    <p [ngClass]="{'show--review':pickedDot === i, 'hide-review': pickedDot !== i}"  class="client__name">{{r.clientFullName}}</p>
-
-</div>
-<div class="dots-wrrapper">
-  <div *ngFor="let c of clientReview,index as i">
-      <p [ngClass] = "{'active--slider--dot':i === pickedDot}" class="slider__dot" (click)="pickReview(i)"></p>
+  <div class="client-text-wrraper" *ngFor="let r of clientReview; index as i">
+    <p
+      [ngClass]="{
+        'show--review': pickedDot === i,
+        'hide-review': pickedDot !== i
+      }"
+      class="client__text"
+    >
+      {{ r.text }}
+    </p>
+    <p
+      [ngClass]="{
+        'show--review': pickedDot === i,
+        'hide-review': pickedDot !== i
+      }"
+      class="client__name"
+    >
+      {{ r.clientFullName }}
+    </p>
+  </div>
+  <div class="dots-wrrapper">
+    <div *ngFor="let c of clientReview; index as i">
+      <p
+        [ngClass]="{ 'active--slider--dot': i === pickedDot }"
+        class="slider__dot"
+        (click)="pickReview(i)"
+      ></p>
+    </div>
   </div>
 </div>
-</div>
-

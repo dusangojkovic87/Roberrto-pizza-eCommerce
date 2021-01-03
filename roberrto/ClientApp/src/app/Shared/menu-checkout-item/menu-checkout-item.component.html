@@ -1,14 +1,15 @@
 <div class="checkout-menu-item">
-    <div class="checkout-img-wrraper">
-          <img src={{serverImgUrl}}{{Order?.img}} alt={{serverImgUrl}}{{Order?.img}}>
-    </div>
-  <div class="checkout-details-wrraper">
-     <p class="order__name">{{Order?.name}}</p>
-     <p class="order__type">{{Order?.type}}</p>
-     <p class="order__item__price">{{Order?.price}}</p>
-     <button>remove</button>
-     <button>quantity</button>
-
+  <div class="checkout-img-wrraper">
+    <img
+      src="{{ serverImgUrl }}{{ Order?.img }}"
+      alt="{{ serverImgUrl }}{{ Order?.img }}"
+    />
   </div>
-
- </div>
+  <div class="checkout-details-wrraper">
+    <p class="order__name">{{ Order?.name }}</p>
+    <p class="order__type">{{ Order?.type }}</p>
+    <p class="order__item__price">{{ Order?.price }}</p>
+    <button>remove</button>
+    <button>quantity</button>
+  </div>
+</div>

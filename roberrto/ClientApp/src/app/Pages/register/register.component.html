@@ -1,31 +1,52 @@
 <div class="register-container">
-    <div class="register-form-wrraper">
-         <form [formGroup]="registerForm" (ngSubmit)="register()">
-              <h1 class="register__heading">Register</h1>
-                 <div class="register-errors-container">
-                     <div *ngIf="userRegistrationFailed">
-                         <p class="register__error__message">{{registerError}}</p>
-                     </div>
-                           <p class="register__error__message" *ngIf="registerForm.get('FullName')?.touched  &&
-                              registerForm.get('FullName')?.hasError('required') ||  registerForm.get('UserName')?.touched && registerForm.get('UserName')?.hasError('required')   ||
-                              registerForm.get('Email')?.touched && registerForm.get('Email')?.hasError('required') ||
-                              registerForm.get('Password')?.touched && registerForm.get('Password')?.hasError('required')" >*Fields cannot  be empty!
-                            </p>
-                          <p class="register__error__message" *ngIf="registerForm.get('Email')?.touched &&
-                                   registerForm.get('Email')?.hasError('email')">
-                                   *Email is not valid!
-                        </p>
-                  </div>
-<div class="form-input-group">
-    <input type="text" formControlName="FullName" placeholder="full Name"/>
-    <input type="text" formControlName="UserName" placeholder="UserName"/>
-</div>
+  <div class="register-form-wrraper">
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <h1 class="register__heading">Register</h1>
+      <div class="register-errors-container">
+        <div *ngIf="userRegistrationFailed">
+          <p class="register__error__message">{{ registerError }}</p>
+        </div>
+        <p
+          class="register__error__message"
+          *ngIf="
+            (registerForm.get('FullName')?.touched &&
+              registerForm.get('FullName')?.hasError('required')) ||
+            (registerForm.get('UserName')?.touched &&
+              registerForm.get('UserName')?.hasError('required')) ||
+            (registerForm.get('Email')?.touched &&
+              registerForm.get('Email')?.hasError('required')) ||
+            (registerForm.get('Password')?.touched &&
+              registerForm.get('Password')?.hasError('required'))
+          "
+        >
+          *Fields cannot be empty!
+        </p>
+        <p
+          class="register__error__message"
+          *ngIf="
+            registerForm.get('Email')?.touched &&
+            registerForm.get('Email')?.hasError('email')
+          "
+        >
+          *Email is not valid!
+        </p>
+      </div>
       <div class="form-input-group">
-           <input type="email" formControlName="Email" placeholder="Email"/>
-           <input type="password" formControlName="Password" placeholder="Password" autocomplete="on"/>
+        <input type="text" formControlName="FullName" placeholder="full Name" />
+        <input type="text" formControlName="UserName" placeholder="UserName" />
       </div>
-            <button [disabled]="!registerForm.valid" class="register__btn">send</button>
-            </form>
+      <div class="form-input-group">
+        <input type="email" formControlName="Email" placeholder="Email" />
+        <input
+          type="password"
+          formControlName="Password"
+          placeholder="Password"
+          autocomplete="on"
+        />
       </div>
+      <button [disabled]="!registerForm.valid" class="register__btn">
+        send
+      </button>
+    </form>
+  </div>
 </div>
-

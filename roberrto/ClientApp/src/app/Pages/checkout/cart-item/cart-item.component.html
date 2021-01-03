@@ -1,0 +1,25 @@
+<div class="cart-item-container">
+  <div class="cart-img-wrraper">
+    <img
+      src="{{ serverImgPath }}{{ cartItem?.img }}"
+      alt="{{ serverImgPath }}{{ cartItem?.img }}"
+    />
+  </div>
+  <div class="cart-item-details">
+    <p class="cart__item__type">{{ cartItem?.type }}</p>
+    <p class="cart__item__name">{{ cartItem?.name }}</p>
+    <p class="cart__item__price">
+      <span>Price: </span>{{ cartItem?.price | currency: "EUR":true }}
+    </p>
+  </div>
+  <div class="cart-quantity-button-wrraper">
+    <button>-</button>
+    <p class="cart__item__quantity">{{ cartItem?.quantity }}</p>
+    <button>+</button>
+  </div>
+  <div class="add-remove-cart-button-wrraper">
+    <button (click)="removeCartItem(cartItem)" class="remove__cart__btn">
+      Remove
+    </button>
+  </div>
+</div>
