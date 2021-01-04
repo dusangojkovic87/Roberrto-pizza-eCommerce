@@ -50,7 +50,7 @@ export class CartItemComponent implements OnInit {
 
   calculatePrice(cartItem?:Product){
     if(cartItem){
-       return cartItem.quantity * cartItem.quantity;
+       return cartItem.price * cartItem.quantity;
     }else{
       return "";
     }

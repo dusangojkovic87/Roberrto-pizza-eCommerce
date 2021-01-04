@@ -9,7 +9,7 @@
     <p class="cart__item__type">{{ cartItem?.type }}</p>
     <p class="cart__item__name">{{ cartItem?.name }}</p>
     <p class="cart__item__price">
-      <span>Price: </span>{{calculatePrice()}}
+      <span>Price: </span>{{calculatePrice(cartItem)}}
     </p>
   </div>
   <div class="cart-quantity-button-wrraper">
