@@ -1,6 +1,6 @@
 <header>
-  <a class="cart"
-    ><span class="cart__item__counter">0</span
+  <a *ngIf="auth.isAuthenticated()" class="cart"
+    ><span class="cart__item__counter">{{cartCount}}</span
     ><img class="cart__icon" src="assets/icons/cart.svg"
   /></a>
   <a class="navbar__brand">Robberto Pizza</a>

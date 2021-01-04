@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/Services/auth.service';
+import { CartService } from 'src/app/Services/cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,10 +9,23 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class NavbarComponent implements OnInit {
    navbarState:boolean = false;
+   cartCount:number = 0;
 
-  constructor(public auth:AuthService) { }
+  constructor(public auth:AuthService,private cart:CartService) { }
 
   ngOnInit(): void {
+    if(this.auth.isAuthenticated()){
+      this.getCartCount();
+    }
+
+    this.cart.dataChanged$.subscribe(changed =>{
+      console.log(changed);
+
+      if(changed)
+         this.getCartCount();
+    })
+
+
 
     if(window.innerWidth >= 768){
       this.navbarState = true;
@@ -32,6 +46,16 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+  getCartCount(){
+    this.cart.totalCartItemsCount().subscribe((data:any) =>{
+      console.log("cart count server",data);
+
+      this.cartCount = data;
+    })
+  }
+
+  }
 
 
-}
+
+

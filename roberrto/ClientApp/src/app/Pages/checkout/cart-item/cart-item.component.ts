@@ -10,7 +10,6 @@ import { CartService } from 'src/app/Services/cart.service';
 export class CartItemComponent implements OnInit {
   @Input() cartItem?: Product;
   serverImgPath: string = '/images/';
-  @Output() reloadData = new EventEmitter<boolean>();
 
   constructor(private cart: CartService) {}
 
@@ -20,7 +19,7 @@ export class CartItemComponent implements OnInit {
     if (cartItem)
       this.cart.increaseQuantity(cartItem).subscribe((data: any) => {
         if (data.status === true) {
-          this.reloadData.emit(true);
+          this.cart.dataChanged.next(true);
         }
       });
   }
@@ -29,7 +28,7 @@ export class CartItemComponent implements OnInit {
     if (cartItem)
       this.cart.decreaseQuantity(cartItem).subscribe((data: any) => {
         if (data.status === true) {
-          this.reloadData.emit(true);
+          this.cart.dataChanged.next(true);
         }
       });
   }
@@ -39,7 +38,7 @@ export class CartItemComponent implements OnInit {
       this.cart.removeCartItem(cartItem).subscribe(
         (data: any) => {
           if (data.status === true) {
-            this.reloadData.emit(true);
+            this.cart.dataChanged.next(true);
           }
         },
         (err) => {

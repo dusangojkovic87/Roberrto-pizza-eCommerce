@@ -14,6 +14,7 @@ namespace roberrto.Services
         void DeleteCart(int userId);
         void increaseQuantity(int productId, int userId);
         void decreaseQuantity(int productId, int userId);
+        int cartCounter(int userId);
     }
     public class CartRepository : ICartRepository
     {
@@ -99,6 +100,12 @@ namespace roberrto.Services
             }
 
 
+        }
+
+        public int cartCounter(int userId)
+        {
+            var count = _context.CartItems.Count(x => x.StoreUserId == userId);
+            return count;
         }
     }
 }

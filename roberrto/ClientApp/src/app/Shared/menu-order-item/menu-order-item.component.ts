@@ -29,7 +29,7 @@ export class MenuOrderItemComponent implements OnInit {
   addToCart(product?:Product){
     if(product != null)
        this.cart.addToCart(product).subscribe(saved =>{
-          console.log(saved);
+         this.cart.dataChanged.next(true);
        },err =>{
            if(err.status === 401){
              this.router.navigate(["/login"]);

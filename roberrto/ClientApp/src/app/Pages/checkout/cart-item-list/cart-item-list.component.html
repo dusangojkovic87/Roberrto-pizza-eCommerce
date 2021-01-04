@@ -1,7 +1,6 @@
 <div class="cart-item-list-container">
   <div *ngFor="let cartItem of CartData">
     <app-cart-item
-      (reloadData)="loadCartItems()"
       [cartItem]="cartItem"
     ></app-cart-item>
   </div>

@@ -166,6 +166,28 @@ namespace roberrto.Controllers
 
         }
 
+        [HttpGet]
+        [Route("count")]
+        [Authorize]
+        public IActionResult cartCounter()
+        {
+
+            try
+            {
+                var userId = getUserIdFromContext();
+                var count = _cart.cartCounter(userId);
+                return Ok(count);
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(500, new { error = "Server error,canot get cart items count!" });
+
+            }
+
+        }
+
         private int getUserIdFromContext()
         {
             var userIdString = HttpContext.User.Claims.SingleOrDefault(u => u.Type == "UserId").Value;

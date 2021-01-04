@@ -14,6 +14,10 @@ export class CartItemListComponent implements OnInit {
 
   ngOnInit(): void {
      this.loadCartItems();
+     this.cart.dataChanged$.subscribe(changed =>{
+         if(changed)
+          this.loadCartItems();
+     })
   }
 
   loadCartItems(){
