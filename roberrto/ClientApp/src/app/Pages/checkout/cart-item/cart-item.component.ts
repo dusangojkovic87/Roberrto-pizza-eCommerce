@@ -10,14 +10,20 @@ import { CartService } from 'src/app/Services/cart.service';
 export class CartItemComponent implements OnInit {
   @Input() cartItem?:Product;
   serverImgPath:string = "/images/";
+  @Output() reloadData = new EventEmitter<boolean>();
 
   constructor(private cart:CartService) { }
 
   ngOnInit(): void {
   }
 
-  increaseQuantity(cartItem:Product){
-      console.log(cartItem);
+  increaseQuantity(cartItem?:Product){
+     if(cartItem)
+      this.cart.increaseQuantity(cartItem).subscribe((data:any) =>{
+        if(data.status === true){
+          this.reloadData.emit(true);
+        }
+      })
 
   }
 
@@ -28,9 +34,10 @@ export class CartItemComponent implements OnInit {
 
   removeCartItem(cartItem?:Product){
      if(cartItem)
-        this.cart.removeCartItem(cartItem).subscribe(data =>{
-          console.log(data);
-
+        this.cart.removeCartItem(cartItem).subscribe((data:any) =>{
+           if(data.status === true){
+             this.reloadData.emit(true);
+           }
         },err=>{
           console.log(err);
 

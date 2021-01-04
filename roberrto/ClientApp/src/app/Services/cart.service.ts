@@ -23,6 +23,13 @@ export class CartService {
      return this.http.delete(`http://localhost:5000/cart/remove/${product.id}`);
    }
 
+
+
+   increaseQuantity(product:Product){
+    return this.http.post<Product>("http://localhost:5000/cart/increase-quantity",product);
+
+   }
+
 }
 
 

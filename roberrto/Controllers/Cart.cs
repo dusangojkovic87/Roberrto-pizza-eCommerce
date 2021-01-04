@@ -14,7 +14,7 @@ namespace roberrto.Controllers
         private ICartRepository _cart;
         public Cart(ICartRepository cart)
         {
-           _cart = cart;
+            _cart = cart;
 
         }
 
@@ -24,98 +24,132 @@ namespace roberrto.Controllers
         [Authorize]
         public IActionResult add([FromBody] CartItemAddModel model)
         {
-          if(ModelState.IsValid){
-             var userId = getUserIdFromContext();
-             model.StoreUserId = userId;
-             try
-              {
-                _cart.addItem(model);
-                return Ok(new {message = "Product added!"});          
-              }
-              catch (Exception e)
-              {
-                System.Console.WriteLine(e); 
-                return StatusCode(500,new {error = "server error,product not added!"});               
-              }
-          }
+            if (ModelState.IsValid)
+            {
+                var userId = getUserIdFromContext();
+                model.StoreUserId = userId;
+                try
+                {
+                    _cart.addItem(model);
+                    return Ok(new { message = "Product added!" });
+                }
+                catch (Exception e)
+                {
+                    System.Console.WriteLine(e);
+                    return StatusCode(500, new { error = "server error,product not added!" });
+                }
+            }
 
-          return BadRequest(ModelState); 
-         
+            return BadRequest(ModelState);
+
         }
 
 
         [HttpGet]
         [Route("get-cart-data")]
         [Authorize]
-        public IActionResult GetCartData(){
-          var userId = getUserIdFromContext();
-          try
-          {
-            var cartData = _cart.GetCartData(userId);
-            return Ok(cartData);
-             
-          }
-          catch (Exception e)
-          {
-            System.Console.WriteLine(e);
-            return StatusCode(500,new {error ="Server error,cannot get cart!"});         
-          }       
-        }
-
-
-       [HttpDelete]
-       [Route("remove/{id:int}")]
-       [Authorize]
-        public IActionResult RemoveCartItem([FromRoute] int id){
-          var userId = getUserIdFromContext();
-          var productId = id;
-          if(ModelState.IsValid){
+        public IActionResult GetCartData()
+        {
+            var userId = getUserIdFromContext();
             try
             {
-              _cart.RemoveCartItem(productId,userId);
-              return Ok(new {message = "Product removed!"});
-                
+                var cartData = _cart.GetCartData(userId);
+                return Ok(cartData);
+
             }
             catch (Exception e)
             {
-             Console.WriteLine(e);
-              return StatusCode(500,new {error = "Server error,cannot delete item!"});
-                
-                
+                System.Console.WriteLine(e);
+                return StatusCode(500, new { error = "Server error,cannot get cart!" });
             }
-            
-          }
-          return BadRequest(ModelState);
-
-         
-
         }
+
+
+        [HttpDelete]
+        [Route("remove/{id:int}")]
+        [Authorize]
+        public IActionResult RemoveCartItem([FromRoute] int id)
+        {
+            var userId = getUserIdFromContext();
+            var productId = id;
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _cart.RemoveCartItem(productId, userId);
+                    return Ok(new { status = true });
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    return StatusCode(500, new { error = "Server error,cannot delete item!" });
+
+
+                }
+
+            }
+            return BadRequest(ModelState);
+        }
+
+
 
         [HttpDelete]
         [Route("delete")]
         [Authorize]
-        public IActionResult DeleteCart(){
-           var userId = getUserIdFromContext();
-          try
-          {
-            _cart.DeleteCart(userId);
-            return Ok(new {message = "Cart deleted!"});
-            
-          }
-          catch (Exception e)
-          {
-           Console.WriteLine(e);
-           return StatusCode(500,new {error = "Server error,cannot delete cart!"});
-                     
-          }
+        public IActionResult DeleteCart()
+        {
+            var userId = getUserIdFromContext();
+            try
+            {
+                _cart.DeleteCart(userId);
+                return Ok(new { message = "Cart deleted!" });
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(500, new { error = "Server error,cannot delete cart!" });
+
+            }
 
         }
 
+        [HttpPost]
+        [Route("increase-quantity")]
+        [Authorize]
 
-        private int getUserIdFromContext(){
-          var userIdString = HttpContext.User.Claims.SingleOrDefault(u => u.Type == "UserId").Value;
-           var userId = Int32.Parse(userIdString);
-           return userId;
-        }   
-    }  
+        public IActionResult increaseQuantity([FromBody] CartItemAddModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var userId = getUserIdFromContext();
+                try
+                {
+                    _cart.increaseQuantity(model.Id, userId);
+                    return Ok(new { status = true });
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    return StatusCode(500, new { error = "Server error,cannot increase quantity!" });
+                }
+
+
+            }
+            return BadRequest(ModelState);
+        }
+
+
+
+
+
+        private int getUserIdFromContext()
+        {
+            var userIdString = HttpContext.User.Claims.SingleOrDefault(u => u.Type == "UserId").Value;
+            var userId = Int32.Parse(userIdString);
+            return userId;
+        }
+    }
 }

@@ -1,5 +1,18 @@
-.cart-item-list-container{
+.cart-item-list-container {
   position: relative;
   top: 7rem;
   margin-left: 2rem;
+}
+
+.empty-cart-wrraper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.empty-cart-wrraper h1 {
+  font-size: 1.4rem;
+  font-family: "Monserrat";
+  border-bottom: 2px solid red;
 }

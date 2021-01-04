@@ -1,5 +1,11 @@
 <div class="cart-item-list-container">
   <div *ngFor="let cartItem of CartData">
-    <app-cart-item [cartItem]="cartItem"></app-cart-item>
+    <app-cart-item
+      (reloadData)="loadCartItems()"
+      [cartItem]="cartItem"
+    ></app-cart-item>
+  </div>
+  <div *ngIf="CartData?.length === 0" class="empty-cart-wrraper">
+    <h1>Cart is empty!</h1>
   </div>
 </div>

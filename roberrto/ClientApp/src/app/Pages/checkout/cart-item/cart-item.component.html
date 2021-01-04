@@ -13,9 +13,9 @@
     </p>
   </div>
   <div class="cart-quantity-button-wrraper">
-    <button>-</button>
+    <button (click)="increaseQuantity(cartItem)">+</button>
     <p class="cart__item__quantity">{{ cartItem?.quantity }}</p>
-    <button>+</button>
+    <button>-</button>
   </div>
   <div class="add-remove-cart-button-wrraper">
     <button (click)="removeCartItem(cartItem)" class="remove__cart__btn">
