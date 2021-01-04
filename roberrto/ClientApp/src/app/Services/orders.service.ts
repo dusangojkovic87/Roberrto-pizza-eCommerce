@@ -14,5 +14,9 @@ export class OrdersService {
     return this.http.get<Product[]>("http://localhost:5000/products/orders");
   }
 
+  getOrderDetail(id:number):Observable<Product>{
+    return this.http.get<Product>(`http://localhost:5000/products/order-detail/${id}`);
+  }
+
 
 }

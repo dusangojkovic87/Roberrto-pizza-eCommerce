@@ -1,103 +1,109 @@
-.cart-item-container{
+.cart-item-container {
   position: relative;
   margin: 2rem;
   border: 2px solid red;
-  padding:1rem;
-  width: 40rem;
-  border-radius:12px;
+  padding: 1rem;
+  width: 32rem;
+  border-radius: 12px;
   display: flex;
   align-items: center;
-  height:9rem;
+  height: 9rem;
+  box-shadow: 2px 2px black;
+  background-color: azure;
 }
 
-.cart-img-wrraper{
+.cart-img-wrraper {
   position: relative;
-  width:7rem;
-  height:7rem;
+  width: 7rem;
+  height: 7rem;
 }
 
-.cart-img-wrraper img{
+.cart-img-wrraper img {
   position: absolute;
   width: 100%;
   height: 100%;
 }
 
-.cart-item-details{
+.cart-item-details {
   position: relative;
   margin-left: 2rem;
-
 }
 
-.cart__item__type{
+.cart__item__type {
   position: relative;
   font-family: "Monserrat";
-  font-size:1.5rem;
+  font-size: 1.5rem;
   color: black;
-
 }
 
-.cart__item__name{
+.cart__item__name {
   position: relative;
   font-family: "Dancing Script";
   font-size: 1.5rem;
   top: -1rem;
 }
 
-.cart-quantity-button-wrraper{
+.cart-quantity-button-wrraper {
   position: relative;
   margin-left: 4rem;
 }
 
-span{
+span {
   font-size: 1rem;
   color: brown;
 }
 
-.cart__item__price{
+.cart__item__price {
   position: relative;
-  top:-1rem;
+  top: -1rem;
   color: black;
   font-family: "Monserrat";
   font-size: 0.9rem;
 }
 
-.cart__item__quantity{
+.cart__item__quantity {
   font-size: 1rem;
   font-family: "Monserrat";
   text-align: center;
+  font-weight: bold;
 }
 
-button{
+button {
   position: relative;
-  width:2rem;
+  width: 2rem;
   font-family: "Monserrat";
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
+  border-radius: 12px;
+  box-shadow: 2px 2px black;
+  outline: none;
 }
 
-.remove__cart__btn{
+.quantity__btn {
+  width: 3rem;
+  border: none;
+  box-shadow: 2px 2px black;
+}
+
+.remove__cart__btn {
   position: relative;
   margin-left: 3rem;
   width: 7rem;
   font-family: "Monserrat";
-  font-size:0.8rem;
+  font-size: 0.8rem;
   background-color: #ff523d;
   color: white;
   padding: 0.3rem;
   outline: none;
   border: none;
-
 }
 
-.add-remove-cart-button-wrraper{
+.add-remove-cart-button-wrraper {
   position: relative;
   display: flex;
   flex-direction: column;
-  width:5rem;
-  height:5rem;
+  width: 5rem;
+  height: 5rem;
   justify-content: center;
-
 }
-
-

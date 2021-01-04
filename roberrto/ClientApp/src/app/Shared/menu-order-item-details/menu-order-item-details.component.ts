@@ -7,29 +7,22 @@ import { OrdersService } from 'src/app/Services/orders.service';
 @Component({
   selector: 'app-menu-order-item-details',
   templateUrl: './menu-order-item-details.component.html',
-  styleUrls: ['./menu-order-item-details.component.css']
+  styleUrls: ['./menu-order-item-details.component.css'],
 })
 export class MenuOrderItemDetailsComponent implements OnInit {
-  orderDetails?:Product;
-  id?:number;
-  orderImg?:string = "";
+  orderDetails: Product[] = [];
+  id?: number;
+  orderImg?: string = '';
 
-  constructor(private orders:OrdersService,private route:ActivatedRoute) { }
+  constructor(private orders: OrdersService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((p:Params)=>{
-       this.id = p.params.id;
-    })
-    this.orders.getOrders().pipe(
-      map(orderArr =>{
-        let filteredOrder = orderArr.find(o=>o.id === this.id );
-        return filteredOrder;
-      })
-    ).subscribe(data =>{
-      this.orderDetails = data;
-      this.orderImg = "/images/" + data?.img;
-    })
-
+    this.route.paramMap.subscribe((p: Params) => {
+      this.id = p.params.id;
+    });
+    if (this.id)
+      this.orders.getOrderDetail(this.id).subscribe((data: any) => {
+        this.orderDetails = data;
+      });
   }
-
 }

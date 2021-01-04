@@ -9,7 +9,7 @@ namespace roberrto.Controllers
     public class Products : ControllerBase
     {
 
-        public IProductRepository _product; 
+        public IProductRepository _product;
 
         public Products(IProductRepository product)
         {
@@ -18,8 +18,8 @@ namespace roberrto.Controllers
         }
 
 
-       [HttpGet]
-       [Route("top-offers")]
+        [HttpGet]
+        [Route("top-offers")]
         public IActionResult TopOffers()
         {
             try
@@ -29,15 +29,16 @@ namespace roberrto.Controllers
             }
             catch (Exception e)
             {
-               Console.WriteLine(e);
-               return BadRequest(new {error = "Cannot get products!"});
+                Console.WriteLine(e);
+                return BadRequest(new { error = "Cannot get products!" });
             }
-                     
+
         }
 
         [HttpGet]
         [Route("orders")]
-        public IActionResult GetProducts(){
+        public IActionResult GetProducts()
+        {
             try
             {
                 var Products = _product.GetAllProducts();
@@ -46,9 +47,31 @@ namespace roberrto.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return BadRequest(new {error = "Cannot get products!"});
-               
+                return BadRequest(new { error = "Cannot get products!" });
+
             }
+        }
+
+        [HttpGet]
+        [Route("order-detail/{id:int}")]
+        public IActionResult OrderDetail([FromRoute] int id)
+        {
+            try
+            {
+                var productId = id;
+                var orderDetails = _product.getOrderDetails(productId);
+                return Ok(orderDetails);
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(500, new { error = "Server error,cannot get order details" });
+
+
+            }
+
+
         }
     }
 }
