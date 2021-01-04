@@ -74,6 +74,7 @@ namespace roberrto.Services
             if (product != null)
             {
                 product.Quantity += 1;
+                product.Price *= 2;
                 _context.CartItems.Update(product);
                 _context.SaveChanges();
             }
@@ -86,6 +87,7 @@ namespace roberrto.Services
             if (product != null)
             {
                 product.Quantity -= 1;
+                product.Price /= 2;
                 if (product.Quantity == 0)
                 {
                     _context.CartItems.Remove(product);
