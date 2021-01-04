@@ -1,5 +1,5 @@
 <header>
-  <a *ngIf="auth.isAuthenticated()" class="cart"
+  <a *ngIf="auth.isAuthenticated()" class="cart" routerLink="/checkout"
     ><span class="cart__item__counter">{{cartCount}}</span
     ><img class="cart__icon" src="assets/icons/cart.svg"
   /></a>

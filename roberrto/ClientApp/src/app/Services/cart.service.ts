@@ -9,9 +9,12 @@ import { Product } from '../Models/Product';
 export class CartService {
   public dataChanged = new BehaviorSubject<boolean>(false);
   public dataChanged$:Observable<boolean>;
+  public addToCartModalState = new BehaviorSubject<boolean>(false);
+  public addToCartModalState$:Observable<boolean>;
 
    constructor(private http:HttpClient) {
      this.dataChanged$ = this.dataChanged.asObservable();
+     this.addToCartModalState$= this.addToCartModalState.asObservable();
    }
 
 

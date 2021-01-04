@@ -39,6 +39,7 @@ import { MenuCheckoutItemComponent } from './Shared/menu-checkout-item/menu-chec
 import { AuthInterceptor } from './HttpInterceptors/AuthInterceptor';
 import { CartItemComponent } from './Pages/checkout/cart-item/cart-item.component';
 import { CartItemListComponent } from './Pages/checkout/cart-item-list/cart-item-list.component';
+import { AddToCartModalComponent } from './Shared/add-to-cart-modal/add-to-cart-modal.component';
 
 
 
@@ -80,7 +81,8 @@ export function tokenGetter() {
     CheckoutComponent,
     MenuCheckoutItemComponent,
     CartItemComponent,
-    CartItemListComponent
+    CartItemListComponent,
+    AddToCartModalComponent
 
 
 
