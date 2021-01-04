@@ -135,8 +135,6 @@ namespace roberrto.Controllers
                     Console.WriteLine(e);
                     return StatusCode(500, new { error = "Server error,cannot increase quantity!" });
                 }
-
-
             }
             return BadRequest(ModelState);
         }
@@ -167,10 +165,6 @@ namespace roberrto.Controllers
             return BadRequest(ModelState);
 
         }
-
-
-
-
 
         private int getUserIdFromContext()
         {

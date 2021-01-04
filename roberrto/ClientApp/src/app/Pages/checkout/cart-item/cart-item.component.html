@@ -1,4 +1,4 @@
-<div class="cart-item-container">
+<div class="cart-item-container" *ngIf="cartItem">
   <div class="cart-img-wrraper">
     <img
       src="{{ serverImgPath }}{{ cartItem?.img }}"
@@ -9,7 +9,7 @@
     <p class="cart__item__type">{{ cartItem?.type }}</p>
     <p class="cart__item__name">{{ cartItem?.name }}</p>
     <p class="cart__item__price">
-      <span>Price: </span>{{ cartItem?.price * cartItem?.quantity }}
+      <span>Price: </span>{{calculatePrice()}}
     </p>
   </div>
   <div class="cart-quantity-button-wrraper">

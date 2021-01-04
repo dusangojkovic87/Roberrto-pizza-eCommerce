@@ -47,4 +47,12 @@ export class CartItemComponent implements OnInit {
         }
       );
   }
+
+  calculatePrice(cartItem?:Product){
+    if(cartItem){
+       return cartItem.quantity * cartItem.quantity;
+    }else{
+      return "";
+    }
+  }
 }
