@@ -13,6 +13,7 @@ namespace roberrto.Services
         void RemoveCartItem(int productId, int userId);
         void DeleteCart(int userId);
         void increaseQuantity(int productId, int userId);
+        void decreaseQuantity(int productId, int userId);
     }
     public class CartRepository : ICartRepository
     {
@@ -76,6 +77,28 @@ namespace roberrto.Services
                 _context.CartItems.Update(product);
                 _context.SaveChanges();
             }
+        }
+
+
+        public void decreaseQuantity(int productId, int userId)
+        {
+            var product = _context.CartItems.FirstOrDefault(x => x.Id == productId && x.StoreUserId == userId);
+            if (product != null)
+            {
+                product.Quantity -= 1;
+                if (product.Quantity == 0)
+                {
+                    _context.CartItems.Remove(product);
+                    _context.SaveChanges();
+                }
+                else
+                {
+                    _context.CartItems.Update(product);
+                    _context.SaveChanges();
+                }
+            }
+
+
         }
     }
 }

@@ -30,6 +30,11 @@ export class CartService {
 
    }
 
+   decreaseQuantity(product:Product){
+    return this.http.post<Product>("http://localhost:5000/cart/decrease-quantity",product);
+
+   }
+
 }
 
 

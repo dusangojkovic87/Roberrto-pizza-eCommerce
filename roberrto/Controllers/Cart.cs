@@ -141,6 +141,33 @@ namespace roberrto.Controllers
             return BadRequest(ModelState);
         }
 
+        [HttpPost]
+        [Route("decrease-quantity")]
+        [Authorize]
+
+        public IActionResult decreaseQuantity([FromBody] CartItemAddModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var userId = getUserIdFromContext();
+                    _cart.decreaseQuantity(model.Id, userId);
+                    return Ok(new { status = true });
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    return StatusCode(500, new { error = "Server error,cannot decrease quantity!" });
+
+
+                }
+            }
+            return BadRequest(ModelState);
+
+        }
+
 
 
 
