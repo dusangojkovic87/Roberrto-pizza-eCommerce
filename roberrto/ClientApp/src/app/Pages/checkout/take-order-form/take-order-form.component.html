@@ -1,0 +1,26 @@
+<div class="take-order-form-container">
+  <form [formGroup]="TakeOrderForm" (ngSubmit)="submitOrder()">
+    <p class="total__amount">Total:230</p>
+    <div class="error-wrraper">
+      <p
+        class="adress__order__error"
+        *ngIf="
+          TakeOrderForm.get('adress').touched &&
+          TakeOrderForm.get('adress').hasError('required')
+        "
+      >
+        *Field cannot be empty!
+      </p>
+    </div>
+
+    <label for="adress">Shipping adress</label>
+    <input type="text" name="adress" formControlName="adress" required />
+    <button
+      [disabled]="!TakeOrderForm.valid"
+      type="submit"
+      class="take__order__btn"
+    >
+      Take order
+    </button>
+  </form>
+</div>

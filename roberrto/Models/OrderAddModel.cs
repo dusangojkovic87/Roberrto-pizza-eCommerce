@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using roberrto.Entities;
 
-namespace roberrto.Entities
+namespace roberrto.Models
 {
-    public class Orders
+    public class OrderAddModel
     {
-        [Key]
         public int Id { get; set; }
         [Required]
         public DateTime OrderDate { get; set; }

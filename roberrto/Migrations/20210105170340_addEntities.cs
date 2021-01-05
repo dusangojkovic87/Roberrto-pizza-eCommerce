@@ -253,6 +253,8 @@ namespace roberrto.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    TotalPrice = table.Column<decimal>(type: "decimal(18,4)", nullable: false),
+                    Adress = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateDelivered = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateShipped = table.Column<DateTime>(type: "datetime2", nullable: false),
                     StoreUserId = table.Column<int>(type: "int", nullable: false),
@@ -273,7 +275,8 @@ namespace roberrto.Migrations
                 name: "OrderItems",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: false),

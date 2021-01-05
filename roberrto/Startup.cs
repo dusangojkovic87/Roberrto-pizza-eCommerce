@@ -30,58 +30,65 @@ namespace roberrto
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IAdminRepository,AdminRepository>();
-            services.AddScoped<IProductRepository,ProductRepository>();
-            services.AddScoped<ITeamMembersRepository,TeamMembersRepository>();
-            services.AddScoped<IReviewRepository,ReviewRepository>();
-            services.AddScoped<IGalleryRepository,GalleryRepository>();
-            services.AddScoped<ICartRepository,CartRepository>();
+            services.AddScoped<IAdminRepository, AdminRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ITeamMembersRepository, TeamMembersRepository>();
+            services.AddScoped<IReviewRepository, ReviewRepository>();
+            services.AddScoped<IGalleryRepository, GalleryRepository>();
+            services.AddScoped<ICartRepository, CartRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
 
-            
-            services.AddCors(opt=>{
-              opt.AddPolicy("AllowEverything",builder =>{
-                  builder.AllowAnyOrigin();
-                  builder.AllowAnyMethod();
-                  builder.AllowAnyHeader();
-                 
-              });
+
+            services.AddCors(opt =>
+            {
+                opt.AddPolicy("AllowEverything", builder =>
+                {
+                    builder.AllowAnyOrigin();
+                    builder.AllowAnyMethod();
+                    builder.AllowAnyHeader();
+
+                });
             });
             services.AddAutoMapper(typeof(Startup));
-            services.AddIdentity<StoreUser,AplicationRole>(opt =>{
+            services.AddIdentity<StoreUser, AplicationRole>(opt =>
+            {
                 opt.User.RequireUniqueEmail = true;
             })
                .AddEntityFrameworkStores<AplicationDbContext>();
 
-            services.AddAuthentication(opt=>{
+            services.AddAuthentication(opt =>
+            {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
               .AddCookie()
-              .AddJwtBearer(cfg =>{
-                   cfg.TokenValidationParameters = new TokenValidationParameters()
-                   {
+              .AddJwtBearer(cfg =>
+              {
+                  cfg.TokenValidationParameters = new TokenValidationParameters()
+                  {
                       ValidIssuer = Configuration["Tokens:Issuer"],
                       ValidAudience = Configuration["Tokens:Audience"],
-                      IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Tokens:key"]))   
-                   };
+                      IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Tokens:key"]))
+                  };
               });
 
-               services.AddAuthorization(config =>    
-              {    
-                config.AddPolicy(Policies.Admin, Policies.AdminPolicy());    
-                config.AddPolicy(Policies.User, Policies.UserPolicy());    
-              });    
-             
+            services.AddAuthorization(config =>
+           {
+               config.AddPolicy(Policies.Admin, Policies.AdminPolicy());
+               config.AddPolicy(Policies.User, Policies.UserPolicy());
+           });
 
-            services.AddDbContext<AplicationDbContext>(opt =>{
+
+            services.AddDbContext<AplicationDbContext>(opt =>
+            {
                 opt.UseSqlServer(Configuration.GetConnectionString("Default"));
             });
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
-           /*  services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/dist";
-            }); */
+            /*  services.AddSpaStaticFiles(configuration =>
+             {
+                 configuration.RootPath = "ClientApp/dist";
+             }); */
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -104,7 +111,7 @@ namespace roberrto
             {
                 app.UseSpaStaticFiles();
             }
-            
+
             app.UseCors("AllowEverything");
             app.UseRouting();
             app.UseAuthentication();

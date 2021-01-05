@@ -10,7 +10,7 @@ using roberrto.Models;
 namespace roberrto.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    [Migration("20201231133219_addEntities")]
+    [Migration("20210105170340_addEntities")]
     partial class addEntities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -217,7 +217,9 @@ namespace roberrto.Migrations
             modelBuilder.Entity("roberrto.Entities.OrderItems", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("Category")
                         .IsRequired()
@@ -261,6 +263,10 @@ namespace roberrto.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<string>("Adress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("DateDelivered")
                         .HasColumnType("datetime2");
 
@@ -275,6 +281,9 @@ namespace roberrto.Migrations
 
                     b.Property<int>("StoreUserId")
                         .HasColumnType("int");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18,4)");
 
                     b.HasKey("Id");
 

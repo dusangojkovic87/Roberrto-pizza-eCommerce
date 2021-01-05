@@ -215,7 +215,9 @@ namespace roberrto.Migrations
             modelBuilder.Entity("roberrto.Entities.OrderItems", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("Category")
                         .IsRequired()
@@ -259,6 +261,10 @@ namespace roberrto.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<string>("Adress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("DateDelivered")
                         .HasColumnType("datetime2");
 
@@ -273,6 +279,9 @@ namespace roberrto.Migrations
 
                     b.Property<int>("StoreUserId")
                         .HasColumnType("int");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18,4)");
 
                     b.HasKey("Id");
 

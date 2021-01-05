@@ -9,7 +9,7 @@
   align-items: center;
   height: 9rem;
   box-shadow: 2px 2px black;
-  background-color: azure;
+  background-color: #f2f3f4;
 }
 
 .cart-img-wrraper {
@@ -84,6 +84,7 @@ button {
   width: 3rem;
   border: none;
   box-shadow: 2px 2px black;
+  background-color: #f1948a;
 }
 
 .remove__cart__btn {

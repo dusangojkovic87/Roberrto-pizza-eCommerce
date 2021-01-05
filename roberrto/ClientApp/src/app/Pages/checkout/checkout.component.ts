@@ -8,8 +8,6 @@ import { CartService } from 'src/app/Services/cart.service';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
-  /* cartData:Product [] = []; */
-
   constructor(private cart:CartService) { }
 
   ngOnInit(): void {
