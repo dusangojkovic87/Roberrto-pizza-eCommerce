@@ -16,3 +16,12 @@
   font-family: "Monserrat";
   border-bottom: 2px solid red;
 }
+
+.order__sent__message {
+  position: relative;
+  width: 100%;
+  font-family: "Monserrat";
+  text-align: center;
+  color: red;
+  text-shadow: 1px 1px black;
+}

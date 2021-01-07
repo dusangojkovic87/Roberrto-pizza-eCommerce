@@ -1,10 +1,15 @@
 <div class="cart-item-list-container">
   <div *ngFor="let cartItem of CartData">
-    <app-cart-item
-      [cartItem]="cartItem"
-    ></app-cart-item>
+    <app-cart-item [cartItem]="cartItem"></app-cart-item>
   </div>
   <div *ngIf="CartData?.length === 0" class="empty-cart-wrraper">
     <h1>Cart is empty!</h1>
   </div>
+  <h1 class="order__sent__message" *ngIf="showSentOrderNotification">
+    Order sent succesfully!
+  </h1>
 </div>
+<app-take-order-form
+  (orderSent)="orderSentNotification($event)"
+  *ngIf="showOrderForm()"
+></app-take-order-form>

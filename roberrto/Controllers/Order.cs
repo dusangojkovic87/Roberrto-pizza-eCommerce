@@ -43,7 +43,7 @@ namespace roberrto.Controllers
                 {
                     var userId = getUserIdFromContext();
                     _order.takeOrder(userId, model);
-                    return Ok(new { message = "Order submited successfully" });
+                    return Ok(new { success = true });
 
                 }
                 catch (Exception e)
