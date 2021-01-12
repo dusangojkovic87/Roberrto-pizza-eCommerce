@@ -9,11 +9,11 @@ import { AboutComponent } from './Pages/about/about.component';
 import { OrdersComponent } from './Pages/orders/orders.component';
 import { RegisterComponent } from './Pages/register/register.component';
 import { LoginComponent } from './Pages/login/login.component';
-import { ReactiveFormsModule} from "@angular/forms";
+import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import {HttpClientModule} from "@angular/common/http";
+import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './Services/auth.service';
-import { JwtModule } from "@auth0/angular-jwt";
+import { JwtModule } from '@auth0/angular-jwt';
 import { LogoutComponent } from './Pages/logout/logout.component';
 import { MenuNavigationComponent } from './Shared/menu-navigation/menu-navigation.component';
 import { DeliveryCardComponent } from './Pages/home/delivery-card/delivery-card.component';
@@ -43,14 +43,12 @@ import { AddToCartModalComponent } from './Shared/add-to-cart-modal/add-to-cart-
 import { TakeOrderFormComponent } from './Pages/checkout/take-order-form/take-order-form.component';
 import { AdminComponent } from './Pages/admin/admin.component';
 import { AddProductFormComponent } from './Pages/admin/add-product-form/add-product-form.component';
-
-
+import { EditProductListComponent } from './Pages/admin/edit-product-list/edit-product-list.component';
+import { EditProductComponent } from './Pages/admin/edit-product-list/edit-product/edit-product.component';
 
 export function tokenGetter() {
-  return localStorage.getItem("token");
+  return localStorage.getItem('token');
 }
-
-
 
 @NgModule({
   declarations: [
@@ -88,9 +86,9 @@ export function tokenGetter() {
     AddToCartModalComponent,
     TakeOrderFormComponent,
     AdminComponent,
-    AddProductFormComponent
-
-
+    AddProductFormComponent,
+    EditProductListComponent,
+    EditProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,15 +98,12 @@ export function tokenGetter() {
     HttpClientModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter:tokenGetter,
-        allowedDomains: ["localhost:5000"]
+        tokenGetter: tokenGetter,
+        allowedDomains: ['localhost:5000'],
       },
     }),
   ],
-  providers: [
-    AuthService,
-    AuthInterceptor
-  ],
-  bootstrap: [AppComponent]
+  providers: [AuthService, AuthInterceptor],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -15,6 +15,7 @@ import { CheckoutComponent } from './Pages/checkout/checkout.component';
 import { AuthGuard } from './Guards/auth.guard';
 import { AdminComponent } from './Pages/admin/admin.component';
 import { AddProductFormComponent } from './Pages/admin/add-product-form/add-product-form.component';
+import { EditProductListComponent } from './Pages/admin/edit-product-list/edit-product-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -23,7 +24,10 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
-    children: [{ path: '', component: AddProductFormComponent }],
+    children: [
+      { path: 'add', component: AddProductFormComponent },
+      { path: 'edit', component: EditProductListComponent },
+    ],
   },
   {
     path: 'orders',

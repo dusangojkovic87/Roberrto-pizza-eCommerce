@@ -21,9 +21,30 @@ namespace roberrto.Controllers
         public Admin(IAdminRepository admin, IMapper mapper, IWebHostEnvironment env)
         {
             _admin = admin;
-            
+
             _contentRoot = env.ContentRootPath;
         }
+
+        [HttpGet]
+        [Route("get-products")]
+        public IActionResult getProducts()
+        {
+            try
+            {
+                var products = _admin.getProducts();
+                return Ok(products);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(500, new { error = "Server error,cannot get products!" });
+
+            }
+
+        }
+
+
+
 
         [HttpPost]
         [Route("addProduct")]
@@ -38,7 +59,7 @@ namespace roberrto.Controllers
 
             var pathToSave = "/wwwroot/images/";
 
-            string uniqueFileName = UploadImage(model.Img, _contentRoot,pathToSave);
+            string uniqueFileName = UploadImage(model.Img, _contentRoot, pathToSave);
 
             var newProduct = new Product
             {
@@ -52,17 +73,17 @@ namespace roberrto.Controllers
 
             try
             {
-                 _admin.addProduct(newProduct);
-                 return Ok(new {message = "Product added!"});
+                _admin.addProduct(newProduct);
+                return Ok(new { message = "Product added!" });
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return StatusCode(500,new {error = "Server error,product not added!"});                         
-            }                         
+                return StatusCode(500, new { error = "Server error,product not added!" });
+            }
         }
 
-         private string UploadImage(IFormFile img, string root,string pathToSave)
+        private string UploadImage(IFormFile img, string root, string pathToSave)
         {
 
             string uniqueImgName = null;
@@ -85,32 +106,35 @@ namespace roberrto.Controllers
         }
 
         [HttpDelete]
-        [Route("delete-product")]
+        [Route("remove-product/{id:int}")]
 
-        public IActionResult removeProduct([FromBody] ProductModel model )
+        public IActionResult removeProduct([FromRoute] int id)
         {
             try
             {
-                 _admin.deleteProduct(model);   
-                 return Ok(new {message = "Product deleted!"});       
+                var productId = id;
+                _admin.deleteProduct(productId);
+                return Ok(new { message = "Product deleted!" });
             }
             catch (Exception e)
             {
-               Console.WriteLine(e);
-               return StatusCode(500,new {error = "Server error,product not deleted!"});           
-                
-            }                
+                Console.WriteLine(e);
+                return StatusCode(500, new { error = "Server error,product not deleted!" });
+
+            }
         }
 
 
         [HttpPost]
         [Route("add-member")]
-        public IActionResult addTeamMember([FromForm] TeamMemberAddModel model){
+        public IActionResult addTeamMember([FromForm] TeamMemberAddModel model)
+        {
             var pathToSave = "/wwwroot/images/members";
 
-            string uniqueMemberImgName = UploadImage(model.Img,_contentRoot,pathToSave);
+            string uniqueMemberImgName = UploadImage(model.Img, _contentRoot, pathToSave);
 
-            var tmember = new TeamMember{
+            var tmember = new TeamMember
+            {
                 FullName = model.FullName,
                 Job = model.Job,
                 Img = uniqueMemberImgName,
@@ -119,54 +143,57 @@ namespace roberrto.Controllers
 
             try
             {
-                 _admin.addTeamMember(tmember);  
-                 return Ok(new {message = "Member added!"});      
+                _admin.addTeamMember(tmember);
+                return Ok(new { message = "Member added!" });
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return StatusCode(500,new {error = "Server error,member not added!"});                   
-            }           
+                return StatusCode(500, new { error = "Server error,member not added!" });
+            }
         }
 
 
 
         [HttpPost]
         [Route("add-review")]
-        public IActionResult addReview([FromBody] ClientReviewAddModel model){      
+        public IActionResult addReview([FromBody] ClientReviewAddModel model)
+        {
             try
             {
-                 _admin.addClientReview(model);
-                 return Ok(new {message = "Client added!"});            
+                _admin.addClientReview(model);
+                return Ok(new { message = "Client added!" });
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return StatusCode(500,new {error = "Server error,client not added!"});          
-            }         
+                return StatusCode(500, new { error = "Server error,client not added!" });
+            }
         }
 
 
         [HttpPost]
         [Route("add-gallery-img")]
-        public IActionResult addGalleryImg([FromForm] GalleryImgAddModel model){
+        public IActionResult addGalleryImg([FromForm] GalleryImgAddModel model)
+        {
             string pathToSave = "/wwwroot/images/gallery";
-            string uniqeImgName = UploadImage(model.Img,_contentRoot,pathToSave);
+            string uniqeImgName = UploadImage(model.Img, _contentRoot, pathToSave);
 
-            var galleryImg = new Gallery{
-              Img = uniqeImgName
+            var galleryImg = new Gallery
+            {
+                Img = uniqeImgName
             };
 
             try
             {
-                 _admin.addImgToGallery(galleryImg);
-                 return Ok("Image added!");     
+                _admin.addImgToGallery(galleryImg);
+                return Ok("Image added!");
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return StatusCode(500,new {error = "Server error,img not added!"});                       
+                return StatusCode(500, new { error = "Server error,img not added!" });
             }
         }
-    }  
+    }
 }

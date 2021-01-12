@@ -1,0 +1,63 @@
+.edit-product-container {
+  position: relative;
+  z-index: 100;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 35rem;
+  height: 3rem;
+  align-items: center;
+  margin: 1rem;
+  border: 1px solid yellow;
+}
+
+.edit__product__category {
+  font-family: "Monserrat";
+  font-size: 1rem;
+  color: white;
+  font-weight: bold;
+  margin: 1rem;
+}
+
+.edit__product__name {
+  font-family: "Dancing Script";
+  font-size: 1rem;
+  color: white;
+  font-weight: bold;
+  margin: 1rem;
+}
+
+.edit__product__price {
+  font-family: "Monserrat";
+  font-size: 1rem;
+  margin: 1rem;
+  color: white;
+  font-weight: bold;
+}
+
+span {
+  color: red;
+  font-family: "Monserrat";
+  font-size: 1rem;
+  margin: 1rem;
+  font-weight: bold;
+}
+
+button {
+  height: 2rem;
+  width: 4rem;
+  cursor: pointer;
+  outline: none;
+  color: white;
+}
+
+.edit__product__btn {
+  position: absolute;
+  right: 10rem;
+  background-color: #58d68d;
+}
+
+.remove__product__btn {
+  position: absolute;
+  right: 3rem;
+  background-color: #e74c3c;
+}
