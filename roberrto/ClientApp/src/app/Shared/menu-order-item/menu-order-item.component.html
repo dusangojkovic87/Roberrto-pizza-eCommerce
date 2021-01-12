@@ -4,7 +4,7 @@
   </div>
   <div class="order-item-details-wrraper">
     <p class="order__name">{{ Order?.name }}</p>
-    <p class="order__type">{{ Order?.type }}</p>
+    <p class="order__type">{{ Order?.category }}</p>
     <p class="order__item__price"><span>$</span>{{ Order?.price }}</p>
     <button class="order__item__details__btn" (click)="orderItemDetails(Order)">
       read more

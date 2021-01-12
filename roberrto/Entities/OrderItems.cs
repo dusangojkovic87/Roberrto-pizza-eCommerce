@@ -12,14 +12,11 @@ namespace roberrto.Entities
         [Required]
         public string Name { get; set; }
         [Required]
-        public string Type { get; set; }
-
         public string Description { get; set; }
         [Required]
         public string Img { get; set; }
         [Required]
         public string Category { get; set; }
-
         [Column(TypeName = "decimal(18,4)")]
         [Required]
         public decimal Price { get; set; }

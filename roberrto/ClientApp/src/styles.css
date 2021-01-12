@@ -1,40 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
-html,body{
+html,
+body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-@font-face{
-  src:url("assets/fonts/DancingScript-Regular.ttf");
+@font-face {
+  src: url("assets/fonts/DancingScript-Regular.ttf");
   font-family: "Dancing Script";
 }
 
-@font-face{
-  src:url("assets/fonts/Montserrat-Regular.ttf");
+@font-face {
+  src: url("assets/fonts/Montserrat-Regular.ttf");
   font-family: "Monserrat";
 }
 
-.slider__dot{
-  background-color:white;
+.slider__dot {
+  background-color: white;
   border-radius: 20px;
-  width:10px;
-  height:10px;
-  margin:7px;
+  width: 10px;
+  height: 10px;
+  margin: 7px;
   cursor: pointer;
 }
 
-.active--slider--dot{
+.active--slider--dot {
   background-color: red;
   transform: scale(1.5);
   transition: transform 250ms ease-in;
 }
 
-.activeOrderLink{
+.activeOrderLink {
   background-color: red;
 }
 
-.activeNavLink{
+.activeNavLink {
   color: yellow !important;
+}
 
+.activeAdminDashboard {
+  color: yellow !important;
 }

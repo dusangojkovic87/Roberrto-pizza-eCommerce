@@ -41,6 +41,8 @@ import { CartItemComponent } from './Pages/checkout/cart-item/cart-item.componen
 import { CartItemListComponent } from './Pages/checkout/cart-item-list/cart-item-list.component';
 import { AddToCartModalComponent } from './Shared/add-to-cart-modal/add-to-cart-modal.component';
 import { TakeOrderFormComponent } from './Pages/checkout/take-order-form/take-order-form.component';
+import { AdminComponent } from './Pages/admin/admin.component';
+import { AddProductFormComponent } from './Pages/admin/add-product-form/add-product-form.component';
 
 
 
@@ -84,7 +86,9 @@ export function tokenGetter() {
     CartItemComponent,
     CartItemListComponent,
     AddToCartModalComponent,
-    TakeOrderFormComponent
+    TakeOrderFormComponent,
+    AdminComponent,
+    AddProductFormComponent
 
 
   ],

@@ -43,7 +43,6 @@ namespace roberrto.Controllers
             var newProduct = new Product
             {
                 Name = model.Name,
-                Type = model.Type,
                 Description = model.Description,
                 Category = model.Category,
                 Img = uniqueFileName,

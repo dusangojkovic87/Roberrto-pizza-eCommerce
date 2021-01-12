@@ -1,17 +1,14 @@
 <div *ngFor="let order of orderDetails">
-<div class="menu-order-item-details-container">
-  <div class="menu-item-img-wrraper">
-    <img src="/images/{{order?.img}}" alt="{{ order?.img }}" />
-  </div>
-  <div class="menu-item-details-wrraper">
-    <p class="menu__item__type">{{ order?.type }}</p>
-    <p class="menu__item__name">{{ order?.name }}</p>
-    <p class="menu__item__price">
-      <span>Price:</span>{{ order?.price }}
-    </p>
-    <p class="menu__item__details__text">{{ order?.description }}</p>
-    <button>Add to Cart</button>
+  <div class="menu-order-item-details-container">
+    <div class="menu-item-img-wrraper">
+      <img src="/images/{{ order?.img }}" alt="{{ order?.img }}" />
+    </div>
+    <div class="menu-item-details-wrraper">
+      <p class="menu__item__type">{{ order?.category }}</p>
+      <p class="menu__item__name">{{ order?.name }}</p>
+      <p class="menu__item__price"><span>Price:</span>{{ order?.price }}</p>
+      <p class="menu__item__details__text">{{ order?.description }}</p>
+      <button>Add to Cart</button>
+    </div>
   </div>
 </div>
-</div>
-

@@ -1,0 +1,70 @@
+<div
+  class="admin-dashboard-container"
+  [ngClass]="{
+    'open-dashboard': dahboardState === true,
+    'close--dashboard': dahboardState === false
+  }"
+>
+  <img
+    (click)="toggleDashboard()"
+    class="close__icon"
+    src="assets/icons/admin/close.svg"
+    alt="close.svg"
+  />
+  <ul>
+    <li>
+      <a routerLink="" routerLinkActive="activeAdminDashboard"
+        ><img
+          class="dashboard__icons"
+          src="assets/icons/admin/addProduct.svg"
+          alt="addProduct.svg"
+        />
+        Add new Product</a
+      >
+    </li>
+    <li>
+      <a>
+        <img
+          class="dashboard__icons"
+          src="assets/icons/admin/removeProduct.svg"
+          alt="removeProduct.svg"
+        />
+        Remove Product</a
+      >
+    </li>
+    <li>
+      <a
+        ><img
+          class="dashboard__icons"
+          src="assets/icons/admin/addTeamMember.svg"
+          alt="addTeamMember.svg"
+        />Add Team Member</a
+      >
+    </li>
+    <li>
+      <a
+        ><img
+          class="dashboard__icons"
+          src="assets/icons/admin/addReview.svg"
+          alt="addReview.svg"
+        />Add Review</a
+      >
+    </li>
+    <li>
+      <a
+        ><img
+          class="dashboard__icons"
+          src="assets/icons/admin/addGalleryImg.svg"
+          alt="addGalleryImg.svg"
+        />Add Gallery Image</a
+      >
+    </li>
+  </ul>
+</div>
+<div class="admin-page-container">
+  <div class="dashboard-btn-wrraper" (click)="toggleDashboard()">
+    <p class="dashboard__btn__text">dashboard</p>
+  </div>
+  <router-outlet></router-outlet>
+</div>
+<app-footer></app-footer>

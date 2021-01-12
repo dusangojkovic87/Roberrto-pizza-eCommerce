@@ -1,0 +1,112 @@
+.admin-dashboard-container {
+  position: fixed;
+  top: 0;
+  background-color: red;
+  width: 20rem;
+  height: 100vh;
+  z-index: 500;
+}
+
+.close__icon {
+  position: absolute;
+  right: 1rem;
+  cursor: pointer;
+  top: 1rem;
+}
+
+.close--dashboard {
+  display: none !important;
+}
+
+.open--dashboard {
+  display: flex !important;
+}
+
+ul {
+  position: relative;
+  top: 5rem;
+}
+
+ul li {
+  list-style: none;
+  padding: 1rem;
+}
+
+ul li a {
+  color: white;
+  font-weight: bold;
+  font-family: "Monserrat";
+  cursor: pointer;
+  text-decoration: none;
+}
+
+ul li a:hover {
+  color: yellow;
+}
+
+.dashboard__icons {
+  position: relative;
+  top: 7px;
+  width: 2rem;
+  height: 2rem;
+  margin-right: 5px;
+}
+
+.admin-page-container {
+  position: relative;
+  top: 0rem;
+  left: 0rem;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-image: url("/assets/img/admin/adminBg.jpg");
+  background-size: cover;
+}
+
+.admin-page-container::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.dashboard-btn-wrraper {
+  position: absolute;
+  top: 7rem;
+  left: 0;
+  background-color: red;
+  width: 1.9rem;
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  cursor: pointer;
+  border-right: 1px solid white;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  box-shadow: 1px 1px black;
+  z-index: 100;
+}
+
+.dashboard__btn__text {
+  position: absolute;
+  writing-mode: vertical-lr;
+  color: white;
+  font-size: 0.8rem;
+  font-family: "Monserrat";
+  text-align: center;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 768px) {
+  .admin-page-container {
+    height: 140vh;
+  }
+
+  .admin-page-container::after {
+    height: 140vh;
+  }
+}

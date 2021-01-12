@@ -6,16 +6,20 @@
     />
   </div>
   <div class="cart-item-details">
-    <p class="cart__item__type">{{ cartItem?.type }}</p>
+    <p class="cart__item__type">{{ cartItem?.category }}</p>
     <p class="cart__item__name">{{ cartItem?.name }}</p>
     <p class="cart__item__price">
-      <span>Price: </span>{{calculatePrice(cartItem)}}
+      <span>Price: </span>{{ calculatePrice(cartItem) }}
     </p>
   </div>
   <div class="cart-quantity-button-wrraper">
-    <button class="quantity__btn" (click)="increaseQuantity(cartItem)">+</button>
+    <button class="quantity__btn" (click)="increaseQuantity(cartItem)">
+      +
+    </button>
     <p class="cart__item__quantity">{{ cartItem?.quantity }}</p>
-    <button class="quantity__btn" (click)="decreaseQuantity(cartItem)">-</button>
+    <button class="quantity__btn" (click)="decreaseQuantity(cartItem)">
+      -
+    </button>
   </div>
   <div class="add-remove-cart-button-wrraper">
     <button (click)="removeCartItem(cartItem)" class="remove__cart__btn">
