@@ -13,8 +13,10 @@ namespace roberrto.Services
         void addTeamMember(TeamMember model);
         void addClientReview(ClientReviewAddModel model);
         void addImgToGallery(Gallery model);
+        ProductModel getProduct(int productId);
         IEnumerable<ProductModel> getProducts();
 
+        void editProduct(Product model,int productId);
 
     }
     public class AdminRepository : IAdminRepository
@@ -62,6 +64,38 @@ namespace roberrto.Services
                 _context.SaveChanges();
 
             }
+        }
+
+        public void editProduct(Product model,int productId)
+        {
+            var productToUpdate =  _context.Product.FirstOrDefault(x => x.Id == productId);
+            if(model.Img == null){
+           productToUpdate.Name = model.Name;
+           productToUpdate.Description = model.Description;
+           productToUpdate.Category = model.Category;
+           productToUpdate.Price = model.Price;
+           productToUpdate.TopOffer = model.TopOffer;
+           _context.Product.Update(productToUpdate);
+           _context.SaveChanges();
+
+            }else{
+           productToUpdate.Name = model.Name;
+           productToUpdate.Description = model.Description;
+           productToUpdate.Category = model.Category;
+           productToUpdate.Price = model.Price;
+           productToUpdate.TopOffer = model.TopOffer;
+           productToUpdate.Img = model.Img;
+           _context.Product.Update(productToUpdate);
+           _context.SaveChanges();
+
+            }
+
+        }
+
+        public ProductModel getProduct(int productId)
+        {
+            var product = _context.Product.FirstOrDefault(x => x.Id == productId);
+            return _mapper.Map<ProductModel>(product);
         }
 
         public IEnumerable<ProductModel> getProducts()

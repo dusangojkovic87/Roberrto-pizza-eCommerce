@@ -45,6 +45,7 @@ import { AdminComponent } from './Pages/admin/admin.component';
 import { AddProductFormComponent } from './Pages/admin/add-product-form/add-product-form.component';
 import { EditProductListComponent } from './Pages/admin/edit-product-list/edit-product-list.component';
 import { EditProductComponent } from './Pages/admin/edit-product-list/edit-product/edit-product.component';
+import { EditProductFormComponent } from './Pages/admin/edit-product-list/edit-product-form/edit-product-form.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -89,6 +90,7 @@ export function tokenGetter() {
     AddProductFormComponent,
     EditProductListComponent,
     EditProductComponent,
+    EditProductFormComponent,
   ],
   imports: [
     BrowserModule,

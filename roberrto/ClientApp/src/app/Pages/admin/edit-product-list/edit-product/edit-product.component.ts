@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/Models/Product';
 import { AdminService } from 'src/app/Services/admin.service';
 
@@ -9,12 +10,15 @@ import { AdminService } from 'src/app/Services/admin.service';
 })
 export class EditProductComponent implements OnInit {
   @Input() product?: Product;
-  constructor(private admin: AdminService) {}
+  @Output() productRemoved = new EventEmitter<boolean>();
+  constructor(private admin: AdminService, private router: Router) {}
 
   ngOnInit(): void {}
 
-  editProduct(event: Event) {
-    console.log('radi');
+  editProduct(product?: Product) {
+    if (product) {
+      this.router.navigate([`/admin/edit/${product.id}`]);
+    }
   }
 
   removeProduct(product?: Product) {
@@ -23,7 +27,7 @@ export class EditProductComponent implements OnInit {
       if (product) {
         this.admin.removeProduct(product).subscribe(
           (data) => {
-            console.log(data);
+            this.productRemoved.emit(true);
             this.admin.dataChanged.next(true);
           },
           (err) => {

@@ -43,7 +43,31 @@ namespace roberrto.Controllers
 
         }
 
+        [HttpGet]
+        [Route("get-product/{id:int}")]
+        public IActionResult getProduct([FromRoute] int id)
+        {
+            try
+            {
+                var productId = id;
+                var product = _admin.getProduct(productId);
+                if (product != null)
+                {
+                    return Ok(product);
+                }
+                else
+                {
+                    return BadRequest(new { error = "Product not found!" });
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(500, new { error = "Server error,cannot get product!" });
 
+            }
+
+        }
 
 
         [HttpPost]
@@ -81,6 +105,60 @@ namespace roberrto.Controllers
                 Console.WriteLine(e);
                 return StatusCode(500, new { error = "Server error,product not added!" });
             }
+        }
+
+        [HttpPost]
+        [Route("edit-product/{id:int}")]
+        public IActionResult editProduct([FromForm] ProductEdit model,int id){
+           
+            if(ModelState.IsValid){
+                try
+           {
+                var productId = id;
+               if(model.Img != null){
+                   string pathToSave = "/wwwroot/images/";
+                   string uniqueImgName = UploadImage(model.Img,_contentRoot,pathToSave);
+                   var product = new Product{
+                       Name = model.Name,
+                       Description = model.Description,
+                       Category = model.Category,
+                       Img = uniqueImgName,
+                       Price = model.Price,
+                       TopOffer = model.TopOffer
+                   };
+                 _admin.editProduct(product,productId);
+                return Ok(new {message = "Product updated!"}); 
+               }else{
+                   var product = new Product{
+                       Name = model.Name,
+                       Description = model.Description,
+                       Category = model.Category,
+                       Price = model.Price,
+                       TopOffer = model.TopOffer
+                   };
+                   _admin.editProduct(product,productId);
+                   return Ok(new {message = "Product updated!"}); 
+
+
+               }
+              
+
+
+                   
+           }
+           catch (Exception e)
+           {
+               Console.WriteLine(e);    
+               return StatusCode(500,new{error = "Server error,product not updated!"});
+           }
+
+            }else{
+                return BadRequest(ModelState);
+            }
+
+           
+
+            
         }
 
         private string UploadImage(IFormFile img, string root, string pathToSave)

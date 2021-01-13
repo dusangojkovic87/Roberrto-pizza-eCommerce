@@ -1,5 +1,11 @@
 <div class="edit-product-list-container">
+  <div *ngIf="removedSuccessMessage" class="removed-message-container">
+    <p>Product removed!</p>
+  </div>
   <div *ngFor="let p of ProductList">
-    <app-edit-product [product]="p"></app-edit-product>
+    <app-edit-product
+      (productRemoved)="displayRemovedMessage($event)"
+      [product]="p"
+    ></app-edit-product>
   </div>
 </div>

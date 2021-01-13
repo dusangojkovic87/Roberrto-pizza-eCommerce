@@ -9,6 +9,7 @@ import { AdminService } from 'src/app/Services/admin.service';
 })
 export class EditProductListComponent implements OnInit {
   ProductList: Product[] = [];
+  removedSuccessMessage: boolean = false;
 
   constructor(private admin: AdminService) {}
 
@@ -25,5 +26,16 @@ export class EditProductListComponent implements OnInit {
     this.admin.getProducts().subscribe((data: Product[]) => {
       this.ProductList = data;
     });
+  }
+
+  displayRemovedMessage(event: boolean) {
+    console.log(event);
+
+    if (event) {
+      this.removedSuccessMessage = true;
+      setTimeout(() => {
+        this.removedSuccessMessage = false;
+      }, 3000);
+    }
   }
 }

@@ -16,6 +16,7 @@ import { AuthGuard } from './Guards/auth.guard';
 import { AdminComponent } from './Pages/admin/admin.component';
 import { AddProductFormComponent } from './Pages/admin/add-product-form/add-product-form.component';
 import { EditProductListComponent } from './Pages/admin/edit-product-list/edit-product-list.component';
+import { EditProductFormComponent } from './Pages/admin/edit-product-list/edit-product-form/edit-product-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -27,6 +28,7 @@ const routes: Routes = [
     children: [
       { path: 'add', component: AddProductFormComponent },
       { path: 'edit', component: EditProductListComponent },
+      { path: 'edit/:id', component: EditProductFormComponent },
     ],
   },
   {

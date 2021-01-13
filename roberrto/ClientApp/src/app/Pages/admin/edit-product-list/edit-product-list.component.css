@@ -2,3 +2,18 @@
   position: relative;
   top: 9rem;
 }
+
+.removed-message-container {
+  position: relative;
+  width: 35rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.removed-message-container p {
+  color: red;
+}

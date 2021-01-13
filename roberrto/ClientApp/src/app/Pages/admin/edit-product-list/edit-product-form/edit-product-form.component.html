@@ -1,0 +1,65 @@
+<div class="preview-img-wrraper">
+  <img src="{{ ImgPreview }}" alt="{{ ImgPreview }}" />
+</div>
+<div class="edit-product-form-container">
+  <form
+    [formGroup]="editProductForm"
+    (ngSubmit)="editProduct()"
+    enctype="multipart/form-data"
+  >
+    <div
+      class="errors-container"
+      *ngIf="
+        (editProductForm.get('Name').touched &&
+          editProductForm.get('Name').hasError('required')) ||
+        (editProductForm.get('Description').touched &&
+          editProductForm.get('Description').hasError('required')) ||
+        (editProductForm.get('Category').touched &&
+          editProductForm.get('Description').hasError('required')) ||
+        (editProductForm.get('TopOffer').touched &&
+          editProductForm.get('Description').hasError('required')) ||
+        (editProductForm.get('Price').touched &&
+          editProductForm.get('Price').hasError('required')) ||
+        (editProductForm.get('Img').touched &&
+          editProductForm.get('Img').hasError('required'))
+      "
+    >
+      <p>*Fields cannot be empty!</p>
+    </div>
+    <div *ngIf="showSuccessMessage" class="message-container">
+      <p>Product updated!</p>
+    </div>
+    <div class="form-group">
+      <label for="Name">Name:</label>
+      <input type="text" name="Name" formControlName="Name" />
+      <label for="Description">Description</label>
+      <textarea
+        id="description"
+        name="Description"
+        cols="40"
+        rows="7"
+        formControlName="Description"
+      >
+      </textarea>
+      <label for="Category">Category:</label>
+      <select name="Cattegory" id="category" formControlName="Category">
+        <option value="Pizza">Pizza</option>
+        <option value="Pizza">Sandwich</option>
+        <option value="Pizza">Drink</option>
+        <option value="Pizza">Desert</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="top-offer">Top offer:</label>
+      <select name="TopOffer" id="topOffer" formControlName="TopOffer">
+        <option value="false">No</option>
+        <option value="true">Yes</option>
+      </select>
+      <label for="Price">Price:</label>
+      <input type="number" name="Price" formControlName="Price" />
+      <label for="Img">Image:</label>
+      <input type="file" (change)="onFileChange($event)" required />
+      <button class="add__product__btn" type="submit">Add Product</button>
+    </div>
+  </form>
+</div>

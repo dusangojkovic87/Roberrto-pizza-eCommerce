@@ -20,9 +20,22 @@ export class AdminService {
     this.dataChanged$ = this.dataChanged.asObservable();
   }
 
+  getProduct(id: number) {
+    return this.http.get<Product>(
+      `http://localhost:5000/admin/get-product/${id}`
+    );
+  }
+
   getProducts() {
     return this.http.get<Product[]>('http://localhost:5000/admin/get-products');
   }
+
+  editProduct(data:any,id:number){
+    return this.http.post(`http://localhost:5000/admin/edit-product/${id}`,data,this.options);
+
+  }
+
+
 
   removeProduct(product: Product) {
     return this.http.delete(
