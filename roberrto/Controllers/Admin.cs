@@ -265,7 +265,7 @@ namespace roberrto.Controllers
             try
             {
                 _admin.addImgToGallery(galleryImg);
-                return Ok("Image added!");
+                return Ok(new {message = "Image uploaded!"});
             }
             catch (Exception e)
             {

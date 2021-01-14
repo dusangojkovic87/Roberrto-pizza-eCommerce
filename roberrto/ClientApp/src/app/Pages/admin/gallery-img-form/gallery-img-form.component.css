@@ -1,0 +1,64 @@
+.gallery-img-form-container{
+  position: relative;
+  top: 12rem;
+  z-index: 10;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form input{
+  width: 14rem;
+  height: 2rem;
+  margin-left:2rem;
+}
+
+label{
+  color: white;
+  font-family: "Monserrat";
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+button{
+  width: 12rem;
+  height: 2rem;
+  background-color: #f1c40f;
+  margin-top: 2rem;
+  color: black;
+  font-family: "Monserrat";
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+  outline: none;
+
+}
+
+.message-container{
+  position: relative;
+  top: -2rem;
+  width: 20rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.message-container p{
+  color: green;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: "Monserrat";
+}
+
+@media only screen and (max-width:350px){
+  .message-container{
+    width:14rem;
+  }
+}

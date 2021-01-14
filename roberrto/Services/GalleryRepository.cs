@@ -29,7 +29,7 @@ namespace roberrto.Services
 
         List<GalleryImgGetModel> IGalleryRepository.GetGalleryImages()
         {
-             var result =  _context.Gallery.Where(i => i.Show == true).Take(6).OrderBy(i => i.Id).ToList();
+             var result =  _context.Gallery.Where(i => i.Show == true).ToList();
              var images = _mapper.Map<List<GalleryImgGetModel>>(result);
              return images;
         }

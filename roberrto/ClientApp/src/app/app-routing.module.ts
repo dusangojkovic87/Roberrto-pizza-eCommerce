@@ -19,6 +19,7 @@ import { EditProductListComponent } from './Pages/admin/edit-product-list/edit-p
 import { EditProductFormComponent } from './Pages/admin/edit-product-list/edit-product-form/edit-product-form.component';
 import { AddTeamMemberFormComponent } from './Pages/admin/add-team-member-form/add-team-member-form.component';
 import { AddReviewFormComponent } from './Pages/admin/add-review-form/add-review-form.component';
+import { GalleryImgFormComponent } from './Pages/admin/gallery-img-form/gallery-img-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -33,7 +34,8 @@ const routes: Routes = [
       { path: 'edit', component: EditProductListComponent },
       { path: 'edit/:id', component: EditProductFormComponent },
       { path: 'add-team-member', component: AddTeamMemberFormComponent },
-      { path: 'review', component: AddReviewFormComponent }
+      { path: 'review', component: AddReviewFormComponent },
+      { path: 'gallery-img', component: GalleryImgFormComponent }
 
     ]
   },

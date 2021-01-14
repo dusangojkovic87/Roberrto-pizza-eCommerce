@@ -1,4 +1,5 @@
 import { Component,OnInit } from '@angular/core';
+import { take } from 'rxjs/operators';
 import { GalleryImg } from 'src/app/Models/GalleryImg';
 import { GalleryService } from 'src/app/Services/gallery.service';
 
@@ -19,7 +20,9 @@ export class GalleryComponent implements OnInit {
   constructor(private http:GalleryService) { }
 
   ngOnInit(): void {
-    this.http.getImages().subscribe(data =>{
+    this.http.getImages().pipe(
+      take(6)
+    ).subscribe(data =>{
        this.galleryImages = data;
     })
   }

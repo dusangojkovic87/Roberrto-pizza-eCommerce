@@ -1,0 +1,11 @@
+<div class="gallery-img-form-container">
+  <form [formGroup] = "addImageForm" (ngSubmit) = addGalleryImg()>
+    <div *ngIf="showSuccessMessage" class="message-container">
+       <p>Image uploaded!</p>
+    </div>
+    <label for="Img">Add image:</label>
+    <input type="file" (change) = "onFileChange($event)" />
+    <button type="submit">Add image</button>
+  </form>
+
+</div>

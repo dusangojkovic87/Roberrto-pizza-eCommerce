@@ -57,4 +57,9 @@ export class AdminService {
   addReview(review:ClientReview){
     return this.http.post<ClientReview>("http://localhost:5000/admin/add-review",review);
   }
+
+  addGalleryImg(img:any){
+    return this.http.post("http://localhost:5000/admin/add-gallery-img",img);
+
+  }
 }
