@@ -47,6 +47,7 @@ import { EditProductListComponent } from './Pages/admin/edit-product-list/edit-p
 import { EditProductComponent } from './Pages/admin/edit-product-list/edit-product/edit-product.component';
 import { EditProductFormComponent } from './Pages/admin/edit-product-list/edit-product-form/edit-product-form.component';
 import { AddTeamMemberFormComponent } from './Pages/admin/add-team-member-form/add-team-member-form.component';
+import { AddReviewFormComponent } from './Pages/admin/add-review-form/add-review-form.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -93,6 +94,8 @@ export function tokenGetter() {
     EditProductComponent,
     EditProductFormComponent,
     AddTeamMemberFormComponent,
+    AddReviewFormComponent
+
   ],
   imports: [
     BrowserModule,

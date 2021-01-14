@@ -1,0 +1,123 @@
+.add-review-container{
+  position: relative;
+  top:13rem;
+  z-index: 10;
+}
+
+form{
+  width: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label{
+  position: relative;
+  color: white;
+  font-family: "Monserrat";
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  left:-6rem
+}
+
+form input{
+  width: 20rem;
+  height: 2rem;
+  margin-bottom: 1rem;
+  outline: none;
+}
+
+textarea{
+  margin-bottom: 1rem;
+  width: 20rem;
+  outline: none;
+}
+
+button{
+  width: 12rem;
+  margin: 0 auto;
+  height: 2rem;
+  border-radius: 12px;
+  background-color:  #f1c40f;
+  color: black;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+}
+
+.error-container{
+  position: absolute;
+  top: -4rem;
+  width: 20rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-container p{
+  color: red;
+  font-family: "Monserrat";
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.message-container{
+  position: relative;
+  top: 9rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 20rem;
+  height: 2rem;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.message-container p{
+  color: green;
+  font-family: "Monserrat";
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+@media only screen and (max-width:377px){
+  form input {
+    width: 17rem;
+  }
+
+  textarea{
+    width: 17rem;
+  }
+
+  label{
+    left: -4rem;
+  }
+}
+
+
+@media only screen and (max-width:352px){
+  form{
+    width:15rem
+  }
+
+
+  form input {
+    width: 14rem;
+  }
+
+  textarea{
+    width: 14rem;
+  }
+
+  label{
+    left: -3rem;
+  }
+
+
+
+}
+

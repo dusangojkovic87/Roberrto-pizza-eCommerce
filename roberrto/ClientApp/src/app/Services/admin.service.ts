@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ClientReview } from '../Models/ClientReview';
 import { Product } from '../Models/Product';
 
 @Injectable({
@@ -51,5 +52,9 @@ export class AdminService {
 
   addTeamMember(data:any){
     return this.http.post("http://localhost:5000/admin/add-member",data);
+  }
+
+  addReview(review:ClientReview){
+    return this.http.post<ClientReview>("http://localhost:5000/admin/add-review",review);
   }
 }

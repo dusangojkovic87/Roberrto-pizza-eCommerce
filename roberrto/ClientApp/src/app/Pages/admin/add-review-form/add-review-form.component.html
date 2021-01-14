@@ -1,0 +1,23 @@
+<div class="message-container" *ngIf="showSuccessMessage">
+  <p>review added!</p>
+</div>
+<div class="add-review-container">
+  <form [formGroup]="addReviewForm" (ngSubmit)="addReview()">
+    <div
+      class="error-container"
+      *ngIf="
+        (addReviewForm.get('ClientFullName').touched &&
+          addReviewForm.get('ClientFullName').hasError('required')) ||
+        (addReviewForm.get('Text').touched &&
+          addReviewForm.get('Text').hasError('required'))
+      "
+    >
+      <p>*Fields cannot be empty!</p>
+    </div>
+    <label for="ClientFullName">Client Full Name:</label>
+    <input type="text" name="ClientFullName" formControlName="ClientFullName" />
+    <label for="Text">Review Text:</label>
+    <textarea name="Text" id="" cols="30" rows="10" formControlName="Text"></textarea>
+    <button type="submit">add review</button>
+  </form>
+</div>
