@@ -1,0 +1,130 @@
+.add-team-member-container{
+  position: relative;
+  top:11rem;
+  z-index: 10;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+form{
+  position: relative;
+  width:20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form input{
+  position: relative;
+  width: 20rem;
+  height: 2rem;
+  margin:0.3rem;
+  outline: none;
+}
+
+label{
+  position: relative;
+  color: white;
+  font-family: "Monserrat";
+  font-size: 1rem;
+  left:-7.4rem;
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+
+}
+
+button{
+  width: 12rem;
+  height: 2rem;
+  margin-top: 3rem;
+  background-color: #f1c40f;
+  color: black;
+  border-radius: 12px;
+  font-family: "Monserrat";
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.message-container{
+  position: relative;
+  top: 9rem;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 20rem;
+  margin: 0 auto;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.message-container p{
+  color: green;
+  font-size: 1rem;
+  font-family: "Monserrat";
+  font-weight: bold;
+
+}
+
+.error-container{
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 20rem;
+  z-index: 10;
+  top: -4rem;
+}
+
+.error-container p{
+  color: red;
+  font-family: "Monserrat";
+  font-weight: bold;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (max-width:391px){
+  form input{
+    width:17rem;
+  }
+
+  label{
+    left: -6rem;
+  }
+
+  .error-container{
+    width:17rem;
+  }
+
+  .message-container{
+    width:17rem;
+
+  }
+}
+
+@media only screen and (max-width:355px){
+  form input{
+    width:14rem;
+  }
+
+  label{
+    left: -4.5rem;
+  }
+
+  .error-container{
+    width:14rem;
+  }
+
+  .message-container{
+    width:14rem;
+
+  }
+
+
+}
+
+

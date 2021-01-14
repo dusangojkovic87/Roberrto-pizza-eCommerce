@@ -34,8 +34,8 @@ export class AddProductFormComponent implements OnInit {
     formData.append('Category', this.addProductForm.get('Category').value);
     formData.append('TopOffer', this.addProductForm.get('TopOffer').value);
     formData.append('Price', this.addProductForm.get('Price').value);
-
     formData.append('Img', this.addProductForm.get('Img').value);
+
     this.admin.addNewProduct(formData).subscribe(
       (data) => {
         this.addProductForm.reset();

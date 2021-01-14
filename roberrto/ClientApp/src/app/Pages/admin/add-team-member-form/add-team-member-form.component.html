@@ -1,0 +1,29 @@
+<div *ngIf="showSuccessMessage" class="message-container">
+  <p>Team member added!</p>
+</div>
+<div class="add-team-member-container">
+  <form [formGroup]="teamMemberForm" (ngSubmit)="addTeamMember()">
+    <div
+      class="error-container"
+      *ngIf="
+        (teamMemberForm.get('FullName').touched &&
+          teamMemberForm.get('FullName').hasError('required')) ||
+        (teamMemberForm.get('Job').touched &&
+          teamMemberForm.get('Job').hasError('required')) ||
+        (teamMemberForm.get('Email').touched &&
+          teamMemberForm.get('Email').hasError('required'))
+      "
+    >
+      <p>*Fields cannot be empty</p>
+    </div>
+    <label for="FullName">FullName:</label>
+    <input type="text" name="FullName" formControlName="FullName" />
+    <label for="Job">Job title:</label>
+    <input type="text" name="Job" formControlName="Job" />
+    <label for="Img">Image:</label>
+    <input type="file" (change)="onFileChange($event)" />
+    <label for="Email">Email:</label>
+    <input type="text" name="Email" formControlName="Email" />
+    <button type="submit">Add member</button>
+  </form>
+</div>

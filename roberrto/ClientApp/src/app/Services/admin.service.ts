@@ -35,8 +35,6 @@ export class AdminService {
 
   }
 
-
-
   removeProduct(product: Product) {
     return this.http.delete(
       `http://localhost:5000/admin/remove-product/${product.id}`
@@ -49,5 +47,9 @@ export class AdminService {
       data,
       this.options
     );
+  }
+
+  addTeamMember(data:any){
+    return this.http.post("http://localhost:5000/admin/add-member",data);
   }
 }
