@@ -17,3 +17,13 @@
 .removed-message-container p {
   color: red;
 }
+
+.pagination-control /deep/ ul{
+  position: relative;
+  top: 4rem;
+  z-index: 10000 !important;
+}
+
+.pagination-control /deep/ ul li a{
+ color: white;
+}

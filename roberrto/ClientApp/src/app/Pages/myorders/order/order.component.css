@@ -1,0 +1,40 @@
+.order-container{
+  position: relative;
+  z-index: 10;
+  display: flex;
+  width:15rem;
+  height:17rem;
+  flex-direction: column;
+  align-items: center;
+  background-image:linear-gradient(to right,#FFB75E,#ED8F03);
+  border-radius: 12px;
+  border: 1px solid white;
+  margin: 1rem;
+}
+
+.order-container p{
+  color: white;
+  font-family: "Monserrat";
+  font-size: 1rem;
+
+}
+
+.order__details__btn{
+  position: relative;
+  width: 12rem;
+  height: 2rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  font-family: "Monserrat";
+  font-size: 1rem;
+  font-weight: bold;
+  background-color:#ecf0f1;
+  outline: none;
+}
+
+span{
+  color: #c0392b;
+  margin-right: 1rem;
+  font-weight: bolder;
+  text-shadow: 1px 1px black;
+}

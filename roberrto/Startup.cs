@@ -37,6 +37,7 @@ namespace roberrto
             services.AddScoped<IGalleryRepository, GalleryRepository>();
             services.AddScoped<ICartRepository, CartRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IMyOrdersRepository, MyOrdersRepository>();
 
 
             services.AddCors(opt =>

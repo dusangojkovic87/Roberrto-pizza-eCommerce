@@ -21,6 +21,7 @@ namespace roberrto.Helpers
             CreateMap<ProductModel, Product>().ReverseMap();
             CreateMap<OrderItemsGetModel, OrderItems>().ReverseMap();
             CreateMap<CartItems, OrderItemsGetModel>().ReverseMap();
+            CreateMap<OrdersGetModel, Orders>().ReverseMap();
 
         }
 

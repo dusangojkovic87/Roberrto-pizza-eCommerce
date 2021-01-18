@@ -21,6 +21,9 @@
       <li class="nav__link">
         <a routerLink="/orders" routerLinkActive="activeNavLink">Orders</a>
       </li>
+      <li *ngIf="auth.isAuthenticated()" class="nav__link">
+        <a routerLink="/my-orders" routerLinkActive="activeNavLink">My Orders</a>
+      </li>
       <li *ngIf="!auth.isAuthenticated()" class="nav__link">
         <a routerLink="/login" routerLinkActive="activeNavLink">Login</a>
       </li>

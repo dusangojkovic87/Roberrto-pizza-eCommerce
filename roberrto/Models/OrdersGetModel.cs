@@ -2,12 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using roberrto.Entities;
 
-namespace roberrto.Entities
+namespace roberrto.Models
 {
-    public class Orders
+    public class OrdersGetModel
     {
-        [Key]
+
+
+       
         public int Id { get; set; }
         [Required]
         public DateTime OrderDate { get; set; }
@@ -18,9 +21,6 @@ namespace roberrto.Entities
         public string Adress { get; set; }
         public DateTime? DateDelivered { get; set; }
         public DateTime? DateShipped { get; set; }
-        public int StoreUserId { get; set; }
-        public int OrderItemsId { get; set; }
-        public StoreUser StoreUser { get; set; }
         public ICollection<OrderItems> OrderItems { get; set; }
 
     }

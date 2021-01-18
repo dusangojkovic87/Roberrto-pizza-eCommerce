@@ -253,8 +253,8 @@ namespace roberrto.Migrations
                     OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TotalPrice = table.Column<decimal>(type: "decimal(18,4)", nullable: false),
                     Adress = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DateDelivered = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateShipped = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateDelivered = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DateShipped = table.Column<DateTime>(type: "datetime2", nullable: true),
                     StoreUserId = table.Column<int>(type: "int", nullable: false),
                     OrderItemsId = table.Column<int>(type: "int", nullable: false)
                 },

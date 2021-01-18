@@ -20,11 +20,13 @@ import { EditProductFormComponent } from './Pages/admin/edit-product-list/edit-p
 import { AddTeamMemberFormComponent } from './Pages/admin/add-team-member-form/add-team-member-form.component';
 import { AddReviewFormComponent } from './Pages/admin/add-review-form/add-review-form.component';
 import { GalleryImgFormComponent } from './Pages/admin/gallery-img-form/gallery-img-form.component';
+import { MyordersComponent } from './Pages/myorders/myorders.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'my-orders', component: MyordersComponent },
   {
     path: 'admin',
     component: AdminComponent,

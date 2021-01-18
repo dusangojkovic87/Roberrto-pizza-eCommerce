@@ -258,10 +258,10 @@ namespace roberrto.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("DateDelivered")
+                    b.Property<DateTime?>("DateDelivered")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateShipped")
+                    b.Property<DateTime?>("DateShipped")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("OrderDate")

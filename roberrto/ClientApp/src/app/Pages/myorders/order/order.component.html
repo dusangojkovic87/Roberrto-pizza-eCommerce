@@ -1,0 +1,7 @@
+<div class="order-container">
+    <p class="order__date"><span>Order date:</span>{{order?.orderDate | date}}</p>
+    <p class="total__price"><span>Total Price:</span>{{order?.totalPrice}}</p>
+    <p class="date__delivered"><span>Delivered:</span>{{order?.dateDelivered ? null : 'not delivered'}}</p>
+    <p class="date__shipped"><span>Shipped:</span>{{order?.dateShipped ? null : 'not shipped'}}</p>
+    <button class="order__details__btn">Order details</button>
+</div>

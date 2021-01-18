@@ -2,10 +2,13 @@
   <div *ngIf="removedSuccessMessage" class="removed-message-container">
     <p>Product removed!</p>
   </div>
-  <div *ngFor="let p of ProductList">
+  <div *ngFor="let p of ProductList | paginate:{itemsPerPage:2,currentPage:p}">
     <app-edit-product
       (productRemoved)="displayRemovedMessage($event)"
       [product]="p"
     ></app-edit-product>
   </div>
+  <pagination-controls class="pagination-control"  (pageChange) = "p = $event"></pagination-controls>
+
+
 </div>

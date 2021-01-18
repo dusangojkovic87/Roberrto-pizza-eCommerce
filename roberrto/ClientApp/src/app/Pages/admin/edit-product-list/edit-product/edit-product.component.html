@@ -1,11 +1,14 @@
-<div class="edit-product-container">
-  <p class="edit__product__category">{{ product?.category }}</p>
-  <p class="edit__product__name">{{ product?.name }}</p>
-  <p class="edit__product__price"><span>Price:</span>{{ product?.price }}</p>
-  <button (click)="editProduct(product)" class="edit__product__btn">
-    Edit
-  </button>
-  <button (click)="removeProduct(product)" class="remove__product__btn">
-    Remove
-  </button>
-</div>
+  <div class="edit-product-container">
+    <p class="edit__product__category">{{ product?.category }}</p>
+    <p class="edit__product__name">{{ product?.name }}</p>
+    <p class="edit__product__price"><span>Price:</span>{{ product?.price }}</p>
+      <button (click)="editProduct(product)" class="edit__product__btn">
+        Edit
+      </button>
+      <button (click)="removeProduct(product)" class="remove__product__btn">
+        Remove
+      </button>
+   </div>
+
+
+

@@ -10,6 +10,7 @@ import { AdminService } from 'src/app/Services/admin.service';
 export class EditProductListComponent implements OnInit {
   ProductList: Product[] = [];
   removedSuccessMessage: boolean = false;
+  p:number = 1;
 
   constructor(private admin: AdminService) {}
 

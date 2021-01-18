@@ -1,0 +1,12 @@
+<div class="no-orders-wrraper" *ngIf="myOrdersList.length == 0">
+   <p>You have no orders yet!</p>
+</div>
+<div class="my-orders-container">
+     <div class="my-orders-wrraper">
+       <div *ngFor="let order of myOrdersList | paginate:{itemsPerPage:2,currentPage:p}">
+            <app-order [order] = "order"></app-order>
+       </div>
+     </div>
+</div>
+<pagination-controls class="pagination-control"  (pageChange) = "p = $event"></pagination-controls>
+<app-footer></app-footer>

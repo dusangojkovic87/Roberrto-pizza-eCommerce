@@ -10,7 +10,7 @@ using roberrto.Models;
 namespace roberrto.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    [Migration("20210109163439_addEntities")]
+    [Migration("20210117170855_addEntities")]
     partial class addEntities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -260,10 +260,10 @@ namespace roberrto.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("DateDelivered")
+                    b.Property<DateTime?>("DateDelivered")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateShipped")
+                    b.Property<DateTime?>("DateShipped")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("OrderDate")

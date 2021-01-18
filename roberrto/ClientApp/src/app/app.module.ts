@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -49,6 +50,8 @@ import { EditProductFormComponent } from './Pages/admin/edit-product-list/edit-p
 import { AddTeamMemberFormComponent } from './Pages/admin/add-team-member-form/add-team-member-form.component';
 import { AddReviewFormComponent } from './Pages/admin/add-review-form/add-review-form.component';
 import { GalleryImgFormComponent } from './Pages/admin/gallery-img-form/gallery-img-form.component';
+import { MyordersComponent } from './Pages/myorders/myorders.component';
+import { OrderComponent } from './Pages/myorders/order/order.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -96,7 +99,9 @@ export function tokenGetter() {
     EditProductFormComponent,
     AddTeamMemberFormComponent,
     AddReviewFormComponent,
-    GalleryImgFormComponent
+    GalleryImgFormComponent,
+    MyordersComponent,
+    OrderComponent
 
   ],
   imports: [
@@ -105,6 +110,7 @@ export function tokenGetter() {
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgxPaginationModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
