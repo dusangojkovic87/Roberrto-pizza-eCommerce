@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using roberrto.Services;
 
 namespace roberrto.Controllers
@@ -11,9 +12,11 @@ namespace roberrto.Controllers
     public class MyOrders : ControllerBase
     {
         private readonly IMyOrdersRepository _myOrders;
+        private readonly ILogger<MyOrders> _logger;
 
-        public MyOrders(IMyOrdersRepository myOrders)
+        public MyOrders(IMyOrdersRepository myOrders, ILogger<MyOrders> logger)
         {
+             _logger = logger;
             _myOrders = myOrders;
 
         }
@@ -27,19 +30,19 @@ namespace roberrto.Controllers
 
             try
             {
-            var userId = getUserIdFromContext();
-            var orders =  _myOrders.getOrders(userId);
-            return Ok(orders);
-                
+                var userId = getUserIdFromContext();
+                var orders = _myOrders.getOrders(userId);
+                return Ok(orders);
+
             }
             catch (Exception e)
             {
-              Console.WriteLine(e);
-              return StatusCode(500,new {error = "Server error,cannot get orders"});
-                
-              
+                _logger.LogWarning(e.ToString());
+                return StatusCode(500, new { error = "Server error,cannot get orders" });
+
+
             }
-           
+
         }
 
         private int getUserIdFromContext()

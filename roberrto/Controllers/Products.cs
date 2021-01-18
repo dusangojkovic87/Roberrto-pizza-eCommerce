@@ -1,5 +1,6 @@
 using System;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using roberrto.Services;
 
 namespace roberrto.Controllers
@@ -10,9 +11,11 @@ namespace roberrto.Controllers
     {
 
         public IProductRepository _product;
+        private readonly ILogger<Products> _logger;
 
-        public Products(IProductRepository product)
+        public Products(IProductRepository product, ILogger<Products> logger)
         {
+             _logger = logger;
             _product = product;
 
         }
@@ -29,7 +32,7 @@ namespace roberrto.Controllers
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+               _logger.LogWarning(e.ToString());
                 return BadRequest(new { error = "Cannot get products!" });
             }
 
@@ -46,7 +49,7 @@ namespace roberrto.Controllers
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+               _logger.LogWarning(e.ToString());
                 return BadRequest(new { error = "Cannot get products!" });
 
             }
@@ -65,7 +68,7 @@ namespace roberrto.Controllers
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+               _logger.LogWarning(e.ToString());
                 return StatusCode(500, new { error = "Server error,cannot get order details" });
 
 

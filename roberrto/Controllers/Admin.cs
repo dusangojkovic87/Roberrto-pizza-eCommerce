@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using roberrto.Entities;
 using roberrto.Models;
 using roberrto.Services;
@@ -18,9 +19,17 @@ namespace roberrto.Controllers
 
         private readonly IAdminRepository _admin;
 
-        public Admin(IAdminRepository admin, IMapper mapper, IWebHostEnvironment env)
+        public IMapper Mapper { get; }
+        public IWebHostEnvironment Env { get; }
+
+        private readonly ILogger<Admin> _logger;
+
+        public Admin(IAdminRepository admin, IMapper mapper, IWebHostEnvironment env, ILogger<Admin> logger)
         {
+            _logger = logger;
             _admin = admin;
+            Mapper = mapper;
+            Env = env;
 
             _contentRoot = env.ContentRootPath;
         }
@@ -36,7 +45,7 @@ namespace roberrto.Controllers
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                _logger.LogWarning(e.ToString());
                 return StatusCode(500, new { error = "Server error,cannot get products!" });
 
             }
@@ -62,7 +71,7 @@ namespace roberrto.Controllers
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+               _logger.LogWarning(e.ToString());
                 return StatusCode(500, new { error = "Server error,cannot get product!" });
 
             }
@@ -102,63 +111,72 @@ namespace roberrto.Controllers
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+               _logger.LogWarning(e.ToString());
                 return StatusCode(500, new { error = "Server error,product not added!" });
             }
         }
 
         [HttpPost]
         [Route("edit-product/{id:int}")]
-        public IActionResult editProduct([FromForm] ProductEdit model,int id){
-           
-            if(ModelState.IsValid){
+        public IActionResult editProduct([FromForm] ProductEdit model, int id)
+        {
+
+            if (ModelState.IsValid)
+            {
                 try
-           {
-                var productId = id;
-               if(model.Img != null){
-                   string pathToSave = "/wwwroot/images/";
-                   string uniqueImgName = UploadImage(model.Img,_contentRoot,pathToSave);
-                   var product = new Product{
-                       Name = model.Name,
-                       Description = model.Description,
-                       Category = model.Category,
-                       Img = uniqueImgName,
-                       Price = model.Price,
-                       TopOffer = model.TopOffer
-                   };
-                 _admin.editProduct(product,productId);
-                return Ok(new {message = "Product updated!"}); 
-               }else{
-                   var product = new Product{
-                       Name = model.Name,
-                       Description = model.Description,
-                       Category = model.Category,
-                       Price = model.Price,
-                       TopOffer = model.TopOffer
-                   };
-                   _admin.editProduct(product,productId);
-                   return Ok(new {message = "Product updated!"}); 
+                {
+                    var productId = id;
+                    if (model.Img != null)
+                    {
+                        string pathToSave = "/wwwroot/images/";
+                        string uniqueImgName = UploadImage(model.Img, _contentRoot, pathToSave);
+                        var product = new Product
+                        {
+                            Name = model.Name,
+                            Description = model.Description,
+                            Category = model.Category,
+                            Img = uniqueImgName,
+                            Price = model.Price,
+                            TopOffer = model.TopOffer
+                        };
+                        _admin.editProduct(product, productId);
+                        return Ok(new { message = "Product updated!" });
+                    }
+                    else
+                    {
+                        var product = new Product
+                        {
+                            Name = model.Name,
+                            Description = model.Description,
+                            Category = model.Category,
+                            Price = model.Price,
+                            TopOffer = model.TopOffer
+                        };
+                        _admin.editProduct(product, productId);
+                        return Ok(new { message = "Product updated!" });
 
 
-               }
-              
+                    }
 
 
-                   
-           }
-           catch (Exception e)
-           {
-               Console.WriteLine(e);    
-               return StatusCode(500,new{error = "Server error,product not updated!"});
-           }
 
-            }else{
+
+                }
+                catch (Exception e)
+                {
+                   _logger.LogWarning(e.ToString());
+                    return StatusCode(500, new { error = "Server error,product not updated!" });
+                }
+
+            }
+            else
+            {
                 return BadRequest(ModelState);
             }
 
-           
 
-            
+
+
         }
 
         private string UploadImage(IFormFile img, string root, string pathToSave)
@@ -196,7 +214,7 @@ namespace roberrto.Controllers
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+               _logger.LogWarning(e.ToString());
                 return StatusCode(500, new { error = "Server error,product not deleted!" });
 
             }
@@ -226,7 +244,7 @@ namespace roberrto.Controllers
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+              _logger.LogWarning(e.ToString());
                 return StatusCode(500, new { error = "Server error,member not added!" });
             }
         }
@@ -244,7 +262,7 @@ namespace roberrto.Controllers
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+               _logger.LogWarning(e.ToString());
                 return StatusCode(500, new { error = "Server error,client not added!" });
             }
         }
@@ -265,11 +283,11 @@ namespace roberrto.Controllers
             try
             {
                 _admin.addImgToGallery(galleryImg);
-                return Ok(new {message = "Image uploaded!"});
+                return Ok(new { message = "Image uploaded!" });
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+               _logger.LogWarning(e.ToString());
                 return StatusCode(500, new { error = "Server error,img not added!" });
             }
         }

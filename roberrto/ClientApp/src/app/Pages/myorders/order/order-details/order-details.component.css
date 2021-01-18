@@ -1,0 +1,118 @@
+.order-details-container{
+  position: relative;
+  top:0rem;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url("/assets/img/my-orders/myOrdersBg.jpg");
+  display: flex;
+  justify-content: center;
+}
+
+.order-details-container::after{
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.7);
+  top:0rem;
+  left: 0;
+  margin:0;
+}
+
+.order-details-wrraper{
+  position: relative;
+  width: 40rem;
+  height: 25rem;
+  border: 2px solid red;
+  top: 7rem;
+  z-index: 10;
+  background-color:rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.order-details-wrraper p{
+  padding: 1rem;
+  color: white;
+}
+
+img{
+  position: relative;
+  width: 250px;
+  height:150px;
+  top: 2rem;
+  object-fit: contain;
+  padding: 1rem;
+}
+
+.order__detail__name{
+  position: relative;
+  top:1rem;
+  font-family: "Dancing Script";
+  font-size: 1.2rem;
+
+}
+
+.order__detail__desc{
+  position: relative;
+  font-family: "Monserrat";
+  font-size:0.8rem;
+  font-weight: bold;
+  top: -2rem;
+  overflow: hidden;
+}
+
+.order__detail__price{
+  position: relative;
+  font-size: 1rem;
+  font-family: "Monserrat";
+  font-weight: bold;
+  top: -2rem;
+}
+
+span{
+  color: red;
+  margin-right: 1rem;
+}
+
+.pagination-control /deep/ ul{
+  position: absolute;
+  top:33rem;
+  width: 100%;
+  text-align: center;
+  padding: 0;
+}
+
+.pagination-control /deep/ ul li a{
+  color: white;
+
+}
+
+@media only screen and (max-width:768px){
+  .order-details-wrraper{
+    width:30rem
+  }
+}
+
+@media only screen and (max-width:586px){
+  .order-details-wrraper{
+    width:27rem
+  }
+}
+
+@media only screen and (max-width:471px){
+  .order-details-wrraper{
+    width:22rem
+  }
+}
+
+@media only screen and (max-width:377px){
+  .order-details-wrraper{
+    width:17rem
+  }
+
+
+}

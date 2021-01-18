@@ -3,7 +3,7 @@
 </div>
 <div class="my-orders-container">
      <div class="my-orders-wrraper">
-       <div *ngFor="let order of myOrdersList | paginate:{itemsPerPage:2,currentPage:p}">
+       <div *ngFor="let order of myOrdersList | paginate:{itemsPerPage:1,currentPage:p}">
             <app-order [order] = "order"></app-order>
        </div>
      </div>

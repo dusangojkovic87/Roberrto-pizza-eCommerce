@@ -1,0 +1,16 @@
+<app-navbar></app-navbar>
+<div class="order-details-container">
+  <div *ngFor="let order of orderItems | paginate:{itemsPerPage:1,currentPage:p}">
+  <div class="order-details-wrraper">
+    <img src="/images/{{order.img}}" alt={{order?.img}} />
+    <p class="order__detail__name">{{order?.name}}</p>
+    <p class="order__detail__desc">
+      {{order?.description}}
+    </p>
+    <p class="order__detail__price"><span>Price:</span>{{order?.price | currency:'EUR'}}</p>
+  </div>
+</div>
+</div>
+<pagination-controls class="pagination-control"  (pageChange) = "p = $event"></pagination-controls>
+<app-footer></app-footer>
+

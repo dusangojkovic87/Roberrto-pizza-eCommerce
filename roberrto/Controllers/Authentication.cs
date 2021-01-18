@@ -56,7 +56,7 @@ namespace roberrto.Controllers
            }  
             
         }else{
-            return BadRequest("User already exists!");
+            return BadRequest(new {message = "User Exists"});
         }
     }
 
@@ -108,7 +108,7 @@ namespace roberrto.Controllers
 
             }
         }
-        return BadRequest();
+        return BadRequest(new {message = "Cannot find user,register first!"});
     }
 
 

@@ -1,10 +1,9 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using roberrto.Entities;
+using Microsoft.Extensions.Logging;
 using roberrto.Models;
 using roberrto.Services;
 
@@ -19,9 +18,11 @@ namespace roberrto.Controllers
         private readonly IOrderRepository _order;
 
         private readonly IMapper _mapper;
+        private readonly ILogger<Order> _logger;
 
-        public Order(ICartRepository cart, IOrderRepository order, IMapper mapper)
+        public Order(ICartRepository cart, IOrderRepository order, IMapper mapper, ILogger<Order> logger)
         {
+            _logger = logger;
             _mapper = mapper;
             _order = order;
             _cart = cart;
@@ -48,7 +49,7 @@ namespace roberrto.Controllers
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
+                   _logger.LogWarning(e.ToString());
                     return StatusCode(500, new { error = "Server error,taking order failed!" });
                 }
             }

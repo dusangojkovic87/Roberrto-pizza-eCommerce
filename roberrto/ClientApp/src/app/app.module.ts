@@ -52,6 +52,7 @@ import { AddReviewFormComponent } from './Pages/admin/add-review-form/add-review
 import { GalleryImgFormComponent } from './Pages/admin/gallery-img-form/gallery-img-form.component';
 import { MyordersComponent } from './Pages/myorders/myorders.component';
 import { OrderComponent } from './Pages/myorders/order/order.component';
+import { OrderDetailsComponent } from './Pages/myorders/order/order-details/order-details.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -101,7 +102,8 @@ export function tokenGetter() {
     AddReviewFormComponent,
     GalleryImgFormComponent,
     MyordersComponent,
-    OrderComponent
+    OrderComponent,
+    OrderDetailsComponent
 
   ],
   imports: [

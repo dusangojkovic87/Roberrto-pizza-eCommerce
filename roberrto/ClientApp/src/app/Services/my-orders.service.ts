@@ -14,6 +14,10 @@ export class MyOrdersService {
     return this.http.get<MyOrder[]>("http://localhost:5000/myorders/get-orders");
   }
 
+  getOrderDetails(id:number){
+    return this.http.get(`http://localhost:5000/myorders/order-details/${id}`);
+  }
+
 
 
 

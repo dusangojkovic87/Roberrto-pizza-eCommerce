@@ -143,6 +143,31 @@ header ul li a{
   }
 }
 
+@media only screen and (max-width:961px){
+  .navbar__brand{
+    display: none;
+  }
+
+  .cart{
+    left:3rem;
+  }
+
+}
+
+@media only screen and (max-width:439px){
+  .navbar__brand{
+    display: none;
+  }
+
+  .cart{
+    left:3rem;
+  }
+
+}
+
+
+
+
 
 
 

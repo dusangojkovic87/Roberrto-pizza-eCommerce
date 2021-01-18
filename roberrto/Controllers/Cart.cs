@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using roberrto.Models;
 using roberrto.Services;
 
@@ -12,8 +13,11 @@ namespace roberrto.Controllers
     public class Cart : ControllerBase
     {
         private ICartRepository _cart;
-        public Cart(ICartRepository cart)
+        private readonly ILogger<Cart> _logger;
+
+        public Cart(ICartRepository cart, ILogger<Cart> logger)
         {
+            _logger = logger;
             _cart = cart;
 
         }
@@ -35,7 +39,7 @@ namespace roberrto.Controllers
                 }
                 catch (Exception e)
                 {
-                    System.Console.WriteLine(e);
+                   _logger.LogWarning(e.ToString());
                     return StatusCode(500, new { error = "server error,product not added!" });
                 }
             }
@@ -59,7 +63,7 @@ namespace roberrto.Controllers
             }
             catch (Exception e)
             {
-                System.Console.WriteLine(e);
+                 _logger.LogWarning(e.ToString());
                 return StatusCode(500, new { error = "Server error,cannot get cart!" });
             }
         }
@@ -82,7 +86,7 @@ namespace roberrto.Controllers
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
+                     _logger.LogWarning(e.ToString());
                     return StatusCode(500, new { error = "Server error,cannot delete item!" });
 
 
@@ -108,7 +112,7 @@ namespace roberrto.Controllers
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                 _logger.LogWarning(e.ToString());
                 return StatusCode(500, new { error = "Server error,cannot delete cart!" });
 
             }
@@ -132,7 +136,7 @@ namespace roberrto.Controllers
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
+                     _logger.LogWarning(e.ToString());
                     return StatusCode(500, new { error = "Server error,cannot increase quantity!" });
                 }
             }
@@ -156,7 +160,7 @@ namespace roberrto.Controllers
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
+                    _logger.LogWarning(e.ToString());
                     return StatusCode(500, new { error = "Server error,cannot decrease quantity!" });
 
 
@@ -181,7 +185,7 @@ namespace roberrto.Controllers
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                 _logger.LogWarning(e.ToString());
                 return StatusCode(500, new { error = "Server error,canot get cart items count!" });
 
             }

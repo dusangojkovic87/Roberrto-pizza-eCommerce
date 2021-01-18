@@ -21,12 +21,14 @@ import { AddTeamMemberFormComponent } from './Pages/admin/add-team-member-form/a
 import { AddReviewFormComponent } from './Pages/admin/add-review-form/add-review-form.component';
 import { GalleryImgFormComponent } from './Pages/admin/gallery-img-form/gallery-img-form.component';
 import { MyordersComponent } from './Pages/myorders/myorders.component';
+import { OrderDetailsComponent } from './Pages/myorders/order/order-details/order-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'my-orders', component: MyordersComponent },
+  { path: 'my-orders', component: MyordersComponent},
+  { path: 'my-orders/order-details/:id', component: OrderDetailsComponent},
   {
     path: 'admin',
     component: AdminComponent,

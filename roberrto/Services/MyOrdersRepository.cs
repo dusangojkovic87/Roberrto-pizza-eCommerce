@@ -10,6 +10,7 @@ namespace roberrto.Services
     public interface IMyOrdersRepository
     {
         IEnumerable<OrdersGetModel> getOrders(int userId);
+      
     }
 
 
@@ -23,6 +24,8 @@ namespace roberrto.Services
             _context = context;
 
         }
+
+       
 
         public IEnumerable<OrdersGetModel> getOrders(int userId)
         {
@@ -42,5 +45,7 @@ namespace roberrto.Services
             return ordersGetModel;
 
         }
+
+
 }
 }

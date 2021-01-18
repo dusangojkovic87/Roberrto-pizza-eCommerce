@@ -1,5 +1,6 @@
 using System;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using roberrto.Services;
 
 namespace roberrto.Controllers
@@ -9,33 +10,36 @@ namespace roberrto.Controllers
     public class ImageGallery : ControllerBase
     {
         public IGalleryRepository _gallery;
-        public ImageGallery(IGalleryRepository gallery)
+        private readonly ILogger<ImageGallery> _logger;
+        public ImageGallery(IGalleryRepository gallery, ILogger<ImageGallery> logger)
         {
-              _gallery = gallery;
+             _logger = logger;
+            _gallery = gallery;
 
         }
 
 
-    [HttpGet]
-    [Route("images")]
-    public IActionResult getImages(){
-      try
-      {
-          var images = _gallery.GetGalleryImages();
-          return Ok(images);
-          
-      }
-      catch (Exception e)
-      {
-          System.Console.WriteLine(e);
-          return StatusCode(500,new {error = "Server error,cannot get images!"});
-         
-      }
+        [HttpGet]
+        [Route("images")]
+        public IActionResult getImages()
+        {
+            try
+            {
+                var images = _gallery.GetGalleryImages();
+                return Ok(images);
+
+            }
+            catch (Exception e)
+            {
+                _logger.LogWarning(e.ToString());
+                return StatusCode(500, new { error = "Server error,cannot get images!" });
+
+            }
+
+        }
 
     }
-      
-}
 
 
-    
+
 }

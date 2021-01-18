@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MyOrder } from 'src/app/Models/MyOrder';
 
 @Component({
@@ -9,9 +10,20 @@ import { MyOrder } from 'src/app/Models/MyOrder';
 export class OrderComponent implements OnInit {
   @Input() order?:MyOrder;
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
+
+  }
+
+  orderDetails(order?:MyOrder){
+   if(order){
+     this.router.navigate([`/my-orders/order-details/${order.id}`]);
+
+   }
+
+
+
   }
 
 }
